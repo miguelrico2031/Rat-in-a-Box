@@ -1,0 +1,348 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7072770129576524250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638427738970660398
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-5412989663801494071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voz
+  m_EditorClassIdentifier: 
+  Path: event:/Voz
+  Guid:
+    Data1: -1869720555
+    Data2: 1132999549
+    Data3: -1367426881
+    Data4: 1075522857
+  Banks:
+  - {fileID: 6725748583368008500}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &-3779631123714454610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Paso.bank
+  m_EditorClassIdentifier: 
+  Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Paso.bank
+  Name: Paso
+  StudioPath: bank:/Paso
+  lastModified: 638427739009039962
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-2196224352865308576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Paso
+  m_EditorClassIdentifier: 
+  Path: event:/Paso
+  Guid:
+    Data1: 1572959742
+    Data2: 1103858587
+    Data3: -1826851965
+    Data4: 1567808928
+  Banks:
+  - {fileID: -3779631123714454610}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1150
+--- !u!114 &-1281094227153822776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Escape.bank
+  m_EditorClassIdentifier: 
+  Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Escape.bank
+  Name: Escape
+  StudioPath: bank:/Escape
+  lastModified: 638427739007521274
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-220710720836923880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Escape/escape
+  m_EditorClassIdentifier: 
+  Name: escape
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3147459839
+    data2: 1767170683
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-149632487724349167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Click.bank
+  m_EditorClassIdentifier: 
+  Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Click.bank
+  Name: Click
+  StudioPath: bank:/Click
+  lastModified: 638427738971862707
+  FileSizes: []
+  Exists: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 8917009766071353731}
+  - {fileID: -149632487724349167}
+  - {fileID: -1281094227153822776}
+  - {fileID: -7072770129576524250}
+  - {fileID: 556802156910400058}
+  - {fileID: -3779631123714454610}
+  - {fileID: 6725748583368008500}
+  EditorEvents:
+  - {fileID: 8512842659985308226}
+  - {fileID: 4381679799654563063}
+  - {fileID: 7456329968517816301}
+  - {fileID: -2196224352865308576}
+  - {fileID: -5412989663801494071}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -7072770129576524250}
+  StringsBanks:
+  - {fileID: 8917009766071353731}
+  cacheTime: 638427739009848473
+  cacheVersion: 131608
+--- !u!114 &556802156910400058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Objeto.bank
+  m_EditorClassIdentifier: 
+  Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Objeto.bank
+  Name: Objeto
+  StudioPath: bank:/Objeto
+  lastModified: 638427739008234269
+  FileSizes: []
+  Exists: 1
+--- !u!114 &2671178402263104616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Click/click
+  m_EditorClassIdentifier: 
+  Name: click
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 4091499125
+    data2: 459675897
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &4381679799654563063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Escape
+  m_EditorClassIdentifier: 
+  Path: event:/Escape
+  Guid:
+    Data1: 294215901
+    Data2: 1295033534
+    Data3: 1893331384
+    Data4: -357617084
+  Banks:
+  - {fileID: -1281094227153822776}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -220710720836923880}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 181248
+--- !u!114 &6725748583368008500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Voz.bank
+  m_EditorClassIdentifier: 
+  Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Voz.bank
+  Name: Voz
+  StudioPath: bank:/Voz
+  lastModified: 638427739009848473
+  FileSizes: []
+  Exists: 1
+--- !u!114 &7456329968517816301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objeto
+  m_EditorClassIdentifier: 
+  Path: event:/Objeto
+  Guid:
+    Data1: 432819700
+    Data2: 1203961368
+    Data3: 1607606441
+    Data4: 329895626
+  Banks:
+  - {fileID: 556802156910400058}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3912
+--- !u!114 &8512842659985308226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Click
+  m_EditorClassIdentifier: 
+  Path: event:/Click
+  Guid:
+    Data1: -1394806843
+    Data2: 1198605966
+    Data3: 1888449175
+    Data4: -1877258168
+  Banks:
+  - {fileID: -149632487724349167}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 2671178402263104616}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3912
+--- !u!114 &8917009766071353731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638427738970680475
+  FileSizes:
+  - Name: 
+    Value: 1196
+  Exists: 1
