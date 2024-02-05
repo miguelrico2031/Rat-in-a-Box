@@ -161,9 +161,9 @@ namespace Pathfinding {
 		static bool CheckForUpdates () {
 			if (updateCheckDownload != null && updateCheckDownload.isDone) {
 				if (!string.IsNullOrEmpty(updateCheckDownload.error)) {
-					Debug.LogWarning("There was an error checking for updates to the A* Pathfinding Project\n" +
-						"The error might disappear if you switch build target from Webplayer to Standalone because of the webplayer security emulation\nError: " +
-						updateCheckDownload.error);
+					// Debug.LogWarning("There was an error checking for updates to the A* Pathfinding Project\n" +
+					// 	"The error might disappear if you switch build target from Webplayer to Standalone because of the webplayer security emulation\nError: " +
+					// 	updateCheckDownload.error);
 					updateCheckDownload = null;
 					return false;
 				}
@@ -217,11 +217,11 @@ namespace Pathfinding {
 						   "&hasCustom=" + (script != null && script.data.graphs.Any(g => g != null && !g.GetType().FullName.Contains("Pathfinding.")) ? 1 : 0) +
 						   "&graphCount=" + (script != null ? script.data.graphs.Count(g => g != null) : 0) +
 						   "&unityversion="+Application.unityVersion +
-						   "&branch="+AstarPath.Branch;
-
+				   "&branch="+AstarPath.Branch;
+		
 #if UNITY_2018_1_OR_NEWER
 			updateCheckDownload = UnityWebRequest.Get(query);
-			updateCheckDownload.SendWebRequest();
+			//updateCheckDownload.SendWebRequest();
 #else
 			updateCheckDownload = new WWW(query);
 #endif
