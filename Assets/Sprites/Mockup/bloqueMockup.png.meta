@@ -46,8 +46,13 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
+<<<<<<< Updated upstream
   alignment: 9
   spritePivot: {x: 0.5, y: 0.25}
+=======
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+>>>>>>> Stashed changes
   spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
