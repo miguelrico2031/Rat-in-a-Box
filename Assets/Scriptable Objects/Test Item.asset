@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29fc7b5302f4ecd960c653159b1344f, type: 3}
   m_Name: Test Item
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _hasSmell: 0
+  _prefab: {fileID: 3336395979484915274, guid: 66deb740bb02d4c4d95ec0c49c540fb6, type: 3}
+  _hasSmell: 1

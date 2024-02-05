@@ -14,6 +14,8 @@ public class RatController : MonoBehaviour
     
     public AIPath AIPath { get; private set; }
     public Seeker Seeker { get; private set; }
+    public Animator Animator { get; private set; }
+    public SpriteRenderer Renderer { get; private set; }
 
     [SerializeField] private LayerMask _visualObstacles; //obstaculos 
     
@@ -23,6 +25,8 @@ public class RatController : MonoBehaviour
     {
         Seeker = GetComponent<Seeker>();
         AIPath = GetComponent<AIPath>();
+        Animator = GetComponentInChildren<Animator>();
+        Renderer = GetComponentInChildren<SpriteRenderer>();
 
         CurrentState = null;
     }
@@ -36,7 +40,7 @@ public class RatController : MonoBehaviour
 
     private void Update()
     {
-
+        CurrentState?.Update();
     }
 
     public void StartAI()
