@@ -6,27 +6,41 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    public event Action ItemsUpdated;
+    public static ItemManager Instance { get; private set; }
     
-    private List<IItem> _items;
+    public event Action<IReadOnlyList<AItem>> ItemsUpdated;
+    public LayerMask ItemsMask { get => _itemsMask; }
+    
+    [SerializeField] private LayerMask _itemsMask; 
+
+    private List<AItem> _items;
     private void Awake()
     {
-         _items = new(GetComponentsInChildren<IItem>());
+        if(Instance) Destroy(gameObject);
+        Instance = this;
+        
+         _items = GetComponentsInChildren<AItem>().ToList();
     }
 
     public void PlaceItem(ItemInfo itemInfo, Vector2 position)
     {
         var instance = Instantiate(itemInfo.Prefab, position, Quaternion.identity, transform);
-        _items.Add(instance.GetComponent<IItem>());
+        _items.Add(instance.GetComponent<AItem>());
+        
+        ItemsUpdated?.Invoke(_items);
         
     }
 
-    public bool RemoveItem(IItem item)
+    public bool RemoveItem(AItem item)
     {
-        if (_items.Remove(item))
-        {
-            
-        }
+        if (!_items.Remove(item)) return false;
         
+        ItemsUpdated?.Invoke(_items);
+        return true;
     }
+
+    public IReadOnlyList<AItem> GetItems() => _items;
+
+
+
 }

@@ -9,10 +9,10 @@ namespace Rat
         private Transform _target;
         private Path _path;
         
-        public void Init(RatController controller, IRatState previousState = null)
+        public void Enter(RatController controller, IRatState previousState = null)
         {
             _controller = controller;
-            _target = _controller.CurrentTarget;
+            _target = _controller.CurrentTarget.transform;
 
             _path = _controller.Seeker.StartPath(controller.transform.position, _target.position);
             
