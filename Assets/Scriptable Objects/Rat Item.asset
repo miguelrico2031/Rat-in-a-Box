@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29fc7b5302f4ecd960c653159b1344f, type: 3}
-  m_Name: Visual Test Item
+  m_Name: Rat Item
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 2090973772605312202, guid: 01fff67d6e6c813439f022458bed423f, type: 3}
   _hasSmell: 0
-  _playerPlaced: 0
   _range: 4
+  _interaction: 2

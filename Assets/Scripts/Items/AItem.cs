@@ -8,37 +8,37 @@ public abstract class AItem : MonoBehaviour
 
     [SerializeField] private ItemInfo _info;
 
-    private float _rangeSquared;
+    //private float _rangeSquared;
+    private PolygonCollider2D _rangeCollider;
     
-    private void Awake()
+    protected virtual void Awake()
     {
-        _rangeSquared = Info.Range * Info.Range;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, Info.Range);
+        //_rangeSquared = Info.Range * Info.Range;
+        _rangeCollider = GetComponentInChildren<PolygonCollider2D>();
+        _rangeCollider.enabled = false;
     }
 
     public virtual bool IsInRange(Transform t)
     {
-        return (t.position - transform.position).sqrMagnitude <= _rangeSquared;
+        //return (t.position - transform.position).sqrMagnitude <= _rangeSquared;
+        _rangeCollider.enabled = true;
+        var overlap = _rangeCollider.OverlapPoint(t.position);
+        _rangeCollider.enabled = false;
+        return overlap;
     }
 
-    public abstract Vector2 GetTarget(Vector3 ratPosition);
+    public abstract Vector2 GetDestination(Vector3 ratPosition);
 
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public virtual void OnSetAsTarget()
     {
-        var rat = other.GetComponentInParent<RatController>();
-        if (!rat) return;
-        InteractWithRat(rat);
+        
     }
 
-    protected virtual void InteractWithRat(RatController ratController)
+    public virtual void OnUnsetAsTarget()
     {
-        ratController.OnItemCollision(this);
+        
     }
+
     
     
 }

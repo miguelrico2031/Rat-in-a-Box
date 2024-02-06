@@ -2,10 +2,10 @@ using Pathfinding;
 using UnityEngine;
 
 
-public class WalkToTarget : IRatState
+public class WalkToDestination : IRatState
 {
     private RatController _controller;
-    private Vector2 _target;
+    private Vector2 _destination;
     private Path _path;
 
     private Vector2 _direction;
@@ -14,9 +14,10 @@ public class WalkToTarget : IRatState
     public void Enter(RatController controller, IRatState previousState = null)
     {
         _controller = controller;
-        _target = controller.CurrentTarget.GetTarget(controller.transform.position);
+        var pos = controller.transform.position;
+        _destination = controller.CurrentTarget.GetDestination(pos);
         controller.AIPath.enabled = true;
-        _path = controller.Seeker.StartPath(controller.transform.position, _target);
+        _path = controller.Seeker.StartPath(pos, _destination);
 
         controller.StartCoroutine(controller.CheckForItems());
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RatController : MonoBehaviour
 {
-    public AItem CurrentTarget { get; private set; }
+    public AItem CurrentTarget { get => _currentTarget; set => ChangeTarget(value); }
     public IRatState CurrentState { get => _currentState; set => ChangeState(value); }
     
     public AIPath AIPath { get; private set; }
@@ -14,8 +14,8 @@ public class RatController : MonoBehaviour
     public SpriteRenderer Renderer { get; private set; }
 
     [SerializeField] private float _itemCheckTime;
-    [SerializeField] private LayerMask _visualObstacles; //obstaculos 
-    
+
+    private AItem _currentTarget;
     private IRatState _currentState;
 
     private void Awake()
@@ -25,6 +25,7 @@ public class RatController : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Renderer = GetComponentInChildren<SpriteRenderer>();
 
+        CurrentTarget = null;
         CurrentState = null;
     }
 
@@ -60,7 +61,14 @@ public class RatController : MonoBehaviour
         _currentState?.Enter(this, last);
     }
 
-    public void TrySetTarget(IReadOnlyList<AItem> items)
+    private void ChangeTarget(AItem newTarget)
+    {
+        if(_currentTarget != null)  _currentTarget.OnUnsetAsTarget();
+        _currentTarget = newTarget;
+        if(_currentTarget != null) _currentTarget.OnSetAsTarget();
+    }
+
+    public void TrySetTarget(IReadOnlyList<AItem> items, bool setState = true)
     {
         AItem target = null;
         AItem visualTarget = null;
@@ -93,6 +101,8 @@ public class RatController : MonoBehaviour
         if (CurrentTarget && target == CurrentTarget) return;
         
         CurrentTarget = target;
+
+        if (!setState) return;
         
         if (!CurrentTarget && CurrentState is not Idle)
         {
@@ -101,7 +111,7 @@ public class RatController : MonoBehaviour
         }
         else if (CurrentTarget)
         {
-            CurrentState = new WalkToTarget();
+            CurrentState = new WalkToDestination();
         }
     }
 
@@ -118,7 +128,7 @@ public class RatController : MonoBehaviour
         if (item.Info.HasSmell) return true;
 
         
-        var hit = Physics2D.Raycast(origin, direction, distance, _visualObstacles);
+        var hit = Physics2D.Raycast(origin, direction, distance, ItemManager.Instance.VisualObstaclesMask);
 
         if (hit && hit.collider) return false;
 
@@ -130,19 +140,45 @@ public class RatController : MonoBehaviour
     {
         TrySetTarget(ItemManager.Instance.GetItems());
         yield return new WaitForSeconds(_itemCheckTime);
-        if (CurrentState is WalkToTarget) yield return CheckForItems();
+        if (CurrentState is WalkToDestination) yield return CheckForItems();
     }
 
     public void OnItemCollision(AItem item)
     {
-        if (item != CurrentTarget)
+        switch (item.Info.Interaction)
         {
-            return;
+            case ItemInteraction.Trap:
+                Die();
+                break;
+            
+            case ItemInteraction.Consumable:
+                if (CurrentTarget != item) break;
+                CurrentTarget = null;
+                ItemManager.Instance.RemoveItem(item);
+                TrySetTarget(ItemManager.Instance.GetItems());
+                break;
+            
+            case ItemInteraction.Permanent:
+                if (CurrentTarget != item) break;
+                CurrentTarget = null;
+                CurrentState = new Idle();
+                break;
+            
+            case ItemInteraction.Repulsive:
+                if (CurrentTarget != item) break;
+                CurrentTarget = null;
+                TrySetTarget(ItemManager.Instance.GetItems(), false);
+                if (CurrentTarget == null) break;
+                if (item == CurrentTarget) CurrentState = new Idle();
+                else CurrentState = new WalkToDestination();
+                break;
         }
 
-        ItemManager.Instance.RemoveItem(item);
+    }
 
-        CurrentTarget = null;
-        TrySetTarget(ItemManager.Instance.GetItems());
+    private void Die()
+    {
+        Debug.Log("muelto");
+        Destroy(gameObject);
     }
 }

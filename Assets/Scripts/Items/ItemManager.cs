@@ -10,8 +10,11 @@ public class ItemManager : MonoBehaviour
     
     public event Action<IReadOnlyList<AItem>> ItemsUpdated;
     public LayerMask ItemsMask { get => _itemsMask; }
+    public LayerMask VisualObstaclesMask { get => _visualObstaclesMask; }
     
     [SerializeField] private LayerMask _itemsMask; 
+    [SerializeField] private LayerMask _visualObstaclesMask; //obstaculos 
+
 
     private List<AItem> _items;
     private void Awake()
