@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 153847711}
   - component: {fileID: 153847710}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: musicManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,14 +205,14 @@ MonoBehaviour:
         Data3: 1888449175
         Data4: -1877258168
       Path: event:/Click
-  - eventName: Escape
+  - eventName: Electrocutar
     eventRef:
       Guid:
-        Data1: 294215901
-        Data2: 1295033534
-        Data3: 1893331384
-        Data4: -357617084
-      Path: event:/Escape
+        Data1: 198951874
+        Data2: 1243970519
+        Data3: -389893755
+        Data4: 2110533268
+      Path: event:/Electrocutar
   - eventName: Objeto
     eventRef:
       Guid:
@@ -237,6 +237,38 @@ MonoBehaviour:
         Data3: -1367426881
         Data4: 1075522857
       Path: event:/Voz
+  - eventName: Talking
+    eventRef:
+      Guid:
+        Data1: 219540060
+        Data2: 1097650753
+        Data3: 832748681
+        Data4: -1712617674
+      Path: event:/Talking
+  - eventName: Escape
+    eventRef:
+      Guid:
+        Data1: 294215901
+        Data2: 1295033534
+        Data3: 1893331384
+        Data4: -357617084
+      Path: event:/Escape
+  - eventName: Menu
+    eventRef:
+      Guid:
+        Data1: -1751399912
+        Data2: 1110913142
+        Data3: 1215832212
+        Data4: 1681159692
+      Path: event:/Menu
+  - eventName: Settings
+    eventRef:
+      Guid:
+        Data1: -1742938273
+        Data2: 1172083089
+        Data3: -1458994006
+        Data4: 1277750043
+      Path: event:/Settings
 --- !u!4 &153847711
 Transform:
   m_ObjectHideFlags: 0

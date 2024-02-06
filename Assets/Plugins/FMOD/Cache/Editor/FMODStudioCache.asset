@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7951314188414546788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Talking.bank
+  m_EditorClassIdentifier: 
+  Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Talking.bank
+  Name: Talking
+  StudioPath: bank:/Talking
+  lastModified: 638428066662794160
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-7072770129576524250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,7 +33,7 @@ MonoBehaviour:
   Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638427738970660398
+  lastModified: 638428066635802141
   FileSizes: []
   Exists: 1
 --- !u!114 &-5412989663801494071
@@ -60,7 +78,7 @@ MonoBehaviour:
   Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Paso.bank
   Name: Paso
   StudioPath: bank:/Paso
-  lastModified: 638427739009039962
+  lastModified: 638428075878097020
   FileSizes: []
   Exists: 1
 --- !u!114 &-2196224352865308576
@@ -90,6 +108,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1150
+--- !u!114 &-1932023289658924686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Talking
+  m_EditorClassIdentifier: 
+  Path: event:/Talking
+  Guid:
+    Data1: 219540060
+    Data2: 1097650753
+    Data3: 832748681
+    Data4: -1712617674
+  Banks:
+  - {fileID: -7951314188414546788}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 43608
 --- !u!114 &-1281094227153822776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +177,24 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-151301523200098023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Electrocutar.bank
+  m_EditorClassIdentifier: 
+  Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Electrocutar.bank
+  Name: Electrocutar
+  StudioPath: bank:/Electrocutar
+  lastModified: 638428066637767516
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-149632487724349167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,19 +233,54 @@ MonoBehaviour:
   - {fileID: 556802156910400058}
   - {fileID: -3779631123714454610}
   - {fileID: 6725748583368008500}
+  - {fileID: -151301523200098023}
+  - {fileID: 4321022523523130528}
+  - {fileID: 7126464459258276940}
+  - {fileID: -7951314188414546788}
   EditorEvents:
   - {fileID: 8512842659985308226}
   - {fileID: 4381679799654563063}
   - {fileID: 7456329968517816301}
   - {fileID: -2196224352865308576}
   - {fileID: -5412989663801494071}
+  - {fileID: 5222814085074733404}
+  - {fileID: 3305182815155633034}
+  - {fileID: 419820384969532667}
+  - {fileID: -1932023289658924686}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7072770129576524250}
   StringsBanks:
   - {fileID: 8917009766071353731}
-  cacheTime: 638427739009848473
+  cacheTime: 638428075878097020
   cacheVersion: 131608
+--- !u!114 &419820384969532667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Settings
+  m_EditorClassIdentifier: 
+  Path: event:/Settings
+  Guid:
+    Data1: -1742938273
+    Data2: 1172083089
+    Data3: -1458994006
+    Data4: 1277750043
+  Banks:
+  - {fileID: 7126464459258276940}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 47520
 --- !u!114 &556802156910400058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +323,51 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &3305182815155633034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Menu
+  m_EditorClassIdentifier: 
+  Path: event:/Menu
+  Guid:
+    Data1: -1751399912
+    Data2: 1110913142
+    Data3: 1215832212
+    Data4: 1681159692
+  Banks:
+  - {fileID: 4321022523523130528}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 71064
+--- !u!114 &4321022523523130528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Menu.bank
+  m_EditorClassIdentifier: 
+  Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Menu.bank
+  Name: Menu
+  StudioPath: bank:/Menu
+  lastModified: 638428066648742756
+  FileSizes: []
+  Exists: 1
 --- !u!114 &4381679799654563063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +396,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 181248
+--- !u!114 &5222814085074733404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Electrocutar
+  m_EditorClassIdentifier: 
+  Path: event:/Electrocutar
+  Guid:
+    Data1: 198951874
+    Data2: 1243970519
+    Data3: -389893755
+    Data4: 2110533268
+  Banks:
+  - {fileID: -151301523200098023}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9624
 --- !u!114 &6725748583368008500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +439,24 @@ MonoBehaviour:
   Name: Voz
   StudioPath: bank:/Voz
   lastModified: 638427739009848473
+  FileSizes: []
+  Exists: 1
+--- !u!114 &7126464459258276940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Settings.bank
+  m_EditorClassIdentifier: 
+  Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Settings.bank
+  Name: Settings
+  StudioPath: bank:/Settings
+  lastModified: 638428066656168478
   FileSizes: []
   Exists: 1
 --- !u!114 &7456329968517816301
@@ -341,8 +529,8 @@ MonoBehaviour:
   Path: ../../SKINNER BOX JAM/FMOD/SkinnerBox/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638427738970680475
+  lastModified: 638428066635822125
   FileSizes:
   - Name: 
-    Value: 1196
+    Value: 1540
   Exists: 1

@@ -309,9 +309,13 @@ MonoBehaviour:
   - Master
   Banks:
   - Click
+  - Electrocutar
   - Escape
+  - Menu
   - Objeto
   - Paso
+  - Settings
+  - Talking
   - Voz
   BanksToLoad: []
   LiveUpdatePort: 9264

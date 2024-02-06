@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class llamadaMusica : MonoBehaviour
 {
@@ -9,12 +10,22 @@ public class llamadaMusica : MonoBehaviour
         musicManager = FindObjectOfType<MusicManager>();
     }
 
-    void Start()
+    IEnumerator Start()
     {
         if (musicManager != null)
         {
-            musicManager.SetEventParameter("Escape", "escape", 1);
+            // Espera un breve momento para asegurar que MusicManager haya terminado la inicialización
+            yield return new WaitForSeconds(0.01f);
+            musicManager.SetEventParameter("Escape", "escape", 0);
             musicManager.PlayEvent("Escape");
+            
+            yield return new WaitForSeconds(5f);
+            musicManager.SetEventParameter("Escape", "escape", 1);
+
+            yield return new WaitForSeconds(8f);
+            musicManager.SetEventParameter("Escape", "escape", 1);
+            musicManager.StopEvent("Escape");
+            musicManager.PlayEvent("Settings");
         }
         else
         {

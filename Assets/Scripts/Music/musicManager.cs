@@ -19,14 +19,14 @@ public class MusicManager : MonoBehaviour
     {
         foreach (var fmodEvent in events)
         {
-            // Crea instancias de todos los eventos
             fmodEvent.eventInstance = RuntimeManager.CreateInstance(fmodEvent.eventRef);
             
         }
-
+        /*
         var f = events.Find(e => e.eventName == "Escape");
         f.eventInstance.setParameterByName("escape", 1); // SETEO MANUAL
         f.eventInstance.start();
+        */
         
     }
 
@@ -37,11 +37,11 @@ public class MusicManager : MonoBehaviour
         if (fmodEvent != null)
         {
             fmodEvent.eventInstance.start();
-            Debug.Log("Reproduciendo evento: " + eventName);
+            //Debug.Log("Reproduciendo evento: " + eventName);
         }
         else
         {
-            Debug.LogWarning("Event not found: " + eventName);
+            Debug.LogWarning("No evento: " + eventName);
         }
     }
 
@@ -60,7 +60,7 @@ public class MusicManager : MonoBehaviour
         if (fmodEvent != null)
         {
             fmodEvent.eventInstance.setParameterByName(parameterName, value);
-            Debug.Log("Parametro: " + parameterName + " = " + value);
+            //Debug.Log("Parametro: " + parameterName + " = " + value);
         }
     }
 
