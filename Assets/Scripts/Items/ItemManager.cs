@@ -19,7 +19,7 @@ public class ItemManager : MonoBehaviour
     private List<AItem> _items;
     private void Awake()
     {
-        if(Instance) Destroy(gameObject);
+        // if(Instance) Destroy(gameObject);
         Instance = this;
         
          _items = GetComponentsInChildren<AItem>().ToList();

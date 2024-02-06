@@ -6,11 +6,13 @@ using UnityEditor;
 public class ItemInfo : ScriptableObject
 {
     public GameObject Prefab { get => _prefab; }
+    public GameObject Dummy { get => _dummy; }
     public bool HasSmell { get => _hasSmell; }
     // public float Range { get => _range; }
     public ItemInteraction Interaction { get => _interaction; }
 
     [SerializeField] private GameObject _prefab;
+    [SerializeField] private GameObject _dummy;
     [SerializeField] private bool _hasSmell;
     // [SerializeField] private float _range;
     [SerializeField] private ItemInteraction _interaction;

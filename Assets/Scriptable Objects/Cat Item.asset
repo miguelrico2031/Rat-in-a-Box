@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Cat Item
   m_EditorClassIdentifier: 
   _prefab: {fileID: 7835324223836598957, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
+  _dummy: {fileID: 254332621050277648, guid: 9c712961db13a4345b2e279f884e92ab, type: 3}
   _hasSmell: 0
   _interaction: 3
