@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1224481315201549342, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224481315201549342, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224481315201549342, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 7835324223836598957, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
       propertyPath: m_Name
       value: Poison
@@ -53,8 +65,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8952491394937152577, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6577f31e5cc653d48947a3c45b184fbc, type: 3}
+    - target: {fileID: 8952491394937152577, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
       propertyPath: m_Color.b
-      value: 0.9769295
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8952491394937152577, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
       propertyPath: m_Color.g
@@ -62,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8952491394937152577, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
       propertyPath: m_Color.r
-      value: 0.14509803
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
