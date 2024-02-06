@@ -1,53 +1,56 @@
 using Pathfinding;
 using UnityEngine;
 
-namespace Rat
+
+public class WalkToTarget : IRatState
 {
-    public class WalkToTarget : IRatState
+    private RatController _controller;
+    private Vector2 _target;
+    private Path _path;
+
+    private Vector2 _direction;
+    private string _currentAnimation;
+    
+    public void Enter(RatController controller, IRatState previousState = null)
     {
-        private RatController _controller;
-        private Transform _target;
-        private Path _path;
+        _controller = controller;
+        _target = controller.CurrentTarget.GetTarget(controller.transform.position);
+        controller.AIPath.enabled = true;
+        _path = controller.Seeker.StartPath(controller.transform.position, _target);
 
-        private Vector2 _direction;
-        private string _currentAnimation;
+        controller.StartCoroutine(controller.CheckForItems());
+    }
+
+
+    public void Update()
+    {
+        UpdateAnimation();
+    }
+
+    private void UpdateAnimation()
+    {
+        var newDirection = (Vector2)_controller.AIPath.desiredVelocity;
+        if (newDirection == _direction) return;
+
+        _direction = newDirection;
+
+        _controller.Renderer.flipX = _direction.x > 0f;
+
+        if (_direction.y < 0f && _currentAnimation != "Move Front")
+        {
+            _controller.Animator.Play("Move Front");
+            _currentAnimation = "Move Front";
+        }
         
-        public void Enter(RatController controller, IRatState previousState = null)
+        if (_direction.y >= 0f && _currentAnimation != "Move Back")
         {
-            _controller = controller;
-            _target = _controller.CurrentTarget.transform;
-
-            _path = _controller.Seeker.StartPath(controller.transform.position, _target.position);
-            
+            _controller.Animator.Play("Move Back");
+            _currentAnimation = "Move Back";
         }
+    }
 
-
-        public void Update()
-        {
-            var newDirection = (Vector2)_controller.AIPath.desiredVelocity;
-            if (newDirection == _direction) return;
-
-            _direction = newDirection;
-
-            _controller.Renderer.flipX = _direction.x > 0f;
-
-            if (_direction.y < 0f && _currentAnimation != "Move Front")
-            {
-               _controller.Animator.Play("Move Front");
-               _currentAnimation = "Move Front";
-            }
-            
-            if (_direction.y >= 0f && _currentAnimation != "Move Back")
-            {
-                _controller.Animator.Play("Move Back");
-                _currentAnimation = "Move Back";
-            }
-
-        }
-
-        public void Exit(IRatState nextState = null)
-        {
-            
-        }
+    public void Exit(IRatState nextState = null)
+    {
+        _controller.AIPath.enabled = false;
     }
 }

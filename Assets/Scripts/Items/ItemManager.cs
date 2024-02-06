@@ -35,6 +35,8 @@ public class ItemManager : MonoBehaviour
     {
         if (!_items.Remove(item)) return false;
         
+        Destroy(item.gameObject);
+        
         ItemsUpdated?.Invoke(_items);
         return true;
     }

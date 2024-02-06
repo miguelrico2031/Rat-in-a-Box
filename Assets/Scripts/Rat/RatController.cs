@@ -1,11 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Pathfinding;
-using Rat;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class RatController : MonoBehaviour
 {
@@ -17,6 +13,7 @@ public class RatController : MonoBehaviour
     public Animator Animator { get; private set; }
     public SpriteRenderer Renderer { get; private set; }
 
+    [SerializeField] private float _itemCheckTime;
     [SerializeField] private LayerMask _visualObstacles; //obstaculos 
     
     private IRatState _currentState;
@@ -46,35 +43,13 @@ public class RatController : MonoBehaviour
     public void StartAI()
     {
         if (CurrentState != null) return;
-        OnItemsUpdated(ItemManager.Instance.GetItems());
+        TrySetTarget(ItemManager.Instance.GetItems());
     }
 
 
     private void OnItemsUpdated(IReadOnlyList<AItem> items)
     {
-        CurrentTarget = null;
-        float bestDistance = Mathf.Infinity;
-        foreach (var item in items)
-        {
-            if (!IsValidTarget(item, out var distance)) continue;
-            
-
-            if (distance < bestDistance)
-            {
-                bestDistance = distance;
-                CurrentTarget = item;
-            }
-        }
-
-        if (!CurrentTarget)
-        {
-            CurrentState = new Idle();
-            
-        }
-        else
-        {
-            CurrentState = new WalkToTarget();
-        }
+        TrySetTarget(items);
     }
 
     private void ChangeState(IRatState newState)
@@ -83,6 +58,51 @@ public class RatController : MonoBehaviour
         var last = _currentState;
         _currentState = newState;
         _currentState?.Enter(this, last);
+    }
+
+    public void TrySetTarget(IReadOnlyList<AItem> items)
+    {
+        AItem target = null;
+        AItem visualTarget = null;
+        float bestDistance = Mathf.Infinity;
+        foreach (var item in items)
+        {
+            if (!IsValidTarget(item, out var distance)) continue;
+
+            if (!item.Info.HasSmell)
+            {
+                if (visualTarget == null || distance < bestDistance)
+                {
+                    visualTarget = item;
+                    bestDistance = distance;
+                }
+            }
+
+            if (visualTarget != null) continue;
+            
+            if (distance < bestDistance)
+            {
+                bestDistance = distance;
+                target = item;
+            }
+        }
+
+        if (visualTarget != null) target = visualTarget;
+
+        if (CurrentTarget && !target) return;
+        if (CurrentTarget && target == CurrentTarget) return;
+        
+        CurrentTarget = target;
+        
+        if (!CurrentTarget && CurrentState is not Idle)
+        {
+            CurrentState = new Idle();
+            
+        }
+        else if (CurrentTarget)
+        {
+            CurrentState = new WalkToTarget();
+        }
     }
 
     private bool IsValidTarget(AItem item, out float distance)
@@ -103,5 +123,26 @@ public class RatController : MonoBehaviour
         if (hit && hit.collider) return false;
 
         return true;
+    }
+
+
+    public IEnumerator CheckForItems()
+    {
+        TrySetTarget(ItemManager.Instance.GetItems());
+        yield return new WaitForSeconds(_itemCheckTime);
+        if (CurrentState is WalkToTarget) yield return CheckForItems();
+    }
+
+    public void OnItemCollision(AItem item)
+    {
+        if (item != CurrentTarget)
+        {
+            return;
+        }
+
+        ItemManager.Instance.RemoveItem(item);
+
+        CurrentTarget = null;
+        TrySetTarget(ItemManager.Instance.GetItems());
     }
 }
