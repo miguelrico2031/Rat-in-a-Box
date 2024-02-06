@@ -17,6 +17,7 @@ public class RatController : MonoBehaviour
 
     private AItem _currentTarget;
     private IRatState _currentState;
+    private AItem _lastPermamentTargetCollided;
 
     private void Awake()
     {
@@ -107,11 +108,18 @@ public class RatController : MonoBehaviour
         if (!CurrentTarget && CurrentState is not Idle)
         {
             CurrentState = new Idle();
-            
         }
         else if (CurrentTarget)
         {
-            CurrentState = new WalkToDestination();
+            if (_lastPermamentTargetCollided && _lastPermamentTargetCollided == CurrentTarget)
+            {
+                CurrentTarget = null;
+                CurrentState = new Idle();
+            }
+            else
+            {
+                CurrentState = new WalkToDestination();
+            }
         }
     }
 
@@ -161,6 +169,7 @@ public class RatController : MonoBehaviour
             case ItemInteraction.Permanent:
                 if (CurrentTarget != item) break;
                 CurrentTarget = null;
+                _lastPermamentTargetCollided = item;
                 CurrentState = new Idle();
                 break;
             

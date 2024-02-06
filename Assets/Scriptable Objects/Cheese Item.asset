@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29fc7b5302f4ecd960c653159b1344f, type: 3}
   m_Name: Cheese Item
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 3336395979484915274, guid: 66deb740bb02d4c4d95ec0c49c540fb6, type: 3}
+  _prefab: {fileID: 8430464291285239912, guid: ebe7bf30d4ec8c14290889588fcb4611, type: 3}
+  _dummy: {fileID: 1771491890581334899, guid: f01c9444433785a4cb7433ab9c095ee9, type: 3}
   _hasSmell: 1
   _interaction: 1

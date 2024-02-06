@@ -1013,7 +1013,7 @@ GameObject:
   - component: {fileID: 941156910}
   - component: {fileID: 941156909}
   m_Layer: 0
-  m_Name: A*
+  m_Name: Pathfinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

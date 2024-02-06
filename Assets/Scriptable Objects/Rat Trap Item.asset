@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29fc7b5302f4ecd960c653159b1344f, type: 3}
-  m_Name: Cat Item
+  m_Name: Rat Trap Item
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 7835324223836598957, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
-  _dummy: {fileID: 254332621050277648, guid: 9c712961db13a4345b2e279f884e92ab, type: 3}
+  _prefab: {fileID: 6649312768016497519, guid: 24d134c176dfe704285d4eb789765120, type: 3}
+  _dummy: {fileID: 0}
   _hasSmell: 0
-  _interaction: 3
+  _interaction: 0
