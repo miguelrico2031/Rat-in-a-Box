@@ -31,8 +31,6 @@ public class Selectable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     
     public void OnPointerDown(PointerEventData eventData)
     {
-        
+        SelectionManager.Instance.Selected = this;
     }
-    
-    
 }

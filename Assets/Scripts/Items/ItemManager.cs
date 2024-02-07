@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ItemManager : MonoBehaviour
 {
@@ -19,10 +20,17 @@ public class ItemManager : MonoBehaviour
     private List<AItem> _items;
     private void Awake()
     {
-        // if(Instance) Destroy(gameObject);
+        if(Instance) Destroy(gameObject);
         Instance = this;
+        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneStart;
         
-         _items = GetComponentsInChildren<AItem>().ToList();
+        _items = FindObjectsOfType<AItem>().ToList();
+    }
+
+    private void OnSceneStart(Scene s, LoadSceneMode m)
+    {
+         _items = FindObjectsOfType<AItem>().ToList();
     }
 
     public void PlaceItem(ItemInfo itemInfo, Vector2 position)

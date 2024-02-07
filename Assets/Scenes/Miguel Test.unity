@@ -206,9 +206,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7624143759876229458}
-        m_TargetAssemblyTypeName: Items.PlacementManager, Assembly-CSharp
-        m_MethodName: CancelItemToPlace
+      - m_Target: {fileID: 1644129127}
+        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+        m_MethodName: CancelItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -473,9 +473,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7624143759876229458}
-        m_TargetAssemblyTypeName: Items.PlacementManager, Assembly-CSharp
-        m_MethodName: SetItemToPlace
+      - m_Target: {fileID: 1644129127}
+        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+        m_MethodName: SelectItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: cdf7a6f467189114b9bcc1936049022c, type: 2}
@@ -1047,9 +1047,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7624143759876229458}
-        m_TargetAssemblyTypeName: Items.PlacementManager, Assembly-CSharp
-        m_MethodName: SetItemToPlace
+      - m_Target: {fileID: 1644129127}
+        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+        m_MethodName: SelectItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 361c3111386a9094b8a3dc3c6ecd8829, type: 2}
@@ -1143,6 +1143,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7624143759876229458}
         m_TargetAssemblyTypeName: Items.PlacementManager, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7624143759876229461}
+        m_TargetAssemblyTypeName: SelectionManager, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 0
         m_Arguments:
@@ -3182,7 +3194,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1430212351}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1644129127}
+        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+        m_MethodName: RemoveItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1430212351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3440,9 +3464,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7624143759876229458}
-        m_TargetAssemblyTypeName: Items.PlacementManager, Assembly-CSharp
-        m_MethodName: SetItemToPlace
+      - m_Target: {fileID: 1644129127}
+        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+        m_MethodName: SelectItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 5389075d4d6fe384dabb172cd51cda47, type: 2}
@@ -3502,6 +3526,7 @@ GameObject:
   - component: {fileID: 1644129125}
   - component: {fileID: 1644129124}
   - component: {fileID: 1644129123}
+  - component: {fileID: 1644129127}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3592,6 +3617,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1644129127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644129122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0fe1b5426a160468b11cba90ec587d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _removeButton: {fileID: 1430212348}
 --- !u!1 &1707622740
 GameObject:
   m_ObjectHideFlags: 0
@@ -7174,9 +7212,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7624143759876229458}
-        m_TargetAssemblyTypeName: Items.PlacementManager, Assembly-CSharp
-        m_MethodName: SetItemToPlace
+      - m_Target: {fileID: 1644129127}
+        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+        m_MethodName: SelectItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 8782b0d7e23f6ea499116e30eb55deb3, type: 2}
@@ -7487,6 +7525,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dac35d23a6434804a6d944f2fad8b987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7624143759876229461 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 280912948704701971, guid: 49c125f9684a24a4385a2ce144ec8e16, type: 3}
+  m_PrefabInstance: {fileID: 7624143759876229457}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67f0565534443dc89f96c7e963ae2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
