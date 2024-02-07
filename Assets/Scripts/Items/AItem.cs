@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class AItem : MonoBehaviour
 {
     public ItemInfo Info { get => _info; }
+    public bool IsCovered { get; set; }
 
     [SerializeField] private ItemInfo _info;
 
@@ -18,9 +19,9 @@ public abstract class AItem : MonoBehaviour
         _rangeCollider.enabled = false;
     }
 
-    public virtual bool IsInRange(Transform t)
+    public bool IsInRange(Transform t)
     {
-        //return (t.position - transform.position).sqrMagnitude <= _rangeSquared;
+        if (IsCovered) return false;
         _rangeCollider.enabled = true;
         var overlap = _rangeCollider.OverlapPoint(t.position);
         _rangeCollider.enabled = false;

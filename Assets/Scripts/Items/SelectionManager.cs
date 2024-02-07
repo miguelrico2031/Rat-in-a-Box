@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
@@ -29,13 +31,22 @@ public class SelectionManager : MonoBehaviour
     public void OnClick(InputAction.CallbackContext ctx)
     {
         if (!ctx.started || PlacementManager.Instance.ItemToPlace) return;
+
+        StartCoroutine(TryDeselect());
+
+    }
+
+    private IEnumerator TryDeselect()
+    {
+        yield return null;
+        
+        if(EventSystem.current.IsPointerOverGameObject()) yield break;
         
         Vector2 pos = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
 
         var col = Physics2D.OverlapCircle(pos, .05f);
 
         if (!col || !col.TryGetComponent<Selectable>(out var s)) Selected = null;
-
     }
 
     private void SetSelected(Selectable s)

@@ -147,19 +147,21 @@ public class RatController : MonoBehaviour
 
     public IEnumerator PlayStepsSounds()
     {
-        //ANTON: elegir sonido random
-        MusicManager.Instance.PlaySound("");
-
-        yield return new WaitForSeconds(_stepSoundDelay);
-        if (CurrentState is WalkToDestination) yield return PlayStepsSounds();
-        
+        while (CurrentState is WalkToDestination)
+        {
+            //ANTON: elegir sonido random
+            MusicManager.Instance.PlaySound("");
+            yield return new WaitForSeconds(_stepSoundDelay);
+        }
     }
     public IEnumerator CheckForItems()
     {
-        TrySetTarget(ItemManager.Instance.GetItems());
-        yield return new WaitForSeconds(_itemCheckTime);
-        if (CurrentState is WalkToDestination) yield return CheckForItems();
-     }
+        while (CurrentState is WalkToDestination)
+        {
+            TrySetTarget(ItemManager.Instance.GetItems());
+            yield return new WaitForSeconds(_itemCheckTime);
+        }
+    }
 
     public void OnItemCollision(AItem item)
     {
