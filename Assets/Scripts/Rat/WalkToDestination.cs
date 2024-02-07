@@ -20,12 +20,14 @@ public class WalkToDestination : IRatState
         _path = controller.Seeker.StartPath(pos, _destination);
 
         controller.StartCoroutine(controller.CheckForItems());
+        controller.StartCoroutine(controller.PlayStepsSounds());
     }
 
 
     public void Update()
     {
         UpdateAnimation();
+        //ANTON : poner sonido pasos
     }
 
     private void UpdateAnimation()

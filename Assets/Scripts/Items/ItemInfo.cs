@@ -10,12 +10,16 @@ public class ItemInfo : ScriptableObject
     public bool HasSmell { get => _hasSmell; }
     // public float Range { get => _range; }
     public ItemInteraction Interaction { get => _interaction; }
+    public string PlaceAudioName {get => _placeAudioName;}
+    public string InteractAudioName {get => _interactAudioName;}
 
     [SerializeField] private GameObject _prefab;
     [SerializeField] private GameObject _dummy;
     [SerializeField] private bool _hasSmell;
     // [SerializeField] private float _range;
     [SerializeField] private ItemInteraction _interaction;
+    [SerializeField] private string _placeAudioName;
+    [SerializeField] private string _interactAudioName;
 
 
 }

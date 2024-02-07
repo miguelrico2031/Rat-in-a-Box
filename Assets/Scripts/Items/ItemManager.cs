@@ -40,6 +40,9 @@ public class ItemManager : MonoBehaviour
         
         ItemsUpdated?.Invoke(_items);
         
+        //ANTON: sonido poner objeto
+        //itemInfo.PlaceAudioName
+        
     }
 
     public bool RemoveItem(AItem item)
@@ -49,6 +52,9 @@ public class ItemManager : MonoBehaviour
         Destroy(item.gameObject);
         
         ItemsUpdated?.Invoke(_items);
+        
+        //ANTON: sonido borrar objeto
+        
         return true;
     }
 

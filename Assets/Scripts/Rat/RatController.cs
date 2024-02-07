@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class RatController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class RatController : MonoBehaviour
     public SpriteRenderer Renderer { get; private set; }
 
     [SerializeField] private float _itemCheckTime;
+    [SerializeField] private float _stepSoundDelay;
 
     private AItem _currentTarget;
     private IRatState _currentState;
@@ -143,16 +145,27 @@ public class RatController : MonoBehaviour
         return true;
     }
 
+    public IEnumerator PlayStepsSounds()
+    {
+        //ANTON: elegir sonido random
+        MusicManager.Instance.PlaySound("");
 
+        yield return new WaitForSeconds(_stepSoundDelay);
+        if (CurrentState is WalkToDestination) yield return PlayStepsSounds();
+        
+    }
     public IEnumerator CheckForItems()
     {
         TrySetTarget(ItemManager.Instance.GetItems());
         yield return new WaitForSeconds(_itemCheckTime);
         if (CurrentState is WalkToDestination) yield return CheckForItems();
-    }
+     }
 
     public void OnItemCollision(AItem item)
     {
+        //ANTON: aqui sonido de interactuar con objeto
+        //item.Info.InteractAudioName
+        
         switch (item.Info.Interaction)
         {
             case ItemInteraction.Trap:

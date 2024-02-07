@@ -84,7 +84,7 @@ public class MusicManager : MonoBehaviour
             StartCoroutine(PlayAndDisable(clip));
             return;
         }
-        Debug.LogWarning("Sound name not found: " + soundName);
+        if(soundName != "") Debug.LogWarning("Sound name not found: " + soundName);
     }
 
     private IEnumerator PlayAndDisable(AudioClip clip, bool unscaledTime = false)
