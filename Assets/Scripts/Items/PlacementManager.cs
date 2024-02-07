@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -7,9 +9,19 @@ using UnityEngine.SceneManagement;
 public class PlacementManager : MonoBehaviour
 {
     public static PlacementManager Instance { get; private set; }
-    
-    public ItemInfo ItemToPlace { get; private set; }
 
+    public event Action ItemChange;
+    public ItemInfo ItemToPlace
+    {
+        get => _itemToPlace;
+        private set
+        {
+            _itemToPlace = value;
+            ItemChange?.Invoke();
+        }
+    }
+    
+    private ItemInfo _itemToPlace;
     private GameObject _dummy;
     private Mouse _mouse;
     private Camera _cam;
@@ -50,10 +62,16 @@ public class PlacementManager : MonoBehaviour
     public void OnClick(InputAction.CallbackContext ctx)
     {
         if (!ctx.started || !ItemToPlace) return;
+        StartCoroutine(TryPlaceItem(_dummy.transform.position));
+    }
 
-        var pos = _dummy.transform.position;
+    private IEnumerator TryPlaceItem(Vector3 pos)
+    {
+        yield return null;
         
-        if (Physics2D.OverlapCircle(pos, .2f)) return;
+        if(EventSystem.current.IsPointerOverGameObject()) yield break;
+        
+        if (Physics2D.OverlapCircle(pos, .2f)) yield break;
 
         Destroy(_dummy);
         ItemManager.Instance.PlaceItem(ItemToPlace, pos);
