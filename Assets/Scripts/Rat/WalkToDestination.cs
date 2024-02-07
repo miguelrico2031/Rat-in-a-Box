@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class WalkToDestination : IRatState
 {
+    public Vector2 Direction { get; private set; }
+    
     private RatController _controller;
     private Vector2 _destination;
     private Path _path;
 
-    private Vector2 _direction;
     private string _currentAnimation;
     
     public void Enter(RatController controller, IRatState previousState = null)
@@ -33,19 +34,19 @@ public class WalkToDestination : IRatState
     private void UpdateAnimation()
     {
         var newDirection = (Vector2)_controller.AIPath.desiredVelocity;
-        if (newDirection == _direction) return;
+        if (newDirection == Direction) return;
 
-        _direction = newDirection;
+        Direction = newDirection;
 
-        _controller.Renderer.flipX = _direction.x > 0f;
+        _controller.Renderer.flipX = Direction.x < 0f;
 
-        if (_direction.y < 0f && _currentAnimation != "Move Front")
+        if (Direction.y < 0f && _currentAnimation != "Move Front")
         {
             _controller.Animator.Play("Move Front");
             _currentAnimation = "Move Front";
         }
         
-        if (_direction.y >= 0f && _currentAnimation != "Move Back")
+        if (Direction.y >= 0f && _currentAnimation != "Move Back")
         {
             _controller.Animator.Play("Move Back");
             _currentAnimation = "Move Back";

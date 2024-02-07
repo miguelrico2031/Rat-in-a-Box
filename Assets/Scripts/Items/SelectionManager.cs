@@ -51,6 +51,8 @@ public class SelectionManager : MonoBehaviour
 
     private void SetSelected(Selectable s)
     {
+        if(_selectable) _selectable.OnDeselected();
+        
         _selectable = s;
         
         SelectedChange?.Invoke();
