@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29fc7b5302f4ecd960c653159b1344f, type: 3}
   m_Name: Poison Item
   m_EditorClassIdentifier: 
+  _isLid: 0
   _prefab: {fileID: 1392762185680787176, guid: 83ed70446a8f0c342a4e4d73682d7935, type: 3}
   _dummy: {fileID: 2148393043990851963, guid: 2478ca6571164424da07dcd2702d75bd, type: 3}
   _hasSmell: 1
-  _interaction: 3
+  _interaction: 4
+  _placeAudioName: 
+  _interactAudioName: 

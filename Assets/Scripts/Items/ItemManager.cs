@@ -18,6 +18,7 @@ public class ItemManager : MonoBehaviour
 
 
     private List<AItem> _items;
+    private Dictionary<GameObject, AItem> _lids;
     private void Awake()
     {
         if(Instance) Destroy(gameObject);
@@ -26,16 +27,18 @@ public class ItemManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneStart;
         
         _items = FindObjectsOfType<AItem>().ToList();
+        _lids = new();
     }
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
          _items = FindObjectsOfType<AItem>().ToList();
+         _lids = new();
     }
 
     public void PlaceItem(ItemInfo itemInfo, Vector2 position)
     {
-        var instance = Instantiate(itemInfo.Prefab, position, Quaternion.identity, transform);
+        var instance = Instantiate(itemInfo.Prefab, position, Quaternion.identity);
         _items.Add(instance.GetComponent<AItem>());
         
         ItemsUpdated?.Invoke(_items);
@@ -43,6 +46,16 @@ public class ItemManager : MonoBehaviour
         //ANTON: sonido poner objeto
         //itemInfo.PlaceAudioName
         
+    }
+
+    public void PlaceLid(ItemInfo lidInfo, AItem item)
+    {
+        _lids.Add(Instantiate(lidInfo.Prefab, item.transform.position, Quaternion.identity), item);
+        
+        item.ToggleLid(true);
+        SelectionManager.Instance.Selected = null;
+        
+        ItemsUpdated?.Invoke((_items));
     }
 
     public bool RemoveItem(AItem item)
@@ -57,9 +70,21 @@ public class ItemManager : MonoBehaviour
         
         return true;
     }
+    
+    public bool RemoveLid(GameObject lid)
+    {
+        if (!_lids.ContainsKey(lid)) return false;
+
+        var item = _lids[lid];
+        _lids.Remove(lid);
+        Destroy(lid);
+        item.ToggleLid(false);
+        
+        ItemsUpdated?.Invoke((_items));
+
+        return true;
+    }
 
     public IReadOnlyList<AItem> GetItems() => _items;
-
-
-
+    
 }

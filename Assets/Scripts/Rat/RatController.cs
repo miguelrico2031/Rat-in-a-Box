@@ -73,6 +73,8 @@ public class RatController : MonoBehaviour
 
     public void TrySetTarget(IReadOnlyList<AItem> items, bool setState = true)
     {
+        if (CurrentTarget && CurrentTarget.IsCovered) CurrentTarget = null;
+        
         AItem target = null;
         AItem visualTarget = null;
         float bestDistance = Mathf.Infinity;
@@ -103,7 +105,7 @@ public class RatController : MonoBehaviour
         if (CurrentTarget && !target) return;
         if (CurrentTarget && target == CurrentTarget) return;
         
-        CurrentTarget = target;
+        CurrentTarget = target && !target.IsCovered ? target : null;
 
         if (!setState) return;
         

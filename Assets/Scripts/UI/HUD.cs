@@ -45,7 +45,11 @@ public class HUD : MonoBehaviour
     {
         var selectable = SelectionManager.Instance.Selected;
         if (!selectable) return;
-        ItemManager.Instance.RemoveItem(selectable.GetComponentInParent<AItem>());
+
+        var nonLidItem = selectable.GetComponentInParent<AItem>();
+
+        if (nonLidItem) ItemManager.Instance.RemoveItem(nonLidItem);
+        else ItemManager.Instance.RemoveLid(selectable.transform.parent.gameObject);
     }
 
     private void OnSelectedChange()

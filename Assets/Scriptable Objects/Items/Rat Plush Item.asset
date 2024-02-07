@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29fc7b5302f4ecd960c653159b1344f, type: 3}
   m_Name: Rat Plush Item
   m_EditorClassIdentifier: 
+  _isLid: 0
   _prefab: {fileID: 8562870153606577014, guid: c9c33519b57d20445ac5bfb55274fc58, type: 3}
   _dummy: {fileID: 1446545619482210303, guid: d3e3caa002ee48e48b8d920429723e9c, type: 3}
   _hasSmell: 0
-  _interaction: 2
+  _interaction: 3
+  _placeAudioName: 
+  _interactAudioName: 

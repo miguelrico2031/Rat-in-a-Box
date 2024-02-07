@@ -26,13 +26,16 @@ public class PlacementManager : MonoBehaviour
     private Mouse _mouse;
     private Camera _cam;
     private Vector3 _to2D = new(1f, 1f, 0f);
+    private Collider2D[] _overlaps;
     
     private void Awake()
     {
         if(Instance) Destroy(gameObject);
         Instance = this;
         SceneManager.sceneLoaded += OnSceneStart;
-        
+
+        _overlaps = new Collider2D[10];
+            
         _mouse = Mouse.current;
         _cam = Camera.main;
     }
@@ -48,6 +51,7 @@ public class PlacementManager : MonoBehaviour
         ItemToPlace = item;
         if(_dummy) Destroy(_dummy);
         _dummy = Instantiate(ItemToPlace.Dummy);
+        SelectionManager.Instance.Selected = null;
     }
 
     private void Update()   
@@ -68,13 +72,50 @@ public class PlacementManager : MonoBehaviour
     private IEnumerator TryPlaceItem(Vector3 pos)
     {
         yield return null;
+
+        if (!ItemToPlace.IsLid)
+        {
+            if (EventSystem.current.IsPointerOverGameObject()) yield break;
+            if(Physics2D.OverlapCircle(pos, .2f)) yield break;
+            
+            int n =  Physics2D.OverlapCircleNonAlloc(pos, .5f, _overlaps);
+            if (n > 0)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    if (_overlaps[i].GetComponentInParent<RatController>()) yield break;
+                }
+            }
+            
+            Destroy(_dummy);
+            ItemManager.Instance.PlaceItem(ItemToPlace, pos);
+            _dummy = null;
+            ItemToPlace = null;
+            yield break;
+        }
         
-        if(EventSystem.current.IsPointerOverGameObject()) yield break;
+        int colsNumber = Physics2D.OverlapCircleNonAlloc(pos, .4f, _overlaps);
+        if (colsNumber == 0) yield break;
+
+        float distance = Mathf.Infinity;
+        AItem item = null;
+
+        for (int i = 0; i < colsNumber; i++)
+        {
+            var it = _overlaps[i].GetComponentInParent<AItem>();
+            if (!it)continue;
+            float d = (transform.position - pos).sqrMagnitude;
+            if (d < distance)
+            {
+                distance = d;
+                item = it;
+            }
+        }
         
-        if (Physics2D.OverlapCircle(pos, .2f)) yield break;
+        if (!item) yield break;
 
         Destroy(_dummy);
-        ItemManager.Instance.PlaceItem(ItemToPlace, pos);
+        ItemManager.Instance.PlaceLid(ItemToPlace, item);
         _dummy = null;
         ItemToPlace = null;
     }

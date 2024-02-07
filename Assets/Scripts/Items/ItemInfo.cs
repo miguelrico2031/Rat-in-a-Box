@@ -5,14 +5,16 @@ using UnityEditor;
 [CreateAssetMenu(menuName = "ScriptableObjects/ItemInfo")]
 public class ItemInfo : ScriptableObject
 {
+    public bool IsLid{ get => _isLid; }
     public GameObject Prefab { get => _prefab; }
     public GameObject Dummy { get => _dummy; }
     public bool HasSmell { get => _hasSmell; }
     // public float Range { get => _range; }
     public ItemInteraction Interaction { get => _interaction; }
-    public string PlaceAudioName {get => _placeAudioName;}
-    public string InteractAudioName {get => _interactAudioName;}
+    public string PlaceAudioName { get => _placeAudioName; }
+    public string InteractAudioName { get => _interactAudioName; }
 
+    [SerializeField] private bool _isLid;
     [SerializeField] private GameObject _prefab;
     [SerializeField] private GameObject _dummy;
     [SerializeField] private bool _hasSmell;
@@ -20,14 +22,16 @@ public class ItemInfo : ScriptableObject
     [SerializeField] private ItemInteraction _interaction;
     [SerializeField] private string _placeAudioName;
     [SerializeField] private string _interactAudioName;
-
-
+    
 }
 
 public enum ItemInteraction
 {
+    None,
     Trap,
     Consumable,
     Permanent,
-    Repulsive
+    Repulsive,
 }
+
+

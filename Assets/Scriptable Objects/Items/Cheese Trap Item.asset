@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29fc7b5302f4ecd960c653159b1344f, type: 3}
-  m_Name: Cat Plush Item
+  m_Name: Cheese Trap Item
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 7782791180041822483, guid: f8139c0c449ed914b919ea59a012d236, type: 3}
-  _dummy: {fileID: 3055250045606168374, guid: a3139439d7178ff49b7b0384f06640c4, type: 3}
-  _hasSmell: 0
-  _interaction: 3
+  _isLid: 0
+  _prefab: {fileID: 4669476602514598363, guid: c2d9b3ac55bf4e54ba9c09aaf0dcb855, type: 3}
+  _dummy: {fileID: 0}
+  _hasSmell: 1
+  _interaction: 1
+  _placeAudioName: 
+  _interactAudioName: 

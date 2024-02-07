@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29fc7b5302f4ecd960c653159b1344f, type: 3}
-  m_Name: Cheese Trap Item
+  m_Name: Lid
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 4669476602514598363, guid: c2d9b3ac55bf4e54ba9c09aaf0dcb855, type: 3}
-  _dummy: {fileID: 0}
-  _hasSmell: 1
+  _isLid: 1
+  _prefab: {fileID: 870366392441825774, guid: 34fb1d8a5d1591c40a40a6652b60ffe5, type: 3}
+  _dummy: {fileID: 4271234450219218801, guid: 9742fd73e0a62614bb57674057b338b4, type: 3}
+  _hasSmell: 0
   _interaction: 0
+  _placeAudioName: 
+  _interactAudioName: 
