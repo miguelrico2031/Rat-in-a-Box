@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1224481315201549342, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.289
+      objectReference: {fileID: 0}
     - target: {fileID: 6616670228039323278, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
       propertyPath: m_Size.x
       value: 0.54
