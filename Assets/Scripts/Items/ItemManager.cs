@@ -42,6 +42,21 @@ public class ItemManager : MonoBehaviour
         
         //ANTON: sonido poner objeto
         //itemInfo.PlaceAudioName
+        switch (itemInfo.PlaceAudioName)
+        {
+            case "gato":
+                MusicManager.Instance.PlaySound("poneGato");
+                break;
+            case "queso":
+                MusicManager.Instance.PlaySound("poneQueso");
+                break;
+            case "peluche":
+                MusicManager.Instance.PlaySound("poneRaton");
+                break;
+            case "spray":
+                MusicManager.Instance.PlaySound("poneSpray");
+                break;
+        }
         
     }
 

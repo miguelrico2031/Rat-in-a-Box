@@ -10,6 +10,10 @@ public class WalkToDestination : IRatState
 
     private Vector2 _direction;
     private string _currentAnimation;
+    private int randomIndex;
+    private string soundName;
+    private int pasoSonido = 0;
+    private const int maxSonido= 100; 
     
     public void Enter(RatController controller, IRatState previousState = null)
     {
@@ -20,14 +24,27 @@ public class WalkToDestination : IRatState
         _path = controller.Seeker.StartPath(pos, _destination);
 
         controller.StartCoroutine(controller.CheckForItems());
-        controller.StartCoroutine(controller.PlayStepsSounds());
+        //controller.StartCoroutine(controller.PlayStepsSounds());
     }
 
 
     public void Update()
     {
         UpdateAnimation();
+
         //ANTON : poner sonido pasos
+        Debug.Log(pasoSonido);
+        if (pasoSonido > maxSonido)
+        {
+            pasoSonido=0;
+            randomIndex = Random.Range(0, 3);
+            soundName = "Anda" + randomIndex;
+            MusicManager.Instance.PlaySound(soundName);
+        }
+        else
+        {
+            pasoSonido++;
+        }
     }
 
     private void UpdateAnimation()

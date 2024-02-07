@@ -16,3 +16,5 @@ MonoBehaviour:
   _dummy: {fileID: 2148393043990851963, guid: 2478ca6571164424da07dcd2702d75bd, type: 3}
   _hasSmell: 1
   _interaction: 3
+  _placeAudioName: spray
+  _interactAudioName: spray

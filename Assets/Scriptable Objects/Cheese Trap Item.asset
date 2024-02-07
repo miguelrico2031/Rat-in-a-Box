@@ -16,3 +16,5 @@ MonoBehaviour:
   _dummy: {fileID: 0}
   _hasSmell: 1
   _interaction: 0
+  _placeAudioName: queso
+  _interactAudioName: queso
