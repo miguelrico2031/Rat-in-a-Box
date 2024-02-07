@@ -5767,6 +5767,10 @@ PrefabInstance:
       propertyPath: _itemCheckTime
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5658381469282113967, guid: da031798ac78f204598df8982b6177aa, type: 3}
+      propertyPath: _stepSoundDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7865808589105775973, guid: da031798ac78f204598df8982b6177aa, type: 3}
       propertyPath: m_Name
       value: Rat
