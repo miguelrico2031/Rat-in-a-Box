@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
@@ -8,6 +9,7 @@ public class RatController : MonoBehaviour
 {
     public AItem CurrentTarget { get => _currentTarget; set => ChangeTarget(value); }
     public IRatState CurrentState { get => _currentState; set => ChangeState(value); }
+    public event Action<AItem> TargetChange;
     
     public AIPath AIPath { get; private set; }
     public Seeker Seeker { get; private set; }
@@ -69,6 +71,8 @@ public class RatController : MonoBehaviour
         if(_currentTarget != null)  _currentTarget.OnUnsetAsTarget();
         _currentTarget = newTarget;
         if(_currentTarget != null) _currentTarget.OnSetAsTarget();
+        
+        TargetChange?.Invoke(_currentTarget);
     }
 
     public void TrySetTarget(IReadOnlyList<AItem> items, bool setState = true)
@@ -115,7 +119,9 @@ public class RatController : MonoBehaviour
         }
         else if (CurrentTarget)
         {
-            if (_lastPermamentTargetCollided && _lastPermamentTargetCollided == CurrentTarget)
+            
+            if (_lastPermamentTargetCollided && _lastPermamentTargetCollided == CurrentTarget &&
+                bestDistance < 0.6f)
             {
                 CurrentTarget = null;
                 CurrentState = new Idle();

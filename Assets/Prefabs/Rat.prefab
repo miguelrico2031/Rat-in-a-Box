@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 392212141875290905}
   - component: {fileID: 1899655351668460664}
   m_Layer: 0
-  m_Name: Locator Sprite
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
