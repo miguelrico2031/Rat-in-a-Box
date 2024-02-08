@@ -9,6 +9,7 @@ public class HUD : MonoBehaviour
 {
     public static HUD Instance { get; private set; }
 
+    [SerializeField] private GameObject _controlUI;
     [SerializeField] private GameObject _itemsUI;
     [SerializeField] private GameObject _timerUI;
     [SerializeField] private TextMeshProUGUI _timerText;
@@ -21,12 +22,20 @@ public class HUD : MonoBehaviour
     [SerializeField] private GameObject _cancelButton;
 
     [Header("Item Infos")] [SerializeField]
-    private ItemInfo _cheese, _poison, _ratPlush, _catPlush, _lid;
+    private ItemInfo _cheese;
+    [SerializeField] private ItemInfo _poison;
+    [SerializeField] private ItemInfo _ratPlush;
+    [SerializeField] private ItemInfo _catPlush;
+    [SerializeField] private ItemInfo _lid;
 
     private Dictionary<ItemInfo, GameObject> _itemButtons;
     private void Awake()
     {
-        if (Instance) Destroy(gameObject);
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
         SceneManager.sceneLoaded += OnSceneStart;
 
@@ -58,6 +67,7 @@ public class HUD : MonoBehaviour
     {
         _removeButton.SetActive(false);
         _cancelButton.SetActive(false);
+        _controlUI.SetActive(false);
         _itemsUI.SetActive(false);
         _timerUI.SetActive(false);
         foreach (var b in _itemButtons.Values)
@@ -73,10 +83,12 @@ public class HUD : MonoBehaviour
         switch (newState)
         {
             case GameManager.GameState.Dialogue:
+                _controlUI.SetActive(false);
                 _itemsUI.SetActive(false);
                 _timerUI.SetActive(false);
                 break;
             case GameManager.GameState.Overview:
+                _controlUI.SetActive(true);
                 _itemsUI.SetActive(true);
                 _timerUI.SetActive(true);
                 UpdateTime(GameManager.Instance.CurrentLevel.LevelTime);
@@ -92,6 +104,15 @@ public class HUD : MonoBehaviour
     {
         var minutes = time / 60;
         _timerText.text = string.Format("{0:00}:{1:00}", minutes, time - minutes * 60);
+    }
+    private void OnSelectedChange()
+    {
+        _removeButton.SetActive(SelectionManager.Instance.Selected != null);
+    }
+
+    private void OnItemChange()
+    {
+        _cancelButton.SetActive(PlacementManager.Instance.ItemToPlace != null);
     }
     
 
@@ -116,13 +137,19 @@ public class HUD : MonoBehaviour
         else ItemManager.Instance.RemoveLid(selectable.transform.parent.gameObject);
     }
 
-    private void OnSelectedChange()
+    public void Play()
     {
-        _removeButton.SetActive(SelectionManager.Instance.Selected != null);
+        GameManager.Instance.State = GameManager.GameState.Playing;
     }
 
-    private void OnItemChange()
+    public void Pause()
     {
-        _cancelButton.SetActive(PlacementManager.Instance.ItemToPlace != null);
+        
     }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(GameManager.Instance.CurrentLevel.Scene);
+    }
+
 }

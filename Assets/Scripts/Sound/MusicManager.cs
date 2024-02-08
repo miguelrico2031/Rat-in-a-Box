@@ -25,7 +25,11 @@ public class MusicManager : MonoBehaviour
     void Awake()
     {
 
-        if(Instance) Destroy(gameObject);
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
         // SceneManager.sceneLoaded += OnSceneStart;
         
@@ -41,6 +45,7 @@ public class MusicManager : MonoBehaviour
 
         _audioSources = new();
         _audioSourcesGO = new GameObject("Sound");
+        _audioSourcesGO.transform.parent = transform;
 
         for (int i = 0; i < _numberOfAudioSources; i++)
         {

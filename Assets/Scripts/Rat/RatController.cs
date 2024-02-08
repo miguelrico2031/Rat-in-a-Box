@@ -224,4 +224,11 @@ public class RatController : MonoBehaviour
         Debug.Log("muelto");
         Destroy(gameObject);
     }
+
+    private void OnDestroy()
+    {
+        ItemManager.Instance.ItemsUpdated -= OnItemsUpdated;
+
+        GameManager.Instance.GameStateChange -= OnGameStateChange;
+    }
 }

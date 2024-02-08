@@ -15,6 +15,7 @@ public class Level : ScriptableObject
 
     public string Scene;
     public int LevelTime;
+    public int DialogueIndex;
     public LevelItem[] AvailableItems;
     
 }

@@ -22,7 +22,11 @@ public class ItemManager : MonoBehaviour
     private bool _isFirstItem;
     private void Awake()
     {
-        if(Instance) Destroy(gameObject);
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
         SceneManager.sceneLoaded += OnSceneStart;
         

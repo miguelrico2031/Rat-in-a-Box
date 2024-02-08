@@ -21,11 +21,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Level[] _levels;
     
     private GameState _state;
-    private int _dialogueIndex;
 
     private void Awake()
     {
-        if(Instance) Destroy(gameObject);
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
         DontDestroyOnLoad(gameObject);
         _state = GameState.None;
@@ -44,13 +47,7 @@ public class GameManager : MonoBehaviour
     {
         State = GameState.Dialogue;
     }
-
-    private IEnumerator Start()
-    {
-        yield return null;
-        _dialogueIndex = 0;
-        //State = GameState.Dialogue;
-    }
+    
 
     private void ChangeGameState(GameState newState)
     {
@@ -59,7 +56,7 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.Dialogue:
-                DialogueUI.Instance.StartDialogue(_dialogueIndex++, OnDialogueFinished);
+                DialogueUI.Instance.StartDialogue(CurrentLevel.DialogueIndex, OnDialogueFinished);
                 break;
             
             case GameState.Playing:

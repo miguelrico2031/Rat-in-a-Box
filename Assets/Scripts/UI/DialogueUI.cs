@@ -24,6 +24,11 @@ public class DialogueUI : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
         SceneManager.sceneLoaded += OnSceneStart;
         
@@ -33,7 +38,7 @@ public class DialogueUI : MonoBehaviour
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
-        _dialogueUI.SetActive(false);
+        //_dialogueUI.SetActive(false);
     }
 
     public void StartDialogue(int index, Action callback)
