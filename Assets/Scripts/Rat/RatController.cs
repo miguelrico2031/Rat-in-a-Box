@@ -36,8 +36,8 @@ public class RatController : MonoBehaviour
     private void Start()
     {
         ItemManager.Instance.ItemsUpdated += OnItemsUpdated;
-        
-        StartAI();
+
+        GameManager.Instance.GameStateChange += OnGameStateChange;
     }
 
     private void Update()
@@ -45,10 +45,12 @@ public class RatController : MonoBehaviour
         CurrentState?.Update();
     }
 
-    public void StartAI()
+    public void OnGameStateChange(GameManager.GameState newState)
     {
-        if (CurrentState != null) return;
-        TrySetTarget(ItemManager.Instance.GetItems());
+        if (newState == GameManager.GameState.Playing)
+        {
+            TrySetTarget(ItemManager.Instance.GetItems());
+        }
     }
 
 
@@ -221,5 +223,12 @@ public class RatController : MonoBehaviour
     {
         Debug.Log("muelto");
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        ItemManager.Instance.ItemsUpdated -= OnItemsUpdated;
+
+        GameManager.Instance.GameStateChange -= OnGameStateChange;
     }
 }

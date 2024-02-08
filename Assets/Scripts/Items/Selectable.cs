@@ -46,7 +46,7 @@ public class Selectable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (_onlyHoverable || PlacementManager.Instance.ItemToPlace) return;
         SelectionManager.Instance.Selected = this;
-        _spriteMaterial.SetColor(_outlineColorID, new Color(1f, 0.841f, 0f));
+        _spriteMaterial.SetColor(_outlineColorID, new Color(0.851f, 0.341f, 0.388f));
         _selected = true;
     }
 
