@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6763e4e518bb46599a8e8ee2449f2790, type: 3}
+  m_Name: Dialogues
+  m_EditorClassIdentifier: 
+  _speakers:
+  - Speaker: 0
+    Name: Boss
+    Sprite: {fileID: 0}
+  - Speaker: 1
+    Name: Borjo
+    Sprite: {fileID: 0}
+  - Speaker: 2
+    Name: Ratonga
+    Sprite: {fileID: 0}
+  _dialogues:
+  - {fileID: 11400000, guid: f572197d585e7a24aa87f07c3e3a0478, type: 2}
+  - {fileID: 11400000, guid: d0e9fb1371e4c0e46aeee936fbbcb3e4, type: 2}
