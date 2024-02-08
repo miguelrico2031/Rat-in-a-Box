@@ -31,14 +31,21 @@ public class HUD : MonoBehaviour
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
-        
+        _removeButton.SetActive(false);
+        _cancelButton.SetActive(false);
+        _itemsUI.SetActive(false);
     }
 
     private void OnGameStateChange(GameManager.GameState newState)
     {
-        if (newState == GameManager.GameState.Dialogue)
+        switch (newState)
         {
-            _itemsUI.SetActive(false);
+            case GameManager.GameState.Dialogue:
+                _itemsUI.SetActive(false);
+                break;
+            case GameManager.GameState.Overview:
+                _itemsUI.SetActive(true);
+                break;
         }
     }
 

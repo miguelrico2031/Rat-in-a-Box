@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         yield return null;
         _dialogueIndex = 0;
-        State = GameState.Dialogue;
+        //State = GameState.Dialogue;
     }
 
     private void ChangeGameState(GameState newState)
