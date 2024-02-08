@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -380,9 +381,9 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_AssetsPPU: 64
   m_RefResolutionX: 800
-  m_RefResolutionY: 450
+  m_RefResolutionY: 225
   m_CropFrame: 0
-  m_GridSnapping: 0
+  m_GridSnapping: 2
   m_FilterMode: 0
   m_UpscaleRT: 0
   m_PixelSnapping: 0
@@ -405,6 +406,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 375
   m_MaxRayIntersections: 0
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afed83430ae8a9a43b05d14f1cfef0aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _zoomLevels: 3
+  _moveCamFrame: 0.8
+  _moveCamSpeed: 3
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +657,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0ef49bf0-d4de-445f-8e89-230e4b227a3f
     m_ActionName: Player map/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 519420035}
+        m_TargetAssemblyTypeName: CameraControls, Assembly-CSharp
+        m_MethodName: OnScroll
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 873ab2ec-2f0e-4ddc-9908-6c64160e110e
+    m_ActionName: Player map/Scroll[/Mouse/scroll]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player map
