@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,15 +10,34 @@ public class HUD : MonoBehaviour
     public static HUD Instance { get; private set; }
 
     [SerializeField] private GameObject _itemsUI;
+    [SerializeField] private GameObject _timerUI;
+    [SerializeField] private TextMeshProUGUI _timerText;
+    [SerializeField] private GameObject _cheeseButton;
+    [SerializeField] private GameObject _poisonButton;
+    [SerializeField] private GameObject _ratPlushButton;
+    [SerializeField] private GameObject _catPlushButton;
+    [SerializeField] private GameObject _lidButton;
     [SerializeField] private GameObject _removeButton;
     [SerializeField] private GameObject _cancelButton;
-    
 
+    [Header("Item Infos")] [SerializeField]
+    private ItemInfo _cheese, _poison, _ratPlush, _catPlush, _lid;
+
+    private Dictionary<ItemInfo, GameObject> _itemButtons;
     private void Awake()
     {
         if (Instance) Destroy(gameObject);
         Instance = this;
         SceneManager.sceneLoaded += OnSceneStart;
+
+        _itemButtons = new()
+        {
+            {_cheese, _cheeseButton},
+            {_poison, _poisonButton},
+            {_ratPlush, _ratPlushButton},
+            {_catPlush, _catPlushButton},
+            {_lid, _lidButton}
+        };
     }
 
     private void Start()
@@ -26,7 +46,12 @@ public class HUD : MonoBehaviour
         PlacementManager.Instance.ItemChange += OnItemChange;
         _removeButton.SetActive(false);
         _cancelButton.SetActive(false);
+        foreach (var b in _itemButtons.Values)
+        {
+            b.SetActive(false);
+        }
         GameManager.Instance.GameStateChange += OnGameStateChange;
+        GameManager.Instance.TimerDecreased += UpdateTime;
     }
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
@@ -34,7 +59,14 @@ public class HUD : MonoBehaviour
         _removeButton.SetActive(false);
         _cancelButton.SetActive(false);
         _itemsUI.SetActive(false);
+        _timerUI.SetActive(false);
+        foreach (var b in _itemButtons.Values)
+        {
+            b.SetActive(false);
+        }
     }
+    
+    
 
     private void OnGameStateChange(GameManager.GameState newState)
     {
@@ -42,12 +74,26 @@ public class HUD : MonoBehaviour
         {
             case GameManager.GameState.Dialogue:
                 _itemsUI.SetActive(false);
+                _timerUI.SetActive(false);
                 break;
             case GameManager.GameState.Overview:
                 _itemsUI.SetActive(true);
+                _timerUI.SetActive(true);
+                UpdateTime(GameManager.Instance.CurrentLevel.LevelTime);
+                foreach (var li in GameManager.Instance.CurrentLevel.AvailableItems)
+                {
+                    _itemButtons[li.Item].SetActive(true);
+                }
                 break;
         }
     }
+
+    private void UpdateTime(int time)
+    {
+        var minutes = time / 60;
+        _timerText.text = string.Format("{0:00}:{1:00}", minutes, time - minutes * 60);
+    }
+    
 
     public void SelectItem(ItemInfo item)
     {

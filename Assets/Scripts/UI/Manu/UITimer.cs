@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class UITimer : MonoBehaviour
 {
-    public TMP_Text text;
+    [FormerlySerializedAs("text")] [SerializeField] private TMP_Text _text;
     public float timer=00;
     int minutes;
     int seconds;
@@ -18,6 +19,7 @@ public class UITimer : MonoBehaviour
         minutes = Mathf.FloorToInt(timer / 60F);
         seconds = Mathf.FloorToInt(timer - minutes * 60);
         niceTime = string.Format("{0:00}:{1:00}", minutes, seconds);
-        text.text = niceTime;
+        _text.text = niceTime;
     }
+    
 }

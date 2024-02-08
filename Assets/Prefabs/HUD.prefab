@@ -608,8 +608,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemsUI: {fileID: 285470379699190417}
+  _timerUI: {fileID: 8069855670777450604}
+  _timerText: {fileID: 4870346765833818010}
+  _cheeseButton: {fileID: 4815797637851391114}
+  _poisonButton: {fileID: 237565578595714084}
+  _ratPlushButton: {fileID: 6767979045651503302}
+  _catPlushButton: {fileID: 264714434363360992}
+  _lidButton: {fileID: 3107872674606456508}
   _removeButton: {fileID: 8085321200355982726}
   _cancelButton: {fileID: 5767745089920801909}
+  _cheese: {fileID: 11400000, guid: cdf7a6f467189114b9bcc1936049022c, type: 2}
+  _poison: {fileID: 11400000, guid: 361c3111386a9094b8a3dc3c6ecd8829, type: 2}
+  _ratPlush: {fileID: 11400000, guid: 5389075d4d6fe384dabb172cd51cda47, type: 2}
+  _catPlush: {fileID: 11400000, guid: 8782b0d7e23f6ea499116e30eb55deb3, type: 2}
+  _lid: {fileID: 11400000, guid: 4c4e2e82ad61a794ea45fb77b89a6b2e, type: 2}
 --- !u!114 &3999031212608772056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2937,12 +2949,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8069855670777450604}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f3abde2d3784ac4e8536cfd7a29b4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 4870346765833818010}
+  _text: {fileID: 4870346765833818010}
   timer: 0
 --- !u!1 &8076538528747333368
 GameObject:

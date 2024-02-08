@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Level")]
 public class Level : ScriptableObject
 {
+    [Serializable]
     public class LevelItem
     {
         public ItemInfo Item;
         public int Uses;
     }
-    
-    public LevelItem[] _availableItems;
-    public float LevelTime;
+
+    public string Scene;
+    public int LevelTime;
+    public LevelItem[] AvailableItems;
     
 }
