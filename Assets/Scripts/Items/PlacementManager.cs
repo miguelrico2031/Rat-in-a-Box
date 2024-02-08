@@ -73,6 +73,8 @@ public class PlacementManager : MonoBehaviour
     {
         yield return null;
 
+        if (!ItemToPlace) yield break;
+        
         if (!ItemToPlace.IsLid)
         {
             if (EventSystem.current.IsPointerOverGameObject()) yield break;
