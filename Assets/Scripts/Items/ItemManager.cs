@@ -69,6 +69,7 @@ public class ItemManager : MonoBehaviour
         ItemsUpdated?.Invoke(_items);
         
         //ANTON: sonido borrar objeto
+        MusicManager.Instance.PlaySound("borrar");
         
         return true;
     }

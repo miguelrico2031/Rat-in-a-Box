@@ -33,7 +33,6 @@ public class WalkToDestination : IRatState
         UpdateAnimation();
 
         //ANTON : poner sonido pasos
-        Debug.Log(pasoSonido);
         if (pasoSonido > maxSonido)
         {
             pasoSonido=0;
