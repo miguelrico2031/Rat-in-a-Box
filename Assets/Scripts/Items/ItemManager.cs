@@ -19,33 +19,41 @@ public class ItemManager : MonoBehaviour
 
     private List<AItem> _items;
     private Dictionary<GameObject, AItem> _lids;
+    private bool _isFirstItem;
     private void Awake()
     {
         if(Instance) Destroy(gameObject);
         Instance = this;
-        DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneStart;
         
         _items = FindObjectsOfType<AItem>().ToList();
         _lids = new();
+        _isFirstItem = true;
     }
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
          _items = FindObjectsOfType<AItem>().ToList();
          _lids = new();
+         _isFirstItem = true;
     }
 
     public void PlaceItem(ItemInfo itemInfo, Vector2 position)
     {
         var instance = Instantiate(itemInfo.Prefab, position, Quaternion.identity);
         _items.Add(instance.GetComponent<AItem>());
+
+        if (_isFirstItem)
+        {
+            _isFirstItem = false;
+            GameManager.Instance.State = GameManager.GameState.Playing;
+        }
         
         ItemsUpdated?.Invoke(_items);
         
         //ANTON: sonido poner objeto
         //itemInfo.PlaceAudioName
-        switch (itemInfo.PlaceAudioName)
+        switch (itemInfo.PlaceAudioName) // XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
         {
             case "gato":
                 MusicManager.Instance.PlaySound("poneGato");

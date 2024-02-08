@@ -8,8 +8,10 @@ public class HUD : MonoBehaviour
 {
     public static HUD Instance { get; private set; }
 
+    [SerializeField] private GameObject _itemsUI;
     [SerializeField] private GameObject _removeButton;
     [SerializeField] private GameObject _cancelButton;
+    
 
     private void Awake()
     {
@@ -24,11 +26,20 @@ public class HUD : MonoBehaviour
         PlacementManager.Instance.ItemChange += OnItemChange;
         _removeButton.SetActive(false);
         _cancelButton.SetActive(false);
+        GameManager.Instance.GameStateChange += OnGameStateChange;
     }
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
         
+    }
+
+    private void OnGameStateChange(GameManager.GameState newState)
+    {
+        if (newState == GameManager.GameState.Dialogue)
+        {
+            _itemsUI.SetActive(false);
+        }
     }
 
     public void SelectItem(ItemInfo item)
