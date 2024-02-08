@@ -32,8 +32,9 @@ public class GameManager : MonoBehaviour
         State = GameState.Dialogue;
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return null;
         _dialogueIndex = 0;
         State = GameState.Dialogue;
     }
