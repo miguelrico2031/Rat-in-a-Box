@@ -12,4 +12,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84dc7320c1b6e424eadfa059c015f003, type: 3}
   m_Name: Sounds
   m_EditorClassIdentifier: 
-  _soundsList: []
+  _soundsList:
+  - Name: Anda0
+    Clip: {fileID: 8300000, guid: 1ecb6edef4a5bcc4abae995ec73efa6a, type: 3}
+  - Name: Anda1
+    Clip: {fileID: 8300000, guid: f7e53c8025b789942be72ba8bf048a50, type: 3}
+  - Name: Anda2
+    Clip: {fileID: 8300000, guid: 885754240f3590448b945af78b9c5de1, type: 3}
+  - Name: borrar
+    Clip: {fileID: 8300000, guid: 64f6999ef178d7b4f8f46c636bb7a6d1, type: 3}
+  - Name: click1
+    Clip: {fileID: 8300000, guid: 6b0de13a911896044bd1129b1ac5a433, type: 3}
+  - Name: click2
+    Clip: {fileID: 8300000, guid: 7bb0142ee8d0f4441911353dab0509e3, type: 3}
+  - Name: click3
+    Clip: {fileID: 8300000, guid: e0e4c6ca2afd1f64db2ee342fc30a89c, type: 3}
+  - Name: comeQueso
+    Clip: {fileID: 8300000, guid: 4d8d906cf9d9f1841ac5b4f2cbd9859e, type: 3}
+  - Name: electrocutarLargo
+    Clip: {fileID: 8300000, guid: 2479c372104a7fa48af5124fde29cc80, type: 3}
+  - Name: electrocutarCorto
+    Clip: {fileID: 8300000, guid: d9e03b50f2e067d4893a6c45b99682f7, type: 3}
+  - Name: lanza1
+    Clip: {fileID: 8300000, guid: db56ecbb5bd1b6f41823c5754616eff7, type: 3}
+  - Name: lanza2
+    Clip: {fileID: 8300000, guid: c2913f251477cb543a352af5f04c412a, type: 3}
+  - Name: lanza3
+    Clip: {fileID: 8300000, guid: 1c596244b142df2468b80644d3a58307, type: 3}
+  - Name: lanza4
+    Clip: {fileID: 8300000, guid: 637b3a7ca3ad5be4e998a20529490e42, type: 3}
+  - Name: malo1
+    Clip: {fileID: 8300000, guid: 48fbf33a392854b458fb9fe04fbb593d, type: 3}
+  - Name: malo2
+    Clip: {fileID: 8300000, guid: 1a7ffb97d49eaec47a884dea3d8d14dd, type: 3}
+  - Name: malo3
+    Clip: {fileID: 8300000, guid: 252a57f3a68c5a24fa11a330e879066e, type: 3}
+  - Name: muere
+    Clip: {fileID: 8300000, guid: 457ff1595e84ec445989fc43c45bdadb, type: 3}
+  - Name: poneGato
+    Clip: {fileID: 8300000, guid: f946c9fda5d347b49a7289edf7575aaf, type: 3}
+  - Name: poneQueso
+    Clip: {fileID: 8300000, guid: 216c337bb2225f147b23a6f7c32a0b87, type: 3}
+  - Name: poneRaton
+    Clip: {fileID: 8300000, guid: 0fbab1a7e89214941af5f52b9e143bfb, type: 3}
+  - Name: poneSpray
+    Clip: {fileID: 8300000, guid: 82f1779317f4ccb41bb113545b93fb7f, type: 3}
+  - Name: voz1
+    Clip: {fileID: 8300000, guid: 693ae42b01045c24e9e420b70864cb29, type: 3}
+  - Name: voz2
+    Clip: {fileID: 8300000, guid: 7468194108e54624c9d5c71ba28d75a6, type: 3}
+  - Name: voz2
+    Clip: {fileID: 8300000, guid: 7468194108e54624c9d5c71ba28d75a6, type: 3}
+  - Name: escape
+    Clip: {fileID: 8300000, guid: 36188e8962ddf0345b63c4e0b57f7fa8, type: 3}
+  - Name: mainTheme
+    Clip: {fileID: 8300000, guid: b44c7b22f6d1f104cbe2e36bfcd2467a, type: 3}
+  - Name: settings
+    Clip: {fileID: 8300000, guid: 347ad98287d6e804cb8131799db44708, type: 3}
+  - Name: talking
+    Clip: {fileID: 8300000, guid: ad20b08153ebec542b6fd75f5a2b9ff3, type: 3}

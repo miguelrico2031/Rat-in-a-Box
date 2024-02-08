@@ -17,5 +17,5 @@ MonoBehaviour:
   _dummy: {fileID: 3055250045606168374, guid: a3139439d7178ff49b7b0384f06640c4, type: 3}
   _hasSmell: 0
   _interaction: 4
-  _placeAudioName: 
-  _interactAudioName: 
+  _placeAudioName: gato
+  _interactAudioName: gato

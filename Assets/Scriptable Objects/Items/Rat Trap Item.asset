@@ -17,5 +17,5 @@ MonoBehaviour:
   _dummy: {fileID: 0}
   _hasSmell: 0
   _interaction: 1
-  _placeAudioName: 
-  _interactAudioName: 
+  _placeAudioName: ratTrap
+  _interactAudioName: ratTrap

@@ -17,7 +17,6 @@ public class RatController : MonoBehaviour
     public SpriteRenderer Renderer { get; private set; }
 
     [SerializeField] private float _itemCheckTime;
-    [SerializeField] private float _stepSoundDelay;
 
     private AItem _currentTarget;
     private IRatState _currentState;
@@ -153,15 +152,15 @@ public class RatController : MonoBehaviour
         return true;
     }
 
-    public IEnumerator PlayStepsSounds()
+    /*public IEnumerator PlayStepsSounds()
     {
         while (CurrentState is WalkToDestination)
         {
             //ANTON: elegir sonido random
-            MusicManager.Instance.PlaySound("");
-            yield return new WaitForSeconds(_stepSoundDelay);
+            //MusicManager.Instance.PlaySound("");
+            //yield return new WaitForSeconds(_stepSoundDelay);
         }
-    }
+    }*/
     public IEnumerator CheckForItems()
     {
         while (CurrentState is WalkToDestination)
@@ -175,6 +174,16 @@ public class RatController : MonoBehaviour
     {
         //ANTON: aqui sonido de interactuar con objeto
         //item.Info.InteractAudioName
+        switch (item.Info.InteractAudioName)
+        {
+            case "gato":
+                MusicManager.Instance.PlaySound("muere");
+                break;
+            case "queso":
+                MusicManager.Instance.PlaySound("comeQueso");
+                break;
+
+        }
         
         switch (item.Info.Interaction)
         {
