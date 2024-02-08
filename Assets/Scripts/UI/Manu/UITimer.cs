@@ -6,7 +6,7 @@ using TMPro;
 public class UITimer : MonoBehaviour
 {
     public TMP_Text text;
-    public float timer = 0;
+    public float timer=00;
     int minutes;
     int seconds;
     string niceTime;
