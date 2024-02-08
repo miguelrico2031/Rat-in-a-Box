@@ -61,8 +61,8 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 693ae42b01045c24e9e420b70864cb29, type: 3}
   - Name: voz2
     Clip: {fileID: 8300000, guid: 7468194108e54624c9d5c71ba28d75a6, type: 3}
-  - Name: voz2
-    Clip: {fileID: 8300000, guid: 7468194108e54624c9d5c71ba28d75a6, type: 3}
+  - Name: voz3
+    Clip: {fileID: 8300000, guid: 1030b507799c1cc41a08055414e243e2, type: 3}
   - Name: escape
     Clip: {fileID: 8300000, guid: 36188e8962ddf0345b63c4e0b57f7fa8, type: 3}
   - Name: mainTheme
@@ -71,3 +71,15 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 347ad98287d6e804cb8131799db44708, type: 3}
   - Name: talking
     Clip: {fileID: 8300000, guid: ad20b08153ebec542b6fd75f5a2b9ff3, type: 3}
+  - Name: finalMusic
+    Clip: {fileID: 8300000, guid: 5d6e4660efe65414c83f9ab4771aed04, type: 3}
+  - Name: endLevel
+    Clip: {fileID: 8300000, guid: 4b1241f69b4f80c4588bb20718955bf0, type: 3}
+  - Name: endLevel
+    Clip: {fileID: 8300000, guid: 4b1241f69b4f80c4588bb20718955bf0, type: 3}
+  - Name: rata1
+    Clip: {fileID: 8300000, guid: 86d18a0107f265841949816fd978798b, type: 3}
+  - Name: rata2
+    Clip: {fileID: 8300000, guid: 05e0f152420a6fc4e89d81276d1394d1, type: 3}
+  - Name: rata3
+    Clip: {fileID: 8300000, guid: fcf22c67e14e30f4a9ad3b24a26c8be7, type: 3}
