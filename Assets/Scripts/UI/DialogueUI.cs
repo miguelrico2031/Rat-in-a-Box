@@ -73,9 +73,10 @@ public class DialogueUI : MonoBehaviour
     {
         _phraseFinished = false;
         _dialogueText.text = "";
-        float delay = 1f / _typeSpeed;
+        float delay = 1f / _typeSpeed;  
         foreach (char c in text)
         {
+            //ANTON SONIDO DIALOGO
             _dialogueText.text += c;
             if(!_skip) yield return new WaitForSeconds(delay);
         }
