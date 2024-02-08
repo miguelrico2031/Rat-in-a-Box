@@ -52,7 +52,8 @@ public class ItemManager : MonoBehaviour
             _isFirstItem = false;
             GameManager.Instance.State = GameManager.GameState.Playing;
         }
-        
+        GameManager.Instance.Use(itemInfo);
+        HUD.Instance.UpdateUses(itemInfo);
         ItemsUpdated?.Invoke(_items);
         
         //ANTON: sonido poner objeto
@@ -81,7 +82,8 @@ public class ItemManager : MonoBehaviour
         
         item.ToggleLid(true);
         SelectionManager.Instance.Selected = null;
-        
+        GameManager.Instance.Use(lidInfo);
+        HUD.Instance.UpdateUses(lidInfo);
         ItemsUpdated?.Invoke((_items));
     }
 

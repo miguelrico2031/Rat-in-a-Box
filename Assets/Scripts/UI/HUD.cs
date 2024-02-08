@@ -20,6 +20,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private GameObject _lidButton;
     [SerializeField] private GameObject _removeButton;
     [SerializeField] private GameObject _cancelButton;
+    [SerializeField] private TextMeshProUGUI _cheeseUses, _poisonUses, _ratPlushUses, _catPlushUses, _lidUses;
 
     [Header("Item Infos")] [SerializeField]
     private ItemInfo _cheese;
@@ -29,6 +30,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private ItemInfo _lid;
 
     private Dictionary<ItemInfo, GameObject> _itemButtons;
+    private Dictionary<ItemInfo, TextMeshProUGUI> _itemUses;
     private void Awake()
     {
         if (Instance)
@@ -46,6 +48,15 @@ public class HUD : MonoBehaviour
             {_ratPlush, _ratPlushButton},
             {_catPlush, _catPlushButton},
             {_lid, _lidButton}
+        };
+        
+        _itemUses = new()
+        {
+            {_cheese, _cheeseUses},
+            {_poison, _poisonUses},
+            {_ratPlush, _ratPlushUses},
+            {_catPlush, _catPlushUses},
+            {_lid, _lidUses}
         };
     }
 
@@ -100,6 +111,7 @@ public class HUD : MonoBehaviour
         }
     }
 
+
     private void UpdateTime(int time)
     {
         var minutes = time / 60;
@@ -115,10 +127,14 @@ public class HUD : MonoBehaviour
         _cancelButton.SetActive(PlacementManager.Instance.ItemToPlace != null);
     }
     
+    public void UpdateUses(ItemInfo item)
+    {
+        if(_itemUses[item] != null) _itemUses[item].text = $"{GameManager.Instance.GetUses(item)}";
+    }
 
     public void SelectItem(ItemInfo item)
     {
-        PlacementManager.Instance.SetItemToPlace(item);
+        if(GameManager.Instance.CanUse(item)) PlacementManager.Instance.SetItemToPlace(item);
     }
 
     public void CancelItem()

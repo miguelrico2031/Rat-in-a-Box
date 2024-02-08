@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Level[] _levels;
     
     private GameState _state;
+    private Dictionary<ItemInfo, int> _itemUses;
 
     private void Awake()
     {
@@ -33,7 +34,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         _state = GameState.None;
         SceneManager.sceneLoaded += OnSceneStart;
-
+        
+    }
+    
+    private void OnSceneStart(Scene s, LoadSceneMode m)
+    {
         foreach (var level in _levels)
         {
             if (level.Scene != SceneManager.GetActiveScene().name) continue;
@@ -41,10 +46,13 @@ public class GameManager : MonoBehaviour
             CurrentLevel = level;
             break;
         }
-    }
-    
-    private void OnSceneStart(Scene s, LoadSceneMode m)
-    {
+
+        _itemUses = new();
+        foreach (var li in CurrentLevel.AvailableItems)
+        {
+            _itemUses.Add(li.Item, li.Uses);
+        }
+        
         State = GameState.Dialogue;
     }
     
@@ -86,6 +94,13 @@ public class GameManager : MonoBehaviour
     {
         State = GameState.Overview;
     }
+
+
+    public bool CanUse(ItemInfo item) => _itemUses[item] > 0;
+
+    public void Use(ItemInfo item) => _itemUses[item]--;
+
+    public int GetUses(ItemInfo item) => _itemUses[item];
 }
 
 
