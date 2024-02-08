@@ -11,6 +11,10 @@ public class ToggleDoor : MonoBehaviour
     private void Start()
     {
         _col = GetComponent<PolygonCollider2D>();
+        if(_isOpen)
+        {
+            _col.enabled = false;
+        }
     }
 
     public void Toggle()
@@ -21,14 +25,14 @@ public class ToggleDoor : MonoBehaviour
     void Open()
     {
         Debug.Log("abierto");
-        _col.gameObject.SetActive(false);
+        _col.enabled = false;
         _isOpen = true;
     }
 
     void Close()
     {
         Debug.Log("cerrado");
-        _col.gameObject.SetActive(true);
+        _col.enabled = true;
         _isOpen = false;
     }
 }

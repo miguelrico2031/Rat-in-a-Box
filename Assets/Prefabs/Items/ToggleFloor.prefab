@@ -30,11 +30,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8661688403361303210, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.98
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8661688403361303210, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8661688403361303210, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -153,4 +153,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitUntilUpdatePath: 0
-  _doorList: []
+  _doorList:
+  - {fileID: 0}
