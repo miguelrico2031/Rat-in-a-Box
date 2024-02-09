@@ -97,6 +97,9 @@ public class GameManager : MonoBehaviour
         }
         
         Debug.Log("gameover rata eletrocuta");
+        var rat = FindObjectOfType<RatController>();
+        rat.PlayOneTimeAnimationXY("Shock",rat.CurrentDirection);
+        rat.StartCoroutine(rat.Die());
     }
 
     private void OnDialogueFinished()

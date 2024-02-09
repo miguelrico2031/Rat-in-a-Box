@@ -13,6 +13,7 @@ public class RatController : MonoBehaviour
     public IRatState CurrentState { get => _currentState; set => ChangeState(value); }
     public bool IsAlive { get; private set; }
     public event Action<AItem> TargetChange;
+    public Vector2 CurrentDirection { get; set; }
     
     public AIPath AIPath { get; private set; }
     public Seeker Seeker { get; private set; }
@@ -27,9 +28,9 @@ public class RatController : MonoBehaviour
     private string _currentAnimation;
     private bool _currentAnimationBlocks;
     private string _nextAnimation;
-    private Vector2 _currentDirection;
     private Transform _button;
     private bool _pressingButton;
+    private bool _wasAIStopped;
 
     private void Awake()
     {
@@ -210,16 +211,16 @@ public class RatController : MonoBehaviour
                 if (CurrentTarget != item) break;
                 CurrentTarget = null;
                 ItemManager.Instance.RemoveItem(item);
-                PlayOneTimeAnimationXY("Cheese", _currentDirection);
+                PlayOneTimeAnimationXY("Cheese", CurrentDirection);
                 TrySetTarget(ItemManager.Instance.GetItems());
-                if(CurrentState is Idle) PlayLoopingAnimationXY("Idle", _currentDirection);
+                if(CurrentState is Idle) PlayLoopingAnimationXY("Idle", CurrentDirection);
                 break;
             
             case ItemInteraction.Permanent:
                 if (CurrentTarget != item) break;
                 CurrentTarget = null;
                 _lastPermamentTargetCollided = item;
-                PlayOneTimeAnimationXY("Heart", _currentDirection);
+                PlayOneTimeAnimationXY("Heart", CurrentDirection);
                 CurrentState = new Idle();
                 break;
             
@@ -237,12 +238,13 @@ public class RatController : MonoBehaviour
 
     public void PlayLoopingAnimationXY(string anim, Vector2 direction)
     {
+        if (!IsAlive) return;
         if (_currentAnimationBlocks)
         {
             _nextAnimation = anim;
             return;
         }
-        _currentDirection = direction;
+        CurrentDirection = direction;
         Renderer.flipX = direction.x < 0f;
 
         if (direction.y < 0f && _currentAnimation != $"{anim} Front")
@@ -262,11 +264,13 @@ public class RatController : MonoBehaviour
 
     public void PlayOneTimeAnimationXY(string anim, Vector2 direction)
     {
-        if (_currentAnimationBlocks) return;
+        if (_currentAnimationBlocks || !IsAlive) return;
 
-        _currentDirection = direction;
+        CurrentDirection = direction;
         _nextAnimation = null;
         _currentAnimationBlocks = true;
+        _wasAIStopped = AIPath.isStopped;
+        AIPath.isStopped = true;
         Renderer.flipX = direction.x < 0f;
         if (direction.y < 0f)
         {
@@ -288,6 +292,8 @@ public class RatController : MonoBehaviour
         _nextAnimation = null;
 
         _currentAnimationBlocks = true;
+        _wasAIStopped = AIPath.isStopped;
+        AIPath.isStopped = true;
         Renderer.flipX = x < 0f;
         Animator.Play(anim);
         _currentAnimation = anim;
@@ -300,6 +306,7 @@ public class RatController : MonoBehaviour
     {
         yield return new WaitForSeconds(length);
         _currentAnimationBlocks = false;
+        AIPath.isStopped = false;
         if (_nextAnimation == null) yield break;
         PlayLoopingAnimationXY(_nextAnimation, direction);
     }
@@ -308,6 +315,7 @@ public class RatController : MonoBehaviour
     {
         yield return new WaitForSeconds(length);
         _currentAnimationBlocks = false;
+         AIPath.isStopped = _wasAIStopped;
     }
 
     private void SetButton(Transform button)
@@ -321,6 +329,19 @@ public class RatController : MonoBehaviour
     {
         PlayOneTimeAnimationX("Press Button", direction);
         CurrentState = null;
+        StartCoroutine(Pinch());
+    }
+
+    private IEnumerator Pinch()
+    {
+        yield return new WaitForSeconds(1f);
+        FindObjectOfType<CameraControls>().ZoomToRat(transform.position);
+        var hand = GameObject.Find("Boss Hand");
+        hand.transform.position = transform.position;
+        hand.GetComponentInChildren<Animator>().SetBool("Pinch", true);
+        yield return new WaitForSeconds(2f);
+        //FADE OUT;
+        SceneManager.LoadScene(GameManager.Instance.CurrentLevel.NextLevel.Scene);
     }
     
     
@@ -329,6 +350,7 @@ public class RatController : MonoBehaviour
     public IEnumerator Die()
     {
         IsAlive = false;
+        AIPath.isStopped = true;
 
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(GameManager.Instance.CurrentLevel.Scene);

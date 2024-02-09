@@ -8,6 +8,8 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class CameraControls : MonoBehaviour
 {
+    public bool PlayerControl { get; set; }
+    
     [SerializeField] private int _zoomLevels;
     [SerializeField] private float _moveCamFrame;
     [SerializeField] private float _moveCamSpeed;
@@ -35,18 +37,20 @@ public class CameraControls : MonoBehaviour
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneStart;
+        PlayerControl = true;
     }
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
         _currentZoomLevel = _zoomLevels;
         _cam.transform.position = _startCamPos;
+        PlayerControl = true;
     }
 
     private void LateUpdate()
     {
         
-        if(_currentZoomLevel >= _zoomLevels) return;
+        if(_currentZoomLevel >= _zoomLevels || !PlayerControl) return;
 
         Vector3 moveDir = Vector3.zero;
         Vector2 mousePos = Mouse.current.position.value;
@@ -66,6 +70,14 @@ public class CameraControls : MonoBehaviour
         float scroll = ctx.ReadValue<Vector2>().y;
         if (scroll == 0f) return;
         _currentZoomLevel += scroll > 0f ? -1 : 1;
+        Zoom();
+    }
+
+    public void ZoomToRat(Vector2 pos)
+    {
+        PlayerControl = false;
+        transform.position = new(pos.x, pos.y, transform.position.z);
+        _currentZoomLevel = 1;
         Zoom();
     }
 
