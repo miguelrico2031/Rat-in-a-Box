@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Experimental.Rendering.Universal;
 
 public class CameraControls : MonoBehaviour
@@ -28,6 +29,18 @@ public class CameraControls : MonoBehaviour
         _startCamPos = _cam.transform.position;
         _currentZoomLevel = _zoomLevels;
         _screenCenter = new(Screen.width / 2f, Screen.height / 2f);
+
+    }
+
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneStart;
+    }
+
+    private void OnSceneStart(Scene s, LoadSceneMode m)
+    {
+        _currentZoomLevel = _zoomLevels;
+        _cam.transform.position = _startCamPos;
     }
 
     private void LateUpdate()
