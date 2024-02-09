@@ -58,6 +58,10 @@ public class HUD : MonoBehaviour
             {_catPlush, _catPlushUses},
             {_lid, _lidUses}
         };
+        
+        _controlUI.SetActive(false);
+        _itemsUI.SetActive(false);
+        _timerUI.SetActive(false);
     }
 
     private void Start()
@@ -66,25 +70,15 @@ public class HUD : MonoBehaviour
         PlacementManager.Instance.ItemChange += OnItemChange;
         _removeButton.SetActive(false);
         _cancelButton.SetActive(false);
-        foreach (var b in _itemButtons.Values)
-        {
-            b.SetActive(false);
-        }
         GameManager.Instance.GameStateChange += OnGameStateChange;
         GameManager.Instance.TimerDecreased += UpdateTime;
+        
     }
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
         _removeButton.SetActive(false);
         _cancelButton.SetActive(false);
-        _controlUI.SetActive(false);
-        _itemsUI.SetActive(false);
-        _timerUI.SetActive(false);
-        foreach (var b in _itemButtons.Values)
-        {
-            b.SetActive(false);
-        }
     }
     
     
@@ -103,6 +97,10 @@ public class HUD : MonoBehaviour
                 _itemsUI.SetActive(true);
                 _timerUI.SetActive(true);
                 UpdateTime(GameManager.Instance.CurrentLevel.LevelTime);
+                foreach (var b in _itemButtons.Values)
+                {
+                    b.SetActive(false);
+                }
                 foreach (var li in GameManager.Instance.CurrentLevel.AvailableItems)
                 {
                     _itemButtons[li.Item].SetActive(true);
