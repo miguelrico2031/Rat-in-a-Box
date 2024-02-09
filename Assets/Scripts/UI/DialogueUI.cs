@@ -27,7 +27,7 @@ public class DialogueUI : MonoBehaviour
     private int randomIndex;
     private string soundName;
     Dialogues.Speaker speaker;
-    private const int pasoSound = 2;
+    private const int pasoSound = 1;
     private int vSound = pasoSound;
 
     private void Awake()
@@ -87,9 +87,9 @@ public class DialogueUI : MonoBehaviour
             //ANTON SONIDO DIALOGO
             // lo siento es muy cutre
 
+        if (!_skip){
             if (vSound >= pasoSound) {
                 vSound = 0;
-                Debug.Log(vSound);
                 speaker = phrase.Speaker;
 
                 randomIndex = UnityEngine.Random.Range(1, 4);
@@ -115,6 +115,7 @@ public class DialogueUI : MonoBehaviour
             else{
                 vSound++;
             }
+        }
 
             _dialogueText.text += c;
             if(!_skip) yield return new WaitForSeconds(delay);

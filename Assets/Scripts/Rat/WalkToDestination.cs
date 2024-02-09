@@ -13,8 +13,9 @@ public class WalkToDestination : IRatState
     private string _currentAnimation;
     private int randomIndex;
     private string soundName;
-    private int pasoSonido = 0;
-    private const int maxSonido= 100; 
+    private const float maxSonido= 10.0f; 
+    private float pasoSonido = maxSonido;
+    private float veloSonido = 50.0f;
     
     public void Enter(RatController controller, IRatState previousState = null)
     {
@@ -43,7 +44,7 @@ public class WalkToDestination : IRatState
         }
         else
         {
-            pasoSonido++;
+            pasoSonido+=Time.deltaTime*veloSonido;
         }
     }
 

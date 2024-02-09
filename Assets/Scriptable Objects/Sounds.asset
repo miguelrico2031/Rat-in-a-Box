@@ -78,8 +78,8 @@ MonoBehaviour:
   - Name: endLevel
     Clip: {fileID: 8300000, guid: 4b1241f69b4f80c4588bb20718955bf0, type: 3}
   - Name: rata1
-    Clip: {fileID: 8300000, guid: 86d18a0107f265841949816fd978798b, type: 3}
+    Clip: {fileID: 8300000, guid: 285d3f75d1759f74c9f4b27eb9e309ad, type: 3}
   - Name: rata2
-    Clip: {fileID: 8300000, guid: 05e0f152420a6fc4e89d81276d1394d1, type: 3}
+    Clip: {fileID: 8300000, guid: 812161aed4f628a4bb62e013460c5461, type: 3}
   - Name: rata3
-    Clip: {fileID: 8300000, guid: fcf22c67e14e30f4a9ad3b24a26c8be7, type: 3}
+    Clip: {fileID: 8300000, guid: 2ff74feee8fe2db469985d50263c81ff, type: 3}
