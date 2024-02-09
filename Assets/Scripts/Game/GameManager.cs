@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     private Dictionary<ItemInfo, int> _itemUses;
     private Dictionary<Level, bool> _displayDialogueOnLevels;
 
+    private Coroutine _levelCountdown;
+
     private void Awake()
     {
         if (Instance)
@@ -59,6 +61,8 @@ public class GameManager : MonoBehaviour
 
         State = _displayDialogueOnLevels[CurrentLevel] ? GameState.Dialogue : GameState.Overview;
         _displayDialogueOnLevels[CurrentLevel] = false;
+        
+        if(_levelCountdown != null) StopCoroutine(_levelCountdown);
     }
     
 
@@ -73,7 +77,7 @@ public class GameManager : MonoBehaviour
                 break;
             
             case GameState.Playing:
-                StartCoroutine(LevelCountDown());
+                _levelCountdown = StartCoroutine(LevelCountDown());
                 break;
         }
         

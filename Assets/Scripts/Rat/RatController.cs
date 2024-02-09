@@ -9,6 +9,7 @@ using UnityEngine.Serialization;
 public class RatController : MonoBehaviour
 {
     public AItem CurrentTarget { get => _currentTarget; set => ChangeTarget(value); }
+    public Transform Button { get => _button; set => SetButton(value); }
     public IRatState CurrentState { get => _currentState; set => ChangeState(value); }
     public bool IsAlive { get; private set; }
     public event Action<AItem> TargetChange;
@@ -27,6 +28,8 @@ public class RatController : MonoBehaviour
     private bool _currentAnimationBlocks;
     private string _nextAnimation;
     private Vector2 _currentDirection;
+    private Transform _button;
+    private bool _pressingButton;
 
     private void Awake()
     {
@@ -49,7 +52,7 @@ public class RatController : MonoBehaviour
 
     private void Update()
     {
-        CurrentState?.Update();
+        if(!_pressingButton) CurrentState?.Update();
     }
 
     public void OnGameStateChange(GameManager.GameState newState)
@@ -85,7 +88,7 @@ public class RatController : MonoBehaviour
 
     public void TrySetTarget(IReadOnlyList<AItem> items, bool setState = true)
     {
-        if (!IsAlive) return;
+        if (!IsAlive || Button != null) return;
         if (CurrentTarget && CurrentTarget.IsCovered) CurrentTarget = null;
         
         AItem target = null;
@@ -173,7 +176,7 @@ public class RatController : MonoBehaviour
     }*/
     public IEnumerator CheckForItems()
     {
-        while (CurrentState is WalkToDestination)
+        while (CurrentState is WalkToDestination && Button == null)
         {
             TrySetTarget(ItemManager.Instance.GetItems());
             yield return new WaitForSeconds(_itemCheckTime);
@@ -182,6 +185,7 @@ public class RatController : MonoBehaviour
 
     public void OnItemCollision(AItem item)
     {
+        if (Button) return;
         //ANTON: aqui sonido de interactuar con objeto
         //item.Info.InteractAudioName
         switch (item.Info.InteractAudioName)
@@ -305,6 +309,21 @@ public class RatController : MonoBehaviour
         yield return new WaitForSeconds(length);
         _currentAnimationBlocks = false;
     }
+
+    private void SetButton(Transform button)
+    {
+        _button = button;
+
+        CurrentState = new WalkToDestination();
+    }
+
+    public void PressButton(int direction)
+    {
+        PlayOneTimeAnimationX("Press Button", direction);
+        CurrentState = null;
+    }
+    
+    
     
 
     public IEnumerator Die()

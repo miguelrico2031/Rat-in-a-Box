@@ -15,16 +15,18 @@ public class WalkToDestination : IRatState
     private int pasoSonido = 0;
     private const int maxSonido= 100; 
     
+    
     public void Enter(RatController controller, IRatState previousState = null)
     {
         _controller = controller;
         var pos = controller.transform.position;
-        _destination = controller.CurrentTarget.GetDestination(pos);
+        
+        _destination = controller.Button ? controller.Button.position : controller.CurrentTarget.GetDestination(pos);
+        
         controller.AIPath.enabled = true;
         _path = controller.Seeker.StartPath(pos, _destination);
 
-        controller.StartCoroutine(controller.CheckForItems());
-        //controller.StartCoroutine(controller.PlayStepsSounds());
+        if(!controller.Button) controller.StartCoroutine(controller.CheckForItems());
     }
 
 
