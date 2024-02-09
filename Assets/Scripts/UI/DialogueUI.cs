@@ -24,6 +24,11 @@ public class DialogueUI : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
         SceneManager.sceneLoaded += OnSceneStart;
         
@@ -33,7 +38,7 @@ public class DialogueUI : MonoBehaviour
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
-        _dialogueUI.SetActive(false);
+        //_dialogueUI.SetActive(false);
     }
 
     public void StartDialogue(int index, Action callback)
@@ -61,16 +66,19 @@ public class DialogueUI : MonoBehaviour
         var data = _dialogues.GetSpeakerData(phrase.Speaker);
         _speakerImage.sprite = data.Sprite;
         _speakerNameText.text = data.Name;
-        StartCoroutine(TypePhrase(phrase.Text));
+        StartCoroutine(TypePhrase(phrase));
     }
 
-    private IEnumerator TypePhrase(string text)
+    private IEnumerator TypePhrase(Dialogue.Phrase phrase)
     {
         _phraseFinished = false;
         _dialogueText.text = "";
-        float delay = 1f / _typeSpeed;
-        foreach (char c in text)
+        float delay = 1f / _typeSpeed;  
+        foreach (char c in phrase.Text)
         {
+            //ANTON SONIDO DIALOGO
+            //Dialogues.Speaker speaker = phrase.Speaker;
+            
             _dialogueText.text += c;
             if(!_skip) yield return new WaitForSeconds(delay);
         }

@@ -14,30 +14,53 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public GameState State { get => _state; set => ChangeGameState(value); }
     public event Action<GameState> GameStateChange;
+    public event Action<int> TimerDecreased;
+    
+    public Level CurrentLevel { get; private set; }
+
+    [SerializeField] private Level[] _levels;
     
     private GameState _state;
-    private int _dialogueIndex;
+    private Dictionary<ItemInfo, int> _itemUses;
+    private Dictionary<Level, bool> _displayDialogueOnLevels;
 
     private void Awake()
     {
-        if(Instance) Destroy(gameObject);
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
         DontDestroyOnLoad(gameObject);
         _state = GameState.None;
         SceneManager.sceneLoaded += OnSceneStart;
+
+        _displayDialogueOnLevels = new();
+        foreach(var level in _levels) _displayDialogueOnLevels.Add(level, true);
+        
     }
     
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
-        State = GameState.Dialogue;
-    }
+        foreach (var level in _levels)
+        {
+            if (level.Scene != SceneManager.GetActiveScene().name) continue;
+        
+            CurrentLevel = level;
+            break;
+        }
 
-    private IEnumerator Start()
-    {
-        yield return null;
-        _dialogueIndex = 0;
-        State = GameState.Dialogue;
+        _itemUses = new();
+        foreach (var li in CurrentLevel.AvailableItems)
+        {
+            _itemUses.Add(li.Item, li.Uses);
+        }
+
+        State = _displayDialogueOnLevels[CurrentLevel] ? GameState.Dialogue : GameState.Overview;
+        _displayDialogueOnLevels[CurrentLevel] = false;
     }
+    
 
     private void ChangeGameState(GameState newState)
     {
@@ -46,7 +69,11 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.Dialogue:
-                DialogueUI.Instance.StartDialogue(_dialogueIndex++, OnDialogueFinished);
+                DialogueUI.Instance.StartDialogue(CurrentLevel.DialogueIndex, OnDialogueFinished);
+                break;
+            
+            case GameState.Playing:
+                StartCoroutine(LevelCountDown());
                 break;
         }
         
@@ -54,10 +81,31 @@ public class GameManager : MonoBehaviour
         
     }
 
+    private IEnumerator LevelCountDown()
+    {
+        int remainingTime = CurrentLevel.LevelTime;
+        TimerDecreased?.Invoke(remainingTime);
+        while (remainingTime > 0)
+        {
+            yield return new WaitForSeconds(1);
+            remainingTime--;
+            TimerDecreased?.Invoke(remainingTime);
+        }
+        
+        Debug.Log("gameover rata eletrocuta");
+    }
+
     private void OnDialogueFinished()
     {
         State = GameState.Overview;
     }
+
+
+    public bool CanUse(ItemInfo item) => _itemUses[item] > 0;
+
+    public void Use(ItemInfo item) => _itemUses[item]--;
+
+    public int GetUses(ItemInfo item) => _itemUses[item];
 }
 
 

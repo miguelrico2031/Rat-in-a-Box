@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class RatController : MonoBehaviour
 {
     public AItem CurrentTarget { get => _currentTarget; set => ChangeTarget(value); }
     public IRatState CurrentState { get => _currentState; set => ChangeState(value); }
+    public bool IsAlive { get; private set; }
     public event Action<AItem> TargetChange;
     
     public AIPath AIPath { get; private set; }
@@ -21,9 +23,14 @@ public class RatController : MonoBehaviour
     private AItem _currentTarget;
     private IRatState _currentState;
     private AItem _lastPermamentTargetCollided;
+    private string _currentAnimation;
+    private bool _currentAnimationBlocks;
+    private string _nextAnimation;
+    private Vector2 _currentDirection;
 
     private void Awake()
     {
+        IsAlive = true;
         Seeker = GetComponent<Seeker>();
         AIPath = GetComponent<AIPath>();
         Animator = GetComponentInChildren<Animator>();
@@ -78,6 +85,7 @@ public class RatController : MonoBehaviour
 
     public void TrySetTarget(IReadOnlyList<AItem> items, bool setState = true)
     {
+        if (!IsAlive) return;
         if (CurrentTarget && CurrentTarget.IsCovered) CurrentTarget = null;
         
         AItem target = null;
@@ -190,20 +198,24 @@ public class RatController : MonoBehaviour
         switch (item.Info.Interaction)
         {
             case ItemInteraction.Trap:
-                Die();
+                if(item.Info.HasSmell) item.GetComponentInChildren<UnityEngine.Animator>().SetBool("Trap", true);
+                CurrentState = new OnTrap(item.Info.HasSmell);
                 break;
             
             case ItemInteraction.Consumable:
                 if (CurrentTarget != item) break;
                 CurrentTarget = null;
                 ItemManager.Instance.RemoveItem(item);
+                PlayOneTimeAnimationXY("Cheese", _currentDirection);
                 TrySetTarget(ItemManager.Instance.GetItems());
+                if(CurrentState is Idle) PlayLoopingAnimationXY("Idle", _currentDirection);
                 break;
             
             case ItemInteraction.Permanent:
                 if (CurrentTarget != item) break;
                 CurrentTarget = null;
                 _lastPermamentTargetCollided = item;
+                PlayOneTimeAnimationXY("Heart", _currentDirection);
                 CurrentState = new Idle();
                 break;
             
@@ -219,9 +231,94 @@ public class RatController : MonoBehaviour
 
     }
 
-    private void Die()
+    public void PlayLoopingAnimationXY(string anim, Vector2 direction)
     {
-        Debug.Log("muelto");
-        Destroy(gameObject);
+        if (_currentAnimationBlocks)
+        {
+            _nextAnimation = anim;
+            return;
+        }
+        _currentDirection = direction;
+        Renderer.flipX = direction.x < 0f;
+
+        if (direction.y < 0f && _currentAnimation != $"{anim} Front")
+        {
+            Animator.Play($"{anim} Front");
+            _currentAnimation = $"{anim} Front";
+        }
+
+        if (direction.y >= 0f && _currentAnimation != $"{anim} Back")
+        {
+            Animator.Play($"{anim} Back");
+            _currentAnimation = $"{anim} Back";
+
+        }
+    }
+
+
+    public void PlayOneTimeAnimationXY(string anim, Vector2 direction)
+    {
+        if (_currentAnimationBlocks) return;
+
+        _currentDirection = direction;
+        _nextAnimation = null;
+        _currentAnimationBlocks = true;
+        Renderer.flipX = direction.x < 0f;
+        if (direction.y < 0f)
+        {
+            Animator.Play($"{anim} Front");
+            _currentAnimation = $"{anim} Front";
+        }
+        else
+        {
+            Animator.Play($"{anim} Back");
+            _currentAnimation = $"{anim} Back";
+        }
+        float length = Animator.GetCurrentAnimatorClipInfo(0).Length;
+        StartCoroutine(HandleOneTimeAnimationXY(length, direction));
+    }
+
+    public void PlayOneTimeAnimationX(string anim, int x)
+    {
+        if (_currentAnimationBlocks) return;
+        _nextAnimation = null;
+
+        _currentAnimationBlocks = true;
+        Renderer.flipX = x < 0f;
+        Animator.Play(anim);
+        _currentAnimation = anim;
+        
+        float length = Animator.GetCurrentAnimatorClipInfo(0).Length;
+        StartCoroutine(HandleOneTimeAnimationX(length, x));
+    }
+
+    private IEnumerator HandleOneTimeAnimationXY(float length, Vector2 direction)
+    {
+        yield return new WaitForSeconds(length);
+        _currentAnimationBlocks = false;
+        if (_nextAnimation == null) yield break;
+        PlayLoopingAnimationXY(_nextAnimation, direction);
+    }
+    
+    private IEnumerator HandleOneTimeAnimationX(float length, int x)
+    {
+        yield return new WaitForSeconds(length);
+        _currentAnimationBlocks = false;
+    }
+    
+
+    public IEnumerator Die()
+    {
+        IsAlive = false;
+
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(GameManager.Instance.CurrentLevel.Scene);
+    }
+
+    private void OnDestroy()
+    {
+        ItemManager.Instance.ItemsUpdated -= OnItemsUpdated;
+
+        GameManager.Instance.GameStateChange -= OnGameStateChange;
     }
 }
