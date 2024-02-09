@@ -10,7 +10,6 @@ public class WalkToDestination : IRatState
     private Vector2 _destination;
     private Path _path;
 
-    private string _currentAnimation;
     private int randomIndex;
     private string soundName;
     private int pasoSonido = 0;
@@ -54,19 +53,21 @@ public class WalkToDestination : IRatState
 
         Direction = newDirection;
 
-        _controller.Renderer.flipX = Direction.x < 0f;
-
-        if (Direction.y < 0f && _currentAnimation != "Move Front")
-        {
-            _controller.Animator.Play("Move Front");
-            _currentAnimation = "Move Front";
-        }
+        _controller.PlayLoopingAnimationXY("Move", Direction);
         
-        if (Direction.y >= 0f && _currentAnimation != "Move Back")
-        {
-            _controller.Animator.Play("Move Back");
-            _currentAnimation = "Move Back";
-        }
+        // _controller.Renderer.flipX = Direction.x < 0f;
+        //
+        // if (Direction.y < 0f && _currentAnimation != "Move Front")
+        // {
+        //     _controller.Animator.Play("Move Front");
+        //     _currentAnimation = "Move Front";
+        // }
+        //
+        // if (Direction.y >= 0f && _currentAnimation != "Move Back")
+        // {
+        //     _controller.Animator.Play("Move Back");
+        //     _currentAnimation = "Move Back";
+        // }
     }
 
     public void Exit(IRatState nextState = null)

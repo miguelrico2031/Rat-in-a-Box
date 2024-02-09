@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scene: Miguel Test
   LevelTime: 90
+  DialogueIndex: 0
   AvailableItems:
   - Item: {fileID: 11400000, guid: cdf7a6f467189114b9bcc1936049022c, type: 2}
-    Uses: 5
+    Uses: 20
   - Item: {fileID: 11400000, guid: 361c3111386a9094b8a3dc3c6ecd8829, type: 2}
-    Uses: 4
+    Uses: 20
   - Item: {fileID: 11400000, guid: 5389075d4d6fe384dabb172cd51cda47, type: 2}
-    Uses: 5
+    Uses: 20
   - Item: {fileID: 11400000, guid: 4c4e2e82ad61a794ea45fb77b89a6b2e, type: 2}
-    Uses: 2
+    Uses: 20

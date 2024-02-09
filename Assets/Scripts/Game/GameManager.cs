@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     
     private GameState _state;
     private Dictionary<ItemInfo, int> _itemUses;
+    private Dictionary<Level, bool> _displayDialogueOnLevels;
 
     private void Awake()
     {
@@ -34,6 +35,9 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         _state = GameState.None;
         SceneManager.sceneLoaded += OnSceneStart;
+
+        _displayDialogueOnLevels = new();
+        foreach(var level in _levels) _displayDialogueOnLevels.Add(level, true);
         
     }
     
@@ -52,8 +56,9 @@ public class GameManager : MonoBehaviour
         {
             _itemUses.Add(li.Item, li.Uses);
         }
-        
-        State = GameState.Dialogue;
+
+        State = _displayDialogueOnLevels[CurrentLevel] ? GameState.Dialogue : GameState.Overview;
+        _displayDialogueOnLevels[CurrentLevel] = false;
     }
     
 

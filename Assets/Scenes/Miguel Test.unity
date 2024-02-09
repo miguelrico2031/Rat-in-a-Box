@@ -137,11 +137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6072407362332971484, guid: c2d9b3ac55bf4e54ba9c09aaf0dcb855, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.509
+      value: -2.77
       objectReference: {fileID: 0}
     - target: {fileID: 6072407362332971484, guid: c2d9b3ac55bf4e54ba9c09aaf0dcb855, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.603
+      value: 2.67
       objectReference: {fileID: 0}
     - target: {fileID: 6072407362332971484, guid: c2d9b3ac55bf4e54ba9c09aaf0dcb855, type: 3}
       propertyPath: m_LocalPosition.z
@@ -449,6 +449,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!1001 &691736058
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5246637301590917992, guid: 24d134c176dfe704285d4eb789765120, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.234351
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246637301590917992, guid: 24d134c176dfe704285d4eb789765120, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.8644352
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246637301590917992, guid: 24d134c176dfe704285d4eb789765120, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246637301590917992, guid: 24d134c176dfe704285d4eb789765120, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246637301590917992, guid: 24d134c176dfe704285d4eb789765120, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246637301590917992, guid: 24d134c176dfe704285d4eb789765120, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246637301590917992, guid: 24d134c176dfe704285d4eb789765120, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246637301590917992, guid: 24d134c176dfe704285d4eb789765120, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246637301590917992, guid: 24d134c176dfe704285d4eb789765120, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246637301590917992, guid: 24d134c176dfe704285d4eb789765120, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649312768016497519, guid: 24d134c176dfe704285d4eb789765120, type: 3}
+      propertyPath: m_Name
+      value: Rat Trap
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 24d134c176dfe704285d4eb789765120, type: 3}
 --- !u!1 &782339231
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +578,7 @@ MonoBehaviour:
     m_ActionName: Player map/Click[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6076905624728330824}
         m_TargetAssemblyTypeName: CameraControls, Assembly-CSharp
         m_MethodName: OnScroll
         m_Mode: 0
@@ -6239,3 +6296,4 @@ SceneRoots:
   - {fileID: 349284998}
   - {fileID: 1760893597}
   - {fileID: 216358760}
+  - {fileID: 691736058}
