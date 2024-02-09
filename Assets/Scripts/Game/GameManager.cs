@@ -87,7 +87,6 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator LevelCountDown()
     {
-        Debug.Log("levelcd");
         int remainingTime = CurrentLevel.LevelTime;
         TimerDecreased?.Invoke(remainingTime);
         while (remainingTime > 0)
