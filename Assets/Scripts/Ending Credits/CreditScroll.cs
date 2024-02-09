@@ -7,6 +7,11 @@ public class CreditsScroll : MonoBehaviour
     public float scrollSpeed = 20f;
     public TMP_Text creditsText;
 
+    void Start()
+    {
+        MusicManager.Instance.PlayMusic("finalMusic",false);
+    }
+
     void Update()
     {
         if (creditsText != null)
