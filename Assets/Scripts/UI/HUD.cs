@@ -29,6 +29,10 @@ public class HUD : MonoBehaviour
     [SerializeField] private ItemInfo _catPlush;
     [SerializeField] private ItemInfo _lid;
 
+    [Header("Pause Menu")]
+    [SerializeField] private GameObject _pauseMenuUI;
+
+
     private Dictionary<ItemInfo, GameObject> _itemButtons;
     private Dictionary<ItemInfo, TextMeshProUGUI> _itemUses;
     private void Awake()
@@ -158,7 +162,9 @@ public class HUD : MonoBehaviour
 
     public void Pause()
     {
-        
+        _pauseMenuUI.SetActive(true);
+        AudioListener.pause = true;
+        Time.timeScale = 0f;
     }
 
     public void Restart()

@@ -504,6 +504,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 2831988386756628911, guid: a16fb35a426779b439eed791fd141be2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831988386756628911, guid: a16fb35a426779b439eed791fd141be2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288439729183238588, guid: a16fb35a426779b439eed791fd141be2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288439729183238588, guid: a16fb35a426779b439eed791fd141be2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288439729183238588, guid: a16fb35a426779b439eed791fd141be2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4297306225313691996, guid: a16fb35a426779b439eed791fd141be2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
