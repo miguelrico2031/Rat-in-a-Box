@@ -30,7 +30,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private ItemInfo _lid;
 
     [Header("Pause Menu")]
-    [SerializeField] private GameObject _pauseMenuUI;
+    [SerializeField] private PauseMenuUI pauseMenuUI;
 
 
     private Dictionary<ItemInfo, GameObject> _itemButtons;
@@ -162,9 +162,8 @@ public class HUD : MonoBehaviour
 
     public void Pause()
     {
-        _pauseMenuUI.SetActive(true);
-        AudioListener.pause = true;
-        Time.timeScale = 0f;
+
+        pauseMenuUI.PauseGame();
     }
 
     public void Restart()

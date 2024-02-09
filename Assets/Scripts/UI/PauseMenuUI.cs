@@ -7,13 +7,20 @@ using UnityEngine.SceneManagement;
 public class PauseMenuUI : MonoBehaviour
 {
     public GameObject pauseMenuUI;
-    
 
+    public void PauseGame()
+    {
+        pauseMenuUI.SetActive(true);
+        AudioListener.pause = true;
+        Time.timeScale = 0f;
+        
+    }
     public void ResumeGame()
     {
-        pauseMenuUI.SetActive(false);
         AudioListener.pause = false;
         Time.timeScale = 1f;
+        pauseMenuUI.SetActive(false);
+
     }
     public void LoadMenu()
     {
