@@ -22,3 +22,4 @@ MonoBehaviour:
     Uses: 1
   - Item: {fileID: 11400000, guid: 5389075d4d6fe384dabb172cd51cda47, type: 2}
     Uses: 1
+  NextLevel: {fileID: 11400000, guid: 26c6f8dc125c59e499fdaa31ff8e9db4, type: 2}
