@@ -5,13 +5,18 @@ using UnityEngine;
 
 public class GameButton : MonoBehaviour
 {
+    [SerializeField] private bool _isEnd;
+    
     private RatController _rat;
     private Vector3 _direction;
     private void OnTriggerEnter2D(Collider2D other)
     {
         _rat = other.GetComponentInParent<RatController>();
-        if (_rat) StartCoroutine(NotifyRat());
-
+        if (!_rat) return;
+        
+        if(!_isEnd) StartCoroutine(NotifyRat());
+        
+        
     }
 
     private IEnumerator NotifyRat()
