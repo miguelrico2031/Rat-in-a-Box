@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9dabd5825d3985040a359d927630d17b, type: 3}
-  m_Name: Level test
+  m_Name: Level test 2
   m_EditorClassIdentifier: 
   Scene: Miguel Test
-  LevelTime: 10
-  DialogueIndex: 0
+  LevelTime: 30
+  DialogueIndex: 1
   AvailableItems:
   - Item: {fileID: 11400000, guid: cdf7a6f467189114b9bcc1936049022c, type: 2}
     Uses: 20
@@ -24,4 +24,6 @@ MonoBehaviour:
     Uses: 20
   - Item: {fileID: 11400000, guid: 4c4e2e82ad61a794ea45fb77b89a6b2e, type: 2}
     Uses: 20
-  NextLevel: {fileID: 11400000, guid: 0e9ec09c33272ad44aef3db0120538d0, type: 2}
+  - Item: {fileID: 11400000, guid: 8782b0d7e23f6ea499116e30eb55deb3, type: 2}
+    Uses: 20
+  NextLevel: {fileID: 0}

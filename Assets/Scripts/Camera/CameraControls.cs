@@ -42,9 +42,11 @@ public class CameraControls : MonoBehaviour
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
+        Debug.Log("hola");
         _currentZoomLevel = _zoomLevels;
         _cam.transform.position = _startCamPos;
         PlayerControl = true;
+        Zoom();
     }
 
     private void LateUpdate()
@@ -52,7 +54,7 @@ public class CameraControls : MonoBehaviour
         
         if(_currentZoomLevel >= _zoomLevels || !PlayerControl) return;
 
-        Vector3 moveDir = Vector3.zero;
+        Vector2 moveDir = Vector2.zero;
         Vector2 mousePos = Mouse.current.position.value;
 
         mousePos.x = 2f *(mousePos.x / Screen.width) - 1f;
@@ -61,7 +63,11 @@ public class CameraControls : MonoBehaviour
         mousePos.y = 2f *(mousePos.y / Screen.height) - 1f;
         moveDir.y = mousePos.y * mousePos.y > _moveCamFrame ? mousePos.y : 0f;
 
-        _cam.transform.Translate(Time.deltaTime * _moveCamSpeed * moveDir);
+
+        Vector2 newPos =
+            Vector2.ClampMagnitude(((Vector2)_cam.transform.position) + (Time.deltaTime * _moveCamSpeed * moveDir), 10f);
+
+        _cam.transform.position = new(newPos.x, newPos.y, _startCamPos.z);
     }
 
     public void OnScroll(InputAction.CallbackContext ctx)
