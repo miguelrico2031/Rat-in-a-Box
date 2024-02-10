@@ -113,6 +113,11 @@ public class GameManager : MonoBehaviour
     public void Use(ItemInfo item) => _itemUses[item]--;
 
     public int GetUses(ItemInfo item) => _itemUses[item];
+
+    public void StopTimer()
+    {
+        if (_levelCountdown != null) StopCoroutine(_levelCountdown);
+    }
 }
 
 

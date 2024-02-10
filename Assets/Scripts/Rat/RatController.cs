@@ -334,6 +334,8 @@ public class RatController : MonoBehaviour
 
     private IEnumerator Pinch()
     {
+        AIPath.isStopped = true;
+        transform.Find("Arrow").gameObject.SetActive(false);
         yield return new WaitForSeconds(1f);
         FindObjectOfType<CameraControls>().ZoomToRat(transform.position);
         var hand = GameObject.Find("Boss Hand");
@@ -351,6 +353,8 @@ public class RatController : MonoBehaviour
     {
         IsAlive = false;
         AIPath.isStopped = true;
+        transform.Find("Arrow").gameObject.SetActive(false);
+        GameManager.Instance.StopTimer();
 
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(GameManager.Instance.CurrentLevel.Scene);
