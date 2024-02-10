@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9dabd5825d3985040a359d927630d17b, type: 3}
-  m_Name: Level 1
+  m_Name: Level 5
   m_EditorClassIdentifier: 
-  Scene: Level 1
+  Scene: Level 7
   LevelTime: 90
   DialogueIndex: 0
   AvailableItems:
-  - Item: {fileID: 11400000, guid: cdf7a6f467189114b9bcc1936049022c, type: 2}
-    Uses: 2
-  NextLevel: {fileID: 11400000, guid: fc8538676aeef5246bbd505ba8dd2187, type: 2}
+  - Item: {fileID: 11400000, guid: 5389075d4d6fe384dabb172cd51cda47, type: 2}
+    Uses: 1
+  - Item: {fileID: 11400000, guid: 8782b0d7e23f6ea499116e30eb55deb3, type: 2}
+    Uses: 1
+  NextLevel: {fileID: 0}
