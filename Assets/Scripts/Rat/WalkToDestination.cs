@@ -72,6 +72,16 @@ public class WalkToDestination : IRatState
         // }
     }
 
+    public bool RecalcPath()
+    {
+        if (!PathUtilities.IsPathPossible(AstarPath.active.GetNearest(_controller.transform.position).node,
+                AstarPath.active.GetNearest(_destination).node))
+            return false;
+        
+        _path = _controller.Seeker.StartPath(_controller.transform.position, _destination);
+        return true;
+    }
+
     public void Exit(IRatState nextState = null)
     {
         _controller.AIPath.enabled = false;

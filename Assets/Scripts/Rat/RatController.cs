@@ -156,7 +156,11 @@ public class RatController : MonoBehaviour
         Vector2 direction = target - origin;
         distance = direction.magnitude;
 
-        if (item.Info.HasSmell) return true;
+        if (item.Info.HasSmell)
+        {
+            return PathUtilities.IsPathPossible(AstarPath.active.GetNearest(transform.position).node,
+                AstarPath.active.GetNearest(item.transform.position).node);
+        }
 
         
         var hit = Physics2D.Raycast(origin, direction, distance, ItemManager.Instance.VisualObstaclesMask);
@@ -344,8 +348,19 @@ public class RatController : MonoBehaviour
         yield return new WaitForSeconds(1.3f);
         HUD.Instance.Fade(false, 0.7f, NextLevel);
     }
-    
-    
+
+    public void RecalcPath()
+    {
+        if (CurrentState is not WalkToDestination) return;
+
+
+
+        if (!(CurrentState as WalkToDestination).RecalcPath())
+        {
+            CurrentTarget = null;
+            TrySetTarget(ItemManager.Instance.GetItems());
+        }
+    }
     
 
     public IEnumerator Die()
