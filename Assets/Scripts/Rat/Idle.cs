@@ -6,16 +6,8 @@ public class Idle : IRatState
     
     public void Enter(RatController controller, IRatState previousState = null)
     {
-        if (previousState == null)
-        {
-            controller.Animator.Play("Idle Front");
-            return;
-        }
-
-        Direction = previousState.Direction;
-        controller.Renderer.flipX = Direction.x < 0f;
-        controller.Animator.Play(Direction.y < 0f ? "Idle Front" : "Idle Back");
-        
+        Direction = previousState != null ? previousState.Direction : new(-1, -1);
+        controller.PlayLoopingAnimationXY("Idle", Direction);
     }
 
     public void Update()

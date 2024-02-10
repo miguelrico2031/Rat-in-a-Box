@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class RatController : MonoBehaviour
 {
     public AItem CurrentTarget { get => _currentTarget; set => ChangeTarget(value); }
+    public Transform Button { get => _button; set => SetButton(value); }
     public IRatState CurrentState { get => _currentState; set => ChangeState(value); }
+    public bool IsAlive { get; private set; }
     public event Action<AItem> TargetChange;
+    public Vector2 CurrentDirection { get; set; }
     
     public AIPath AIPath { get; private set; }
     public Seeker Seeker { get; private set; }
@@ -21,9 +25,16 @@ public class RatController : MonoBehaviour
     private AItem _currentTarget;
     private IRatState _currentState;
     private AItem _lastPermamentTargetCollided;
+    private string _currentAnimation;
+    private bool _currentAnimationBlocks;
+    private string _nextAnimation;
+    private Transform _button;
+    private bool _pressingButton;
+    private bool _wasAIStopped;
 
     private void Awake()
     {
+        IsAlive = true;
         Seeker = GetComponent<Seeker>();
         AIPath = GetComponent<AIPath>();
         Animator = GetComponentInChildren<Animator>();
@@ -42,7 +53,7 @@ public class RatController : MonoBehaviour
 
     private void Update()
     {
-        CurrentState?.Update();
+        if(!_pressingButton) CurrentState?.Update();
     }
 
     public void OnGameStateChange(GameManager.GameState newState)
@@ -78,6 +89,7 @@ public class RatController : MonoBehaviour
 
     public void TrySetTarget(IReadOnlyList<AItem> items, bool setState = true)
     {
+        if (!IsAlive || Button != null) return;
         if (CurrentTarget && CurrentTarget.IsCovered) CurrentTarget = null;
         
         AItem target = null;
@@ -144,7 +156,11 @@ public class RatController : MonoBehaviour
         Vector2 direction = target - origin;
         distance = direction.magnitude;
 
-        if (item.Info.HasSmell) return true;
+        if (item.Info.HasSmell)
+        {
+            return PathUtilities.IsPathPossible(AstarPath.active.GetNearest(transform.position).node,
+                AstarPath.active.GetNearest(item.transform.position).node);
+        }
 
         
         var hit = Physics2D.Raycast(origin, direction, distance, ItemManager.Instance.VisualObstaclesMask);
@@ -165,7 +181,7 @@ public class RatController : MonoBehaviour
     }*/
     public IEnumerator CheckForItems()
     {
-        while (CurrentState is WalkToDestination)
+        while (CurrentState is WalkToDestination && Button == null)
         {
             TrySetTarget(ItemManager.Instance.GetItems());
             yield return new WaitForSeconds(_itemCheckTime);
@@ -174,6 +190,7 @@ public class RatController : MonoBehaviour
 
     public void OnItemCollision(AItem item)
     {
+        if (Button) return;
         //ANTON: aqui sonido de interactuar con objeto
         //item.Info.InteractAudioName
         switch (item.Info.InteractAudioName)
@@ -190,20 +207,24 @@ public class RatController : MonoBehaviour
         switch (item.Info.Interaction)
         {
             case ItemInteraction.Trap:
-                Die();
+                if(item.Info.HasSmell) item.GetComponentInChildren<UnityEngine.Animator>().SetBool("Trap", true);
+                CurrentState = new OnTrap(item.Info.HasSmell);
                 break;
             
             case ItemInteraction.Consumable:
                 if (CurrentTarget != item) break;
                 CurrentTarget = null;
                 ItemManager.Instance.RemoveItem(item);
+                PlayOneTimeAnimationXY("Cheese", CurrentDirection);
                 TrySetTarget(ItemManager.Instance.GetItems());
+                if(CurrentState is Idle) PlayLoopingAnimationXY("Idle", CurrentDirection);
                 break;
             
             case ItemInteraction.Permanent:
                 if (CurrentTarget != item) break;
                 CurrentTarget = null;
                 _lastPermamentTargetCollided = item;
+                PlayOneTimeAnimationXY("Heart", CurrentDirection);
                 CurrentState = new Idle();
                 break;
             
@@ -219,11 +240,156 @@ public class RatController : MonoBehaviour
 
     }
 
-    private void Die()
+    public void PlayLoopingAnimationXY(string anim, Vector2 direction)
     {
-        Debug.Log("muelto");
-        Destroy(gameObject);
+        if (!IsAlive) return;
+        if (_currentAnimationBlocks)
+        {
+            _nextAnimation = anim;
+            return;
+        }
+        CurrentDirection = direction;
+        Renderer.flipX = direction.x < 0f;
+
+        if (direction.y < 0f && _currentAnimation != $"{anim} Front")
+        {
+            Animator.Play($"{anim} Front");
+            _currentAnimation = $"{anim} Front";
+        }
+
+        if (direction.y >= 0f && _currentAnimation != $"{anim} Back")
+        {
+            Animator.Play($"{anim} Back");
+            _currentAnimation = $"{anim} Back";
+
+        }
     }
+
+
+    public void PlayOneTimeAnimationXY(string anim, Vector2 direction)
+    {
+        if (_currentAnimationBlocks || !IsAlive) return;
+
+        CurrentDirection = direction;
+        _nextAnimation = null;
+        _currentAnimationBlocks = true;
+        _wasAIStopped = AIPath.isStopped;
+        AIPath.isStopped = true;
+        Renderer.flipX = direction.x < 0f;
+        if (direction.y < 0f)
+        {
+            Animator.Play($"{anim} Front");
+            _currentAnimation = $"{anim} Front";
+        }
+        else
+        {
+            Animator.Play($"{anim} Back");
+            _currentAnimation = $"{anim} Back";
+        }
+        float length = Animator.GetCurrentAnimatorClipInfo(0).Length;
+        StartCoroutine(HandleOneTimeAnimationXY(length, direction));
+    }
+
+    public void PlayOneTimeAnimationX(string anim, int x)
+    {
+        if (_currentAnimationBlocks) return;
+        _nextAnimation = null;
+
+        _currentAnimationBlocks = true;
+        _wasAIStopped = AIPath.isStopped;
+        AIPath.isStopped = true;
+        Renderer.flipX = x < 0f;
+        Animator.Play(anim);
+        _currentAnimation = anim;
+        
+        float length = Animator.GetCurrentAnimatorClipInfo(0).Length;
+        StartCoroutine(HandleOneTimeAnimationX(length, x));
+    }
+
+    private IEnumerator HandleOneTimeAnimationXY(float length, Vector2 direction)
+    {
+        yield return new WaitForSeconds(length);
+        _currentAnimationBlocks = false;
+        AIPath.isStopped = false;
+        if (_nextAnimation == null) yield break;
+        PlayLoopingAnimationXY(_nextAnimation, direction);
+    }
+    
+    private IEnumerator HandleOneTimeAnimationX(float length, int x)
+    {
+        yield return new WaitForSeconds(length);
+        _currentAnimationBlocks = false;
+         AIPath.isStopped = _wasAIStopped;
+    }
+
+    private void SetButton(Transform button)
+    {
+        _button = button;
+
+        CurrentState = new WalkToDestination();
+    }
+
+    public void PressButton(int direction)
+    {
+        PlayOneTimeAnimationX("Press Button", direction);
+        CurrentState = null;
+        StartCoroutine(Pinch());
+    }
+
+    private IEnumerator Pinch()
+    {
+        AIPath.isStopped = true;
+        transform.Find("Arrow").gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        FindObjectOfType<CameraControls>().ZoomToRat(transform.position);
+        var hand = GameObject.Find("Boss Hand");
+        hand.transform.position = transform.position;
+        hand.GetComponentInChildren<Animator>().SetBool("Pinch", true);
+        yield return new WaitForSeconds(1.3f);
+        HUD.Instance.Fade(false, 0.7f, NextLevel);
+    }
+
+    public void RecalcPath()
+    {
+        if (CurrentState is not WalkToDestination) return;
+
+
+
+        if (!(CurrentState as WalkToDestination).RecalcPath())
+        {
+            CurrentTarget = null;
+            TrySetTarget(ItemManager.Instance.GetItems());
+        }
+    }
+    
+
+    public IEnumerator Die()
+    {
+        DisableAI();
+
+        yield return new WaitForSeconds(1.3f);
+        HUD.Instance.Fade(false, 0.7f, RestartLevel);
+    }
+
+    public void DisableAI()
+    {
+        IsAlive = false;
+        AIPath.isStopped = true;
+        transform.Find("Arrow").gameObject.SetActive(false);
+        GameManager.Instance.StopTimer();   
+    }
+
+    private void RestartLevel() => SceneManager.LoadScene(GameManager.Instance.CurrentLevel.Scene);
+
+    private void NextLevel()
+    {
+        if (GameManager.Instance.CurrentLevel.NextLevel)
+            SceneManager.LoadScene(GameManager.Instance.CurrentLevel.NextLevel.Scene);
+
+        else SceneManager.LoadScene("CreditScene");
+    }
+        
+
 
     private void OnDestroy()
     {

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Dialogue 2
   m_EditorClassIdentifier: 
   Phrases:
-  - Speaker: 2
-    Text: Sonidos de rata
   - Speaker: 0
-    Text: Si no pulsas el boton en 60 segundos te matare a ti y a todos los que amas
+    Text: It is not always a good idea to blindly follow a smell, so help the rat
+      and guide it to the button.
+  - Speaker: 1
+    Text: Is that a real mousetrap?

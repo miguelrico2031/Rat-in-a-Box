@@ -20,6 +20,9 @@ public class PlacementManager : MonoBehaviour
             ItemChange?.Invoke();
         }
     }
+    public bool CanPlace { get; set; }
+
+    [SerializeField] private LayerMask _validLayersToPlace;
     
     private ItemInfo _itemToPlace;
     private GameObject _dummy;
@@ -42,16 +45,21 @@ public class PlacementManager : MonoBehaviour
             
         _mouse = Mouse.current;
         _cam = Camera.main;
+        CanPlace = true;
     }
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
+        _itemToPlace = null;
+        if(_dummy) Destroy(_dummy);
+        _dummy = null;
         _mouse = Mouse.current;
         _cam = Camera.main;
     }
 
     public void SetItemToPlace(ItemInfo item)
     {
+        if (!CanPlace) return;
         ItemToPlace = item;
         if(_dummy) Destroy(_dummy);
         _dummy = Instantiate(ItemToPlace.Dummy);
@@ -77,14 +85,15 @@ public class PlacementManager : MonoBehaviour
     {
         yield return null;
 
-        if (!ItemToPlace) yield break;
+        if (!ItemToPlace || !CanPlace) yield break;
         
         if (!ItemToPlace.IsLid)
         {
             if (EventSystem.current.IsPointerOverGameObject()) yield break;
-            if(Physics2D.OverlapCircle(pos, .2f)) yield break;
+            var a = Physics2D.OverlapCircle(pos, .2f, ~( _validLayersToPlace));
+            if(a) yield break;
             
-            int n =  Physics2D.OverlapCircleNonAlloc(pos, .5f, _overlaps);
+            int n =  Physics2D.OverlapCircleNonAlloc(pos, .5f, _overlaps, ~(_validLayersToPlace));
             if (n > 0)
             {
                 for (int i = 0; i < n; i++)
@@ -94,13 +103,13 @@ public class PlacementManager : MonoBehaviour
             }
             
             Destroy(_dummy);
-            ItemManager.Instance.PlaceItem(ItemToPlace, pos);
+            StartCoroutine(ItemManager.Instance.PlaceItem(ItemToPlace, pos));
             _dummy = null;
             ItemToPlace = null;
             yield break;
         }
         
-        int colsNumber = Physics2D.OverlapCircleNonAlloc(pos, .4f, _overlaps);
+        int colsNumber = Physics2D.OverlapCircleNonAlloc(pos, .4f, _overlaps, ~(_validLayersToPlace));
         if (colsNumber == 0) yield break;
 
         float distance = Mathf.Infinity;
@@ -121,7 +130,7 @@ public class PlacementManager : MonoBehaviour
         if (!item) yield break;
 
         Destroy(_dummy);
-        ItemManager.Instance.PlaceLid(ItemToPlace, item);
+        StartCoroutine(ItemManager.Instance.PlaceLid(ItemToPlace, item));
         _dummy = null;
         ItemToPlace = null;
     }
@@ -134,5 +143,11 @@ public class PlacementManager : MonoBehaviour
             Destroy(_dummy);
             _dummy = null;
         }
+    }
+    
+    
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneStart;
     }
 }

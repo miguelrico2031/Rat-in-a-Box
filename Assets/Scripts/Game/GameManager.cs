@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     
     private GameState _state;
     private Dictionary<ItemInfo, int> _itemUses;
+    private Dictionary<Level, bool> _displayDialogueOnLevels;
+
+    private Coroutine _levelCountdown;
 
     private void Awake()
     {
@@ -34,6 +37,9 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         _state = GameState.None;
         SceneManager.sceneLoaded += OnSceneStart;
+
+        _displayDialogueOnLevels = new();
+        foreach(var level in _levels) _displayDialogueOnLevels.Add(level, true);
         
     }
     
@@ -52,8 +58,13 @@ public class GameManager : MonoBehaviour
         {
             _itemUses.Add(li.Item, li.Uses);
         }
+
+        State = CurrentLevel.DialogueIndex >= 0 && _displayDialogueOnLevels[CurrentLevel] ? GameState.Dialogue : GameState.Overview;
+        _displayDialogueOnLevels[CurrentLevel] = false;
         
-        State = GameState.Dialogue;
+        if(_levelCountdown != null) StopCoroutine(_levelCountdown);
+        
+        HUD.Instance.Fade(true, .7f);
     }
     
 
@@ -68,7 +79,7 @@ public class GameManager : MonoBehaviour
                 break;
             
             case GameState.Playing:
-                StartCoroutine(LevelCountDown());
+                _levelCountdown = StartCoroutine(LevelCountDown());
                 break;
         }
         
@@ -88,6 +99,9 @@ public class GameManager : MonoBehaviour
         }
         
         Debug.Log("gameover rata eletrocuta");
+        var rat = FindObjectOfType<RatController>();
+        rat.PlayOneTimeAnimationXY("Shock",rat.CurrentDirection);
+        rat.StartCoroutine(rat.Die());
     }
 
     private void OnDialogueFinished()
@@ -101,6 +115,16 @@ public class GameManager : MonoBehaviour
     public void Use(ItemInfo item) => _itemUses[item]--;
 
     public int GetUses(ItemInfo item) => _itemUses[item];
+
+    public void StopTimer()
+    {
+        if (_levelCountdown != null) StopCoroutine(_levelCountdown);
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneStart;
+    }
 }
 
 

@@ -10,23 +10,24 @@ public class WalkToDestination : IRatState
     private Vector2 _destination;
     private Path _path;
 
-    private string _currentAnimation;
     private int randomIndex;
     private string soundName;
     private const float maxSonido= 10.0f; 
     private float pasoSonido = maxSonido;
     private float veloSonido = 50.0f;
     
+    
     public void Enter(RatController controller, IRatState previousState = null)
     {
         _controller = controller;
         var pos = controller.transform.position;
-        _destination = controller.CurrentTarget.GetDestination(pos);
+        
+        _destination = controller.Button ? controller.Button.position : controller.CurrentTarget.GetDestination(pos);
+        
         controller.AIPath.enabled = true;
         _path = controller.Seeker.StartPath(pos, _destination);
 
-        controller.StartCoroutine(controller.CheckForItems());
-        //controller.StartCoroutine(controller.PlayStepsSounds());
+        if(!controller.Button) controller.StartCoroutine(controller.CheckForItems());
     }
 
 
@@ -55,19 +56,31 @@ public class WalkToDestination : IRatState
 
         Direction = newDirection;
 
-        _controller.Renderer.flipX = Direction.x < 0f;
-
-        if (Direction.y < 0f && _currentAnimation != "Move Front")
-        {
-            _controller.Animator.Play("Move Front");
-            _currentAnimation = "Move Front";
-        }
+        _controller.PlayLoopingAnimationXY("Move", Direction);
         
-        if (Direction.y >= 0f && _currentAnimation != "Move Back")
-        {
-            _controller.Animator.Play("Move Back");
-            _currentAnimation = "Move Back";
-        }
+        // _controller.Renderer.flipX = Direction.x < 0f;
+        //
+        // if (Direction.y < 0f && _currentAnimation != "Move Front")
+        // {
+        //     _controller.Animator.Play("Move Front");
+        //     _currentAnimation = "Move Front";
+        // }
+        //
+        // if (Direction.y >= 0f && _currentAnimation != "Move Back")
+        // {
+        //     _controller.Animator.Play("Move Back");
+        //     _currentAnimation = "Move Back";
+        // }
+    }
+
+    public bool RecalcPath()
+    {
+        if (!PathUtilities.IsPathPossible(AstarPath.active.GetNearest(_controller.transform.position).node,
+                AstarPath.active.GetNearest(_destination).node))
+            return false;
+        
+        _path = _controller.Seeker.StartPath(_controller.transform.position, _destination);
+        return true;
     }
 
     public void Exit(IRatState nextState = null)
