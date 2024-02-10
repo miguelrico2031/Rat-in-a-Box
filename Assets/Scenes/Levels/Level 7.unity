@@ -1173,11 +1173,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2178127597771028579, guid: 9e9e9cbf06d121448bca713ec4fddfa0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.2719998
+      value: -3.003
       objectReference: {fileID: 0}
     - target: {fileID: 2178127597771028579, guid: 9e9e9cbf06d121448bca713ec4fddfa0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.025999978
+      value: -0.179
       objectReference: {fileID: 0}
     - target: {fileID: 2178127597771028579, guid: 9e9e9cbf06d121448bca713ec4fddfa0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4306,6 +4306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3382dd56397176243893dfa0cf5c9e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isEnd: 0
 --- !u!1 &1673927991
 GameObject:
   m_ObjectHideFlags: 0
