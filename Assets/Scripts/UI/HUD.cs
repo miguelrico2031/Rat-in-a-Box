@@ -29,6 +29,10 @@ public class HUD : MonoBehaviour
     [SerializeField] private ItemInfo _catPlush;
     [SerializeField] private ItemInfo _lid;
 
+    [Header("Pause Menu")]
+    [SerializeField] private PauseMenuUI pauseMenuUI;
+
+
     private Dictionary<ItemInfo, GameObject> _itemButtons;
     private Dictionary<ItemInfo, TextMeshProUGUI> _itemUses;
     private void Awake()
@@ -158,7 +162,8 @@ public class HUD : MonoBehaviour
 
     public void Pause()
     {
-        
+
+        pauseMenuUI.PauseGame();
     }
 
     public void Restart()
