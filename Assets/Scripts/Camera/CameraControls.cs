@@ -72,7 +72,7 @@ public class CameraControls : MonoBehaviour
 
     public void OnScroll(InputAction.CallbackContext ctx)
     {
-        if (!ctx.started) return;
+        if (!ctx.started || !PlayerControl) return;
         float scroll = ctx.ReadValue<Vector2>().y;
         if (scroll == 0f) return;
         _currentZoomLevel += scroll > 0f ? -1 : 1;

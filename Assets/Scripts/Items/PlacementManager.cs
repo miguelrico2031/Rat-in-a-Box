@@ -20,6 +20,7 @@ public class PlacementManager : MonoBehaviour
             ItemChange?.Invoke();
         }
     }
+    public bool CanPlace { get; set; }
 
     [SerializeField] private LayerMask _validLayersToPlace;
     
@@ -44,6 +45,7 @@ public class PlacementManager : MonoBehaviour
             
         _mouse = Mouse.current;
         _cam = Camera.main;
+        CanPlace = true;
     }
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
@@ -57,6 +59,7 @@ public class PlacementManager : MonoBehaviour
 
     public void SetItemToPlace(ItemInfo item)
     {
+        if (!CanPlace) return;
         ItemToPlace = item;
         if(_dummy) Destroy(_dummy);
         _dummy = Instantiate(ItemToPlace.Dummy);
@@ -82,7 +85,7 @@ public class PlacementManager : MonoBehaviour
     {
         yield return null;
 
-        if (!ItemToPlace) yield break;
+        if (!ItemToPlace || !CanPlace) yield break;
         
         if (!ItemToPlace.IsLid)
         {

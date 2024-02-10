@@ -365,13 +365,18 @@ public class RatController : MonoBehaviour
 
     public IEnumerator Die()
     {
-        IsAlive = false;
-        AIPath.isStopped = true;
-        transform.Find("Arrow").gameObject.SetActive(false);
-        GameManager.Instance.StopTimer();
+        DisableAI();
 
         yield return new WaitForSeconds(1.3f);
         HUD.Instance.Fade(false, 0.7f, RestartLevel);
+    }
+
+    public void DisableAI()
+    {
+        IsAlive = false;
+        AIPath.isStopped = true;
+        transform.Find("Arrow").gameObject.SetActive(false);
+        GameManager.Instance.StopTimer();   
     }
 
     private void RestartLevel() => SceneManager.LoadScene(GameManager.Instance.CurrentLevel.Scene);

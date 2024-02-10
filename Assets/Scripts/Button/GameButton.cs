@@ -13,10 +13,10 @@ public class GameButton : MonoBehaviour
     {
         _rat = other.GetComponentInParent<RatController>();
         if (!_rat) return;
-        
-        if(!_isEnd) StartCoroutine(NotifyRat());
-        
-        
+
+        if (!_isEnd) StartCoroutine(NotifyRat());
+
+        else StartCoroutine(EndSequence(_rat));
     }
 
     private IEnumerator NotifyRat()
@@ -36,5 +36,41 @@ public class GameButton : MonoBehaviour
             _rat = null;
             GetComponentInChildren<Animator>().SetBool("Press", true);
         }
+    }
+
+    private IEnumerator EndSequence(RatController rat)
+    {
+        FindObjectOfType<CameraControls>().ZoomToRat(rat.transform.position);
+        rat.DisableAI();
+        PlacementManager.Instance.CanPlace = false;
+        
+        Transform studentHand = GameObject.Find("Student Hand").transform;
+        Animator studentAnim = studentHand.GetComponentInChildren<Animator>();
+
+        GameObject props = GameObject.Find("End Level Props");
+        var lid = props.transform.Find("Lid");
+        var ratTrap = props.transform.Find("Rat Trap");
+
+        yield return new WaitForSeconds(1f);
+        
+        studentHand.position = rat.transform.position;
+        studentAnim.Play("Place");
+        yield return new WaitForSeconds(.5f);
+        lid.position = rat.transform.position;
+        lid.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(1f);
+        
+        studentHand.position = transform.position;
+        studentAnim.Play("Place");
+        yield return new WaitForSeconds(.5f);
+        ratTrap.position = transform.position;
+        ratTrap.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(2f);
+        
+        var hand = GameObject.Find("Boss Hand");
+        hand.transform.position = transform.position;
+        hand.GetComponentInChildren<Animator>().SetBool("Pinch", true);
+        
+        
     }
 }
