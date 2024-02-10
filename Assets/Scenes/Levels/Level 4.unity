@@ -1384,10 +1384,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 4.985747}
-      - {x: -10.478357, y: -0.2784316}
-      - {x: 0, y: -5.4997745}
-      - {x: 10.521192, y: -0.23559597}
+    - - {x: 0, y: 4.4794316}
+      - {x: -8.541153, y: 0.20586944}
+      - {x: 0.04402733, y: -4.0248575}
+      - {x: 8.53996, y: 0.2046777}
     - - {x: -20, y: 10}
       - {x: 20, y: 10}
       - {x: 20, y: -10}
@@ -3512,11 +3512,13 @@ MonoBehaviour:
   _ratPlushUses: {fileID: 0}
   _catPlushUses: {fileID: 0}
   _lidUses: {fileID: 0}
+  _fade: {fileID: 0}
   _cheese: {fileID: 0}
   _poison: {fileID: 0}
   _ratPlush: {fileID: 0}
   _catPlush: {fileID: 0}
   _lid: {fileID: 0}
+  pauseMenuUI: {fileID: 0}
 --- !u!1 &1707622740
 GameObject:
   m_ObjectHideFlags: 0
