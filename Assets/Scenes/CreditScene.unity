@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b1de66390592f47a72483e771223cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 22
+  scrollSpeed: 26
   creditsText: {fileID: 140467337}
 --- !u!114 &140467337
 MonoBehaviour:
@@ -373,7 +373,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140467334}
   m_CullTransparentMesh: 1
---- !u!1 &234909182
+--- !u!1 &548763338
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,9 +381,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 234909185}
-  - component: {fileID: 234909184}
-  - component: {fileID: 234909183}
+  - component: {fileID: 548763341}
+  - component: {fileID: 548763340}
+  - component: {fileID: 548763339}
   m_Layer: 0
   m_Name: rataCinematica_0
   m_TagString: Untagged
@@ -391,14 +391,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &234909183
+--- !u!95 &548763339
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234909182}
+  m_GameObject: {fileID: 548763338}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2f723d2fba9fc5244a40ac1a6a1bd0b9, type: 2}
@@ -412,13 +412,13 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!212 &234909184
+--- !u!212 &548763340
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234909182}
+  m_GameObject: {fileID: 548763338}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -464,20 +464,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &234909185
+--- !u!4 &548763341
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234909182}
+  m_GameObject: {fileID: 548763338}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -965.46, y: -541.51, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.8460455, y: -1.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1369182545}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &932086221
 GameObject:
@@ -806,7 +806,7 @@ Transform:
   - {fileID: 1690677525}
   - {fileID: 1224676745}
   - {fileID: 1732976416}
-  - {fileID: 234909185}
+  - {fileID: 2027630341}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1494634702
@@ -1264,13 +1264,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027630339}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.007812776, y: 9.079323, z: -0.09762605}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -959.9922, y: -530.92065, z: -0.09762605}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2036473549}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1369182545}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2036473548
 GameObject:
@@ -1467,4 +1467,4 @@ SceneRoots:
   - {fileID: 1184808470}
   - {fileID: 1369182545}
   - {fileID: 2107847249}
-  - {fileID: 2027630341}
+  - {fileID: 548763341}
