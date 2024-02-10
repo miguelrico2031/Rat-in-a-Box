@@ -161,3 +161,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isOpen: 1
+  _sprite: {fileID: 3678450843365861417}
+--- !u!1 &3678450843365861417 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4926741970848620547, guid: 0e46d586d18e83e4f8445af104048bbc, type: 3}
+  m_PrefabInstance: {fileID: 8598275717844584490}
+  m_PrefabAsset: {fileID: 0}

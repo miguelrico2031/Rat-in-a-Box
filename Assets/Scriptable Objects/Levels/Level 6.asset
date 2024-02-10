@@ -16,6 +16,6 @@ MonoBehaviour:
   LevelTime: 90
   DialogueIndex: 0
   AvailableItems:
-  - Item: {fileID: 11400000, guid: cdf7a6f467189114b9bcc1936049022c, type: 2}
-    Uses: 2
+  - Item: {fileID: 11400000, guid: 4c4e2e82ad61a794ea45fb77b89a6b2e, type: 2}
+    Uses: 1
   NextLevel: {fileID: 11400000, guid: 18942f58fb1a6d948b32df8e0a57f8fd, type: 2}
