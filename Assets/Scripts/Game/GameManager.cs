@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
         _displayDialogueOnLevels[CurrentLevel] = false;
         
         if(_levelCountdown != null) StopCoroutine(_levelCountdown);
+        
+        HUD.Instance.Fade(true, .7f);
     }
     
 

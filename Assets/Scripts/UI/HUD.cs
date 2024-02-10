@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private GameObject _removeButton;
     [SerializeField] private GameObject _cancelButton;
     [SerializeField] private TextMeshProUGUI _cheeseUses, _poisonUses, _ratPlushUses, _catPlushUses, _lidUses;
+    [SerializeField] private Image _fade;
 
     [Header("Item Infos")] [SerializeField]
     private ItemInfo _cheese;
@@ -83,6 +85,8 @@ public class HUD : MonoBehaviour
     {
         _removeButton.SetActive(false);
         _cancelButton.SetActive(false);
+
+        _fade.color = new(0f, 0f, 0f, 0f);
     }
     
     
@@ -108,7 +112,15 @@ public class HUD : MonoBehaviour
                 foreach (var li in GameManager.Instance.CurrentLevel.AvailableItems)
                 {
                     _itemButtons[li.Item].SetActive(true);
+                    int uses = GameManager.Instance.GetUses(li.Item);
+                    if(uses <= 0) _itemUses[li.Item].transform.parent.gameObject.SetActive(false);
+                    else
+                    {
+                        _itemUses[li.Item].transform.parent.gameObject.SetActive(true);
+                        _itemUses[li.Item].text = $"{uses}";
+                    }
                 }
+                
                 break;
         }
     }
@@ -131,7 +143,9 @@ public class HUD : MonoBehaviour
     
     public void UpdateUses(ItemInfo item)
     {
-        if(_itemUses[item] != null) _itemUses[item].text = $"{GameManager.Instance.GetUses(item)}";
+        if (_itemUses[item] == null) return;
+        
+        _itemUses[item].text = $"{GameManager.Instance.GetUses(item)}";
     }
 
     public void SelectItem(ItemInfo item)
@@ -169,6 +183,36 @@ public class HUD : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(GameManager.Instance.CurrentLevel.Scene);
+    }
+
+    public void Fade(bool fadeIn, float duration, Action callback = null) => StartCoroutine(fadeIn ? FadeIn(duration, callback) : FadeOut(duration, callback));
+
+    private IEnumerator FadeIn(float duration, Action callback)
+    {
+        Color c = new(0f, 0f, 0f, 1f);
+        _fade.color = c;
+
+        for (int i = 0; i < 20; i++)
+        {
+            c.a -= 0.05f;
+            _fade.color = c;
+            yield return new WaitForSeconds(0.05f * duration);
+        }
+        callback?.Invoke();
+    }
+
+    private IEnumerator FadeOut(float duration, Action callback)
+    {
+        Color c = new(0f, 0f, 0f, 0f);
+        _fade.color = c;
+
+        for (int i = 0; i < 20; i++)
+        {
+            c.a += 0.05f;
+            _fade.color = c;
+            yield return new WaitForSeconds(0.05f * duration);
+        }
+        callback?.Invoke();
     }
 
 }

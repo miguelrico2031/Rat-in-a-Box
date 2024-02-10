@@ -341,9 +341,8 @@ public class RatController : MonoBehaviour
         var hand = GameObject.Find("Boss Hand");
         hand.transform.position = transform.position;
         hand.GetComponentInChildren<Animator>().SetBool("Pinch", true);
-        yield return new WaitForSeconds(2f);
-        //FADE OUT;
-        SceneManager.LoadScene(GameManager.Instance.CurrentLevel.NextLevel.Scene);
+        yield return new WaitForSeconds(1.3f);
+        HUD.Instance.Fade(false, 0.7f, NextLevel);
     }
     
     
@@ -356,9 +355,13 @@ public class RatController : MonoBehaviour
         transform.Find("Arrow").gameObject.SetActive(false);
         GameManager.Instance.StopTimer();
 
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(GameManager.Instance.CurrentLevel.Scene);
+        yield return new WaitForSeconds(1.3f);
+        HUD.Instance.Fade(false, 0.7f, RestartLevel);
     }
+
+    private void RestartLevel() => SceneManager.LoadScene(GameManager.Instance.CurrentLevel.Scene);
+    private void NextLevel() => SceneManager.LoadScene(GameManager.Instance.CurrentLevel.NextLevel.Scene); 
+
 
     private void OnDestroy()
     {

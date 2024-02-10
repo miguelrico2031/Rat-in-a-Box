@@ -14,11 +14,6 @@ public class GameButton : MonoBehaviour
 
     }
 
-    private void Awake()
-    {
-        Debug.Log((new Vector3(7.60304356f,0.558352649f,0) - new Vector3(7.73699999f,0.524999976f,0)).sqrMagnitude);
-    }
-
     private IEnumerator NotifyRat()
     {
         yield return new WaitForSeconds(0.1f);
