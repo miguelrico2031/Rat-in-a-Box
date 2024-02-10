@@ -30,6 +30,7 @@ public class ToggleDoor : MonoBehaviour
         _col.enabled = false;
         _isOpen = true;
         AstarPath.active.Scan();
+        FindObjectOfType<RatController>().RecalcPath();
     }
 
     void Close()
@@ -38,5 +39,6 @@ public class ToggleDoor : MonoBehaviour
         _col.enabled = true;
         _isOpen = false;
         AstarPath.active.Scan();
+        FindObjectOfType<RatController>().RecalcPath();
     }
 }
