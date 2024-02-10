@@ -22,6 +22,14 @@ public class DialogueUI : MonoBehaviour
 
     private Action _callback;
 
+
+    // Variables sonido
+    private int randomIndex;
+    private string soundName;
+    Dialogues.Speaker speaker;
+    private const int pasoSound = 1;
+    private int vSound = pasoSound;
+
     private void Awake()
     {
         if (Instance)
@@ -77,8 +85,38 @@ public class DialogueUI : MonoBehaviour
         foreach (char c in phrase.Text)
         {
             //ANTON SONIDO DIALOGO
-            //Dialogues.Speaker speaker = phrase.Speaker;
-            
+            // lo siento es muy cutre
+
+        if (!_skip){
+            if (vSound >= pasoSound) {
+                vSound = 0;
+                speaker = phrase.Speaker;
+
+                randomIndex = UnityEngine.Random.Range(1, 4);
+
+                switch (speaker)
+                {
+                    case Dialogues.Speaker.Boss:
+                        soundName = "malo" + randomIndex;
+                        MusicManager.Instance.PlaySound(soundName);
+                        break;
+
+                    case Dialogues.Speaker.Student:
+                        soundName = "voz" + randomIndex;
+                        MusicManager.Instance.PlaySound(soundName);
+                        break;
+
+                    case Dialogues.Speaker.Rat:
+                        soundName = "rata" + randomIndex;
+                        MusicManager.Instance.PlaySound(soundName);
+                        break;
+                }
+            }
+            else{
+                vSound++;
+            }
+        }
+
             _dialogueText.text += c;
             if(!_skip) yield return new WaitForSeconds(delay);
         }
