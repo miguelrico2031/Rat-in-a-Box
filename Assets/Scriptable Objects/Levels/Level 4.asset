@@ -18,4 +18,4 @@ MonoBehaviour:
   AvailableItems:
   - Item: {fileID: 11400000, guid: cdf7a6f467189114b9bcc1936049022c, type: 2}
     Uses: 3
-  NextLevel: {fileID: 11400000, guid: f3849fc61237e7944ae87362fbaec284, type: 2}
+  NextLevel: {fileID: 11400000, guid: 175bc8b57815d2e4b91631db0d97ce57, type: 2}
