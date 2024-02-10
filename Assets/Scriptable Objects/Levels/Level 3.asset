@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dabd5825d3985040a359d927630d17b, type: 3}
   m_Name: Level 3
   m_EditorClassIdentifier: 
-  Scene: Level 1
+  Scene: Level 3
   LevelTime: 90
   DialogueIndex: 0
   AvailableItems:
   - Item: {fileID: 11400000, guid: 5389075d4d6fe384dabb172cd51cda47, type: 2}
     Uses: 1
-  NextLevel: {fileID: 0}
+  NextLevel: {fileID: 11400000, guid: 6d09b51b8beb28341b6247cf8af20bc9, type: 2}

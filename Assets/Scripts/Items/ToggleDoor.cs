@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class ToggleDoor : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class ToggleDoor : MonoBehaviour
         if(_isOpen)
         {
             _col.enabled = false;
+            AstarPath.active.Scan();
         }
     }
 
@@ -27,6 +29,7 @@ public class ToggleDoor : MonoBehaviour
         Debug.Log("abierto");
         _col.enabled = false;
         _isOpen = true;
+        AstarPath.active.Scan();
     }
 
     void Close()
@@ -34,5 +37,6 @@ public class ToggleDoor : MonoBehaviour
         Debug.Log("cerrado");
         _col.enabled = true;
         _isOpen = false;
+        AstarPath.active.Scan();
     }
 }

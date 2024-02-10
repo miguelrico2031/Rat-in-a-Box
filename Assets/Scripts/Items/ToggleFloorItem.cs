@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class ToggleFloorItem : MonoBehaviour
 {
@@ -29,8 +30,7 @@ public class ToggleFloorItem : MonoBehaviour
 
     private void UpdatePath()
     {
-        // meter aqui la actualización al pathfinding
-        // lo hago con invoke para que espere un tiempo a que acabe la animacion de que se abren las puertas, auqnue no se si será necesario
+        //AstarPath.active.Scan();
     }
 
 }
