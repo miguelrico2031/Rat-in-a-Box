@@ -90,4 +90,10 @@ public class CameraControls : MonoBehaviour
     }
     
     
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneStart;
+    }
+    
+    
 }

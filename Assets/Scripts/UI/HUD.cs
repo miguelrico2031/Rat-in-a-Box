@@ -214,5 +214,11 @@ public class HUD : MonoBehaviour
         }
         callback?.Invoke();
     }
+    
+    
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneStart;
+    }
 
 }

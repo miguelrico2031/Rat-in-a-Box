@@ -61,4 +61,10 @@ public class SelectionManager : MonoBehaviour
         
         SelectedChange?.Invoke();
     }
+    
+    
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneStart;
+    }
 }

@@ -141,4 +141,10 @@ public class PlacementManager : MonoBehaviour
             _dummy = null;
         }
     }
+    
+    
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneStart;
+    }
 }

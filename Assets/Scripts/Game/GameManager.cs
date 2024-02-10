@@ -120,6 +120,11 @@ public class GameManager : MonoBehaviour
     {
         if (_levelCountdown != null) StopCoroutine(_levelCountdown);
     }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneStart;
+    }
 }
 
 

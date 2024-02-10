@@ -24,7 +24,8 @@ public class PauseMenuUI : MonoBehaviour
     }
     public void LoadMenu()
     {
-        //SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Main Menu");
+        Destroy(GameManager.Instance.gameObject);
     }
 
 }

@@ -132,4 +132,10 @@ public class ItemManager : MonoBehaviour
 
     public IReadOnlyList<AItem> GetItems() => _items;
     
+    
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneStart;
+    }
+    
 }
