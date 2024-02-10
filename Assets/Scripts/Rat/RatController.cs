@@ -375,7 +375,15 @@ public class RatController : MonoBehaviour
     }
 
     private void RestartLevel() => SceneManager.LoadScene(GameManager.Instance.CurrentLevel.Scene);
-    private void NextLevel() => SceneManager.LoadScene(GameManager.Instance.CurrentLevel.NextLevel.Scene); 
+
+    private void NextLevel()
+    {
+        if (GameManager.Instance.CurrentLevel.NextLevel)
+            SceneManager.LoadScene(GameManager.Instance.CurrentLevel.NextLevel.Scene);
+
+        else SceneManager.LoadScene("CreditScene");
+    }
+        
 
 
     private void OnDestroy()
