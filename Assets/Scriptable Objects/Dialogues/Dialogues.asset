@@ -25,3 +25,10 @@ MonoBehaviour:
   _dialogues:
   - {fileID: 11400000, guid: f572197d585e7a24aa87f07c3e3a0478, type: 2}
   - {fileID: 11400000, guid: d0e9fb1371e4c0e46aeee936fbbcb3e4, type: 2}
+  - {fileID: 11400000, guid: 379d6e13f8a74e24db7336ca9818714f, type: 2}
+  - {fileID: 11400000, guid: 549490ba2a4496543b05b3924c05238f, type: 2}
+  - {fileID: 11400000, guid: 2e0c33ab2462d6943a08eec361a9ace8, type: 2}
+  - {fileID: 11400000, guid: 064934befc11a0f499f373c890828488, type: 2}
+  - {fileID: 11400000, guid: da8e9cf7abd9da843859fee1ae378211, type: 2}
+  - {fileID: 11400000, guid: 1b1a468d011d86d438df50989c24ab7c, type: 2}
+  - {fileID: 11400000, guid: 1fba9f4d125ff234192bad66105c37bd, type: 2}

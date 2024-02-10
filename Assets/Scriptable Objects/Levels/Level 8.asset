@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scene: Level 8
   LevelTime: 90
-  DialogueIndex: 0
+  DialogueIndex: 7
   AvailableItems:
   - Item: {fileID: 11400000, guid: cdf7a6f467189114b9bcc1936049022c, type: 2}
     Uses: 1

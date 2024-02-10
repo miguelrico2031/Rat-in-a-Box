@@ -14,10 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Phrases:
   - Speaker: 0
-    Text: Hola uqe tal soy el jefe noseuqe hola hola klk soy el jefe de borja electrocuto
-      ratas para divertirme y que
-  - Speaker: 2
-    Text: Jolin dejame en paz o que
+    Text: Ah, you must be the new intern. Welcome to my lab.
   - Speaker: 1
-    Text: <HOla soy borja que tal sfsdfsd dsfdsfagasdf dsfdsf sdf sdfsd fsdf d d
-      d sdfsd dsfdsf gff h f
+    Text: Thank you, Dr...?
+  - Speaker: 0
+    Text: "Call me \u201CNombre?\u201D. Now, let's get to the point. We study animal
+      behavior here, cause and effect."
+  - Speaker: 0
+    Text: The behavior of the rat in this box will be the effect, and you will be
+      the cause.
+  - Speaker: 1
+    Text: "I\u2019m the cause?"
+  - Speaker: 0
+    Text: You'll be placing stimuli in the box. Both visual and olfactory, your goal
+      is to guide our little subject to press that big red button. Simple enough,
+      isn't it?
+  - Speaker: 1
+    Text: What happens when the rat presses the button?
+  - Speaker: 0
+    Text: We make the rat happy.
+  - Speaker: 1
+    Text: Make the rat happy? What does that mean? And what happens if I fail?
+  - Speaker: 0
+    Text: Oh don't worry, nothing bad will happen to you.
+  - Speaker: 2
+    Text: '*Squeak* The rat appears afraid as it looks at you.'
+  - Speaker: 0
+    Text: 'The first type of stimuli you are going to use is olfactory: cheese.'
+  - Speaker: 0
+    Text: The rat can smell it and find its way towards it, even if it cannot see
+      it directly.
+  - Speaker: 0
+    Text: "Now that you are all caught up, let\u2019s get to work."

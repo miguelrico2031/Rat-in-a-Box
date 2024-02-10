@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 388b16f216b94a1ea59a23954c4e2ed8, type: 3}
-  m_Name: Dialogue 2
+  m_Name: Dialogue 8
   m_EditorClassIdentifier: 
   Phrases:
   - Speaker: 0
-    Text: It is not always a good idea to blindly follow a smell, so help the rat
-      and guide it to the button.
-  - Speaker: 1
-    Text: Is that a real mousetrap?
+    Text: "This time, instead of introducing a new stimulus, we will cover already
+      placed stimuli. By putting the lid on top of an object, the rat won't be able
+      to sense it, and therefore it won\u2019t be attracted to it."
+  - Speaker: 0
+    Text: Remember that you can remove any object you have placed.
