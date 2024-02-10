@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
             _itemUses.Add(li.Item, li.Uses);
         }
 
-        State = _displayDialogueOnLevels[CurrentLevel] ? GameState.Dialogue : GameState.Overview;
+        State = CurrentLevel.DialogueIndex >= 0 && _displayDialogueOnLevels[CurrentLevel] ? GameState.Dialogue : GameState.Overview;
         _displayDialogueOnLevels[CurrentLevel] = false;
         
         if(_levelCountdown != null) StopCoroutine(_levelCountdown);

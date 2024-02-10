@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dabd5825d3985040a359d927630d17b, type: 3}
   m_Name: Level test 2
   m_EditorClassIdentifier: 
-  Scene: Miguel Test
+  Scene: Miguel Test 2
   LevelTime: 30
-  DialogueIndex: 1
+  DialogueIndex: -1
   AvailableItems:
   - Item: {fileID: 11400000, guid: cdf7a6f467189114b9bcc1936049022c, type: 2}
     Uses: 20
