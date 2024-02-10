@@ -100,7 +100,7 @@ public class PlacementManager : MonoBehaviour
             }
             
             Destroy(_dummy);
-            ItemManager.Instance.PlaceItem(ItemToPlace, pos);
+            StartCoroutine(ItemManager.Instance.PlaceItem(ItemToPlace, pos));
             _dummy = null;
             ItemToPlace = null;
             yield break;
@@ -127,7 +127,7 @@ public class PlacementManager : MonoBehaviour
         if (!item) yield break;
 
         Destroy(_dummy);
-        ItemManager.Instance.PlaceLid(ItemToPlace, item);
+        StartCoroutine(ItemManager.Instance.PlaceLid(ItemToPlace, item));
         _dummy = null;
         ItemToPlace = null;
     }

@@ -20,6 +20,8 @@ public class ItemManager : MonoBehaviour
     private List<AItem> _items;
     private Dictionary<GameObject, AItem> _lids;
     private bool _isFirstItem;
+    private Transform _studentHand;
+    private Animator _studentAnim;
     private void Awake()
     {
         if (Instance)
@@ -33,17 +35,26 @@ public class ItemManager : MonoBehaviour
         _items = FindObjectsOfType<AItem>().ToList();
         _lids = new();
         _isFirstItem = true;
+        _studentHand = GameObject.Find("Student Hand").transform;
+        _studentAnim = _studentHand.GetComponentInChildren<Animator>();
     }
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
-         _items = FindObjectsOfType<AItem>().ToList();
-         _lids = new();
-         _isFirstItem = true;
+        _items = FindObjectsOfType<AItem>().ToList();
+        _lids = new();
+        _isFirstItem = true;
+
+        _studentHand = GameObject.Find("Student Hand").transform;
+        _studentAnim = _studentHand.GetComponentInChildren<Animator>();
     }
 
-    public void PlaceItem(ItemInfo itemInfo, Vector2 position)
+    public IEnumerator PlaceItem(ItemInfo itemInfo, Vector2 position)
     {
+        _studentHand.position = position;
+        _studentAnim.Play("Place");
+        yield return new WaitForSeconds(.5f);
+        
         var instance = Instantiate(itemInfo.Prefab, position, Quaternion.identity);
         _items.Add(instance.GetComponent<AItem>());
 
@@ -76,8 +87,12 @@ public class ItemManager : MonoBehaviour
         
     }
 
-    public void PlaceLid(ItemInfo lidInfo, AItem item)
+    public IEnumerator PlaceLid(ItemInfo lidInfo, AItem item)
     {
+        _studentHand.position = item.transform.position;
+        _studentAnim.Play("Place");
+        yield return new WaitForSeconds(.5f);
+        
         _lids.Add(Instantiate(lidInfo.Prefab, item.transform.position, Quaternion.identity), item);
         
         item.ToggleLid(true);
