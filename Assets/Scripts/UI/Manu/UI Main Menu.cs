@@ -7,18 +7,39 @@ public class UIMainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject creditsMenuUI;
     [SerializeField] private GameObject volumeMenuUI;
+    [SerializeField] private GameObject tutorialMenuUI;
 
-    //mainTheme
+    private void Start()
+    {
+        MusicManager.Instance.PlayMusic("mainTheme", true);
+    }
+    
     
     public void StartGame()
     {
         SceneManager.LoadScene("Level 1");
+        Destroy(MusicManager.Instance.gameObject);
     }
+    public void OpenTutorialMenu()
+    {
+        if (creditsMenuUI.activeSelf || volumeMenuUI.activeSelf)
+        {
+            creditsMenuUI.SetActive(false);
+            volumeMenuUI.SetActive(false);
+        }
+        tutorialMenuUI.SetActive(true);
+    }
+    public void CloseTutorialMenu()
+    {
+        tutorialMenuUI.SetActive(false);
+    }
+
     public void OpenCreditsMenu()
     {
-        if (volumeMenuUI.activeSelf)
+        if (volumeMenuUI.activeSelf || tutorialMenuUI.activeSelf)
         {
             volumeMenuUI.SetActive(false);
+            tutorialMenuUI.SetActive(false);
         }
         creditsMenuUI.SetActive(true);
     }
@@ -28,9 +49,10 @@ public class UIMainMenu : MonoBehaviour
     }
     public void OpenVolumeMenu()
     {
-        if (creditsMenuUI.activeSelf)
+        if (creditsMenuUI.activeSelf || tutorialMenuUI.activeSelf)
         {
             creditsMenuUI.SetActive(false);
+            tutorialMenuUI.SetActive(false);
         }
         volumeMenuUI.SetActive(true);
     }
