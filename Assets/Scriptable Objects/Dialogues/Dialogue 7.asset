@@ -14,20 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Phrases:
   - Speaker: 1
-    Text: "Dr. Skinner, I really think we should stop the testing, I\u2019m pretty
-      sure they are quite harmful to Squeak."
+    Text: Let's make this more interesting, we'll introduce a new obstacle.
   - Speaker: 0
-    Text: Squeak? You named that thing?
-  - Speaker: 1
-    Text: "What really matters is that this madness must stop!\r\nHe can\u2019t keep
-      up with the injections!\r\n"
-  - Speaker: 2
-    Text: Squeak looks very tired.
-  - Speaker: 0
-    Text: Enough with this nonsense. On top of having to deal with this stupid rat
-      I have to listen to your complaints about my methodology.
-  - Speaker: 0
-    Text: "If you don\u2019t do what I tell you, you won\u2019t get the accreditation
-      you need for college."
-  - Speaker: 2
-    Text: Squeak stares at you defeated.
+    Text: If the rat walks on top of the sensor in the floor, it will toggle the
+      door. If the door is open, it will close; if it's closed, it will open.

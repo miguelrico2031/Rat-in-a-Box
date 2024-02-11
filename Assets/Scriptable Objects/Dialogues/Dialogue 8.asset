@@ -14,26 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Phrases:
   - Speaker: 1
-    Text: Doctor, I think you should give me an explanation. I don't understand the
-      purpose and cruelty of these experiments...
+    Text: "Dr. Skinner, I really think we should stop the testing, I\u2019m pretty
+      sure they are quite harmful to Squeak."
   - Speaker: 0
-    Text: Oh, so you demand an explanation? Well, I'll give you one. One day I was
-      at the park, enjoying a sandwich. Not just any sandwich, a really good one,
-      from my favorite sandwich shop. Suddenly, a rat came along, jumped on me, stole
-      my sandwich, and ran off.
-  - Speaker: 2
-    Text: Squeak seems to smirk mockingly.
-  - Speaker: 0
-    Text: I chased the rat through the park, but it slipped into its burrow. The
-      next day, I went back to the same shop for another sandwich, only to find it
-      had closed permanently.
-  - Speaker: 0
-    Text: That destroyed me inside. I went back to the rat's burrow seeking revenge,
-      and while I didn't find her, I found her offspring. She took what I cherished
-      the most, so I did the same. And if I can use her offspring for experiments,
-      even better.
-  - Speaker: 0
-    Text: If you have any issues, find another internship, but if you dare to set
-      her free, I'll make sure you're expelled from the university.
+    Text: Squeak? You named that thing?
   - Speaker: 1
-    Text: Understood, doctor...
+    Text: "What really matters is that this madness must stop!\r\nHe can\u2019t keep
+      up with the injections!\r\n"
+  - Speaker: 2
+    Text: Squeak looks very tired.
+  - Speaker: 0
+    Text: Enough with this nonsense. On top of having to deal with this stupid rat
+      I have to listen to your complaints about my methodology.
+  - Speaker: 0
+    Text: "If you don\u2019t do what I tell you, you won\u2019t get the accreditation
+      you need for college."
+  - Speaker: 2
+    Text: Squeak stares at you defeated.
