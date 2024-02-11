@@ -27,7 +27,7 @@ public class DialogueUI : MonoBehaviour
     private int randomIndex;
     private string soundName;
     Dialogues.Speaker speaker;
-    private const int pasoSound = 1;
+    private const int pasoSound = 2;
     private int vSound = pasoSound;
 
     private void Awake()
@@ -102,12 +102,22 @@ public class DialogueUI : MonoBehaviour
                         MusicManager.Instance.PlaySound(soundName);
                         break;
 
+                    case Dialogues.Speaker.UnnamedBoss:
+                        soundName = "malo" + randomIndex;
+                        MusicManager.Instance.PlaySound(soundName);
+                        break;
+
                     case Dialogues.Speaker.Student:
                         soundName = "voz" + randomIndex;
                         MusicManager.Instance.PlaySound(soundName);
                         break;
 
                     case Dialogues.Speaker.Rat:
+                        soundName = "rata" + randomIndex;
+                        MusicManager.Instance.PlaySound(soundName);
+                        break;
+
+                    case Dialogues.Speaker.UnnamedRat:
                         soundName = "rata" + randomIndex;
                         MusicManager.Instance.PlaySound(soundName);
                         break;
