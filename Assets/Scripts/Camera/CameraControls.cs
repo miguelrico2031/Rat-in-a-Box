@@ -37,12 +37,13 @@ public class CameraControls : MonoBehaviour
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneStart;
+        _pixelPerfectCam.assetsPPU = GameManager.Instance.CurrentLevel.camPPUs;
         PlayerControl = true;
     }
 
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
-        Debug.Log("hola");
+        _pixelPerfectCam.assetsPPU = GameManager.Instance.CurrentLevel.camPPUs;
         _currentZoomLevel = _zoomLevels;
         _cam.transform.position = _startCamPos;
         PlayerControl = true;
@@ -81,6 +82,7 @@ public class CameraControls : MonoBehaviour
 
     public void ZoomToRat(Vector2 pos)
     {
+        _pixelPerfectCam.assetsPPU = 64;
         PlayerControl = false;
         transform.position = new(pos.x, pos.y, transform.position.z);
         _currentZoomLevel = 1;

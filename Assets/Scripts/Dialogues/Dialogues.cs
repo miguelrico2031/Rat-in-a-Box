@@ -6,7 +6,7 @@ using UnityEngine;
     {
         public enum Speaker
         {
-            Boss, Student, Rat
+            Boss, Student, Rat, UnnamedRat, UnnamedBoss
         }
 
         [Serializable]

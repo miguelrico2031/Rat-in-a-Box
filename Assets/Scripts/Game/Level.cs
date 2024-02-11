@@ -14,6 +14,7 @@ public class Level : ScriptableObject
     }
 
     public string Scene;
+    public int camPPUs;
     public int LevelTime;
     public int DialogueIndex;
     public LevelItem[] AvailableItems;

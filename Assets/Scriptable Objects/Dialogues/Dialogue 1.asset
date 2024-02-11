@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Dialogue 1
   m_EditorClassIdentifier: 
   Phrases:
-  - Speaker: 0
+  - Speaker: 4
     Text: Ah, you must be the new intern. Welcome to my lab.
   - Speaker: 1
     Text: Thank you, Dr...?
   - Speaker: 0
-    Text: "Call me \u201CNombre?\u201D. Now, let's get to the point. We study animal
-      behavior here, cause and effect."
+    Text: Call me Dr. Skinner. Now, let's get to the point. We study animal behavior
+      here, cause and effect.
   - Speaker: 0
     Text: The behavior of the rat in this box will be the effect, and you will be
       the cause.
@@ -37,7 +37,7 @@ MonoBehaviour:
     Text: Make the rat happy? What does that mean? And what happens if I fail?
   - Speaker: 0
     Text: Oh don't worry, nothing bad will happen to you.
-  - Speaker: 2
+  - Speaker: 3
     Text: '*Squeak* The rat appears afraid as it looks at you.'
   - Speaker: 0
     Text: 'The first type of stimuli you are going to use is olfactory: cheese.'
