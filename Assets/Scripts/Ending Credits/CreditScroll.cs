@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CreditsScroll : MonoBehaviour
 {
-    public float scrollSpeed = 20f;
+    public float scrollSpeed = 24f;
     public TMP_Text creditsText;
 
     void Start()
