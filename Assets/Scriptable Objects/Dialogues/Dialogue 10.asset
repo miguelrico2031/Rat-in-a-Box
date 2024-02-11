@@ -13,9 +13,18 @@ MonoBehaviour:
   m_Name: Dialogue 10
   m_EditorClassIdentifier: 
   Phrases:
-  - Speaker: 0
-    Text: "This time, instead of introducing a new stimulus, we will cover already
-      placed stimuli. By putting the lid on top of an object, the rat won't be able
-      to sense it, and therefore it won\u2019t be attracted to it."
-  - Speaker: 0
-    Text: Remember that you can remove any object you have placed.
+  - Speaker: 1
+    Text: Hello, Squeak.
+  - Speaker: 2
+    Text: 'Squeak looks sad.
+
+'
+  - Speaker: 1
+    Text: The doctor is about to arrive, but I wanted to tell you that I'm going
+      to help you escape. You have to be the one to escape, so the doctor doesn't
+      think I've helped you. In this experiment, instead of pressing the button,
+      stay still, and when you see the opportunity, escape.
+  - Speaker: 1
+    Text: Squeak seems filled with determination to break free from their chains.
+      Just by looking at them, anyone can understand that it would be impossible
+      to stand in Squeak's way to freedom.
