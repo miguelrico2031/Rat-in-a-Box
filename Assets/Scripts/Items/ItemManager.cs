@@ -83,6 +83,10 @@ public class ItemManager : MonoBehaviour
             case "spray":
                 MusicManager.Instance.PlaySound("poneSpray");
                 break;
+            case "tapa":
+                MusicManager.Instance.PlaySound("tapa");
+                //Debug.Log("tapa");
+                break;
         }
         
     }

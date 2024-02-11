@@ -17,5 +17,5 @@ MonoBehaviour:
   _dummy: {fileID: 4271234450219218801, guid: 9742fd73e0a62614bb57674057b338b4, type: 3}
   _hasSmell: 0
   _interaction: 0
-  _placeAudioName: 
-  _interactAudioName: 
+  _placeAudioName: tapa
+  _interactAudioName: tapa

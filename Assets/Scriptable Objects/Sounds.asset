@@ -48,7 +48,7 @@ MonoBehaviour:
   - Name: malo3
     Clip: {fileID: 8300000, guid: 252a57f3a68c5a24fa11a330e879066e, type: 3}
   - Name: muere
-    Clip: {fileID: 8300000, guid: 457ff1595e84ec445989fc43c45bdadb, type: 3}
+    Clip: {fileID: 8300000, guid: d782fcd8069b43349a6e8df63e0320a1, type: 3}
   - Name: poneGato
     Clip: {fileID: 8300000, guid: f946c9fda5d347b49a7289edf7575aaf, type: 3}
   - Name: poneQueso
@@ -74,12 +74,22 @@ MonoBehaviour:
   - Name: finalMusic
     Clip: {fileID: 8300000, guid: 5d6e4660efe65414c83f9ab4771aed04, type: 3}
   - Name: endLevel
-    Clip: {fileID: 8300000, guid: 4b1241f69b4f80c4588bb20718955bf0, type: 3}
-  - Name: endLevel
-    Clip: {fileID: 8300000, guid: 4b1241f69b4f80c4588bb20718955bf0, type: 3}
+    Clip: {fileID: 8300000, guid: e5dfb1b27e878a141bb1c29c3bcb99c3, type: 3}
   - Name: rata1
     Clip: {fileID: 8300000, guid: 285d3f75d1759f74c9f4b27eb9e309ad, type: 3}
   - Name: rata2
     Clip: {fileID: 8300000, guid: 812161aed4f628a4bb62e013460c5461, type: 3}
   - Name: rata3
     Clip: {fileID: 8300000, guid: 2ff74feee8fe2db469985d50263c81ff, type: 3}
+  - Name: metalPipe
+    Clip: {fileID: 8300000, guid: fd3a9f70f3c61d840ad2a70741905bed, type: 3}
+  - Name: metalPipeSong
+    Clip: {fileID: 8300000, guid: edb48d810ff6557479c6a2d4326fe4ab, type: 3}
+  - Name: eureka
+    Clip: {fileID: 8300000, guid: 360ac3c12b6a09344b79a473014fe4e4, type: 3}
+  - Name: tapa
+    Clip: {fileID: 8300000, guid: cba17601e6fce2340ba6db7559a0058f, type: 3}
+  - Name: trampa
+    Clip: {fileID: 8300000, guid: 46c6e5b176d783b43ad7ed2f5cc39f2d, type: 3}
+  - Name: toggleFloor
+    Clip: {fileID: 8300000, guid: 4dbe6a28e2ddbbf459f11b6ba2cb78a8, type: 3}
