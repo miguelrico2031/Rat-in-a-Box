@@ -15,6 +15,7 @@ MonoBehaviour:
   Phrases:
   - Speaker: 0
     Text: It is not always a good idea to blindly follow a smell, so help the rat
-      and guide it to the button.
+      and guide it to the button and have in mind that the rat will go towards the
+      stimulus closest to it.
   - Speaker: 1
     Text: Is that a real mousetrap?

@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cheese Dummy
       objectReference: {fileID: 0}
+    - target: {fileID: 2018245521066085269, guid: 9c712961db13a4345b2e279f884e92ab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018245521066085269, guid: 9c712961db13a4345b2e279f884e92ab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018245521066085269, guid: 9c712961db13a4345b2e279f884e92ab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 7.75
+      objectReference: {fileID: 0}
     - target: {fileID: 3087382362834813925, guid: 9c712961db13a4345b2e279f884e92ab, type: 3}
       propertyPath: m_Sprite
       value: 

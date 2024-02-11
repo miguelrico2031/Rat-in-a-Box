@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scene: Level 5
   camPPUs: 64
-  LevelTime: 90
+  LevelTime: 60
   DialogueIndex: 4
   AvailableItems:
   - Item: {fileID: 11400000, guid: 5389075d4d6fe384dabb172cd51cda47, type: 2}

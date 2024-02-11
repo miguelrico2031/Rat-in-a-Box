@@ -15,7 +15,7 @@ MonoBehaviour:
   Scene: Level 9
   camPPUs: 52
   LevelTime: 90
-  DialogueIndex: 8
+  DialogueIndex: -1
   AvailableItems:
   - Item: {fileID: 11400000, guid: cdf7a6f467189114b9bcc1936049022c, type: 2}
     Uses: 2
