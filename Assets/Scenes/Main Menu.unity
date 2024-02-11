@@ -376,8 +376,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creditsMenuUI: {fileID: 744505599}
   volumeMenuUI: {fileID: 788510157}
-  animator: {fileID: 0}
-  volume: {fileID: 1987719375}
 --- !u!1 &165586103
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,9 +2795,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924cd60037a82e7449f16af5fa597d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSlider: {fileID: 1880471332}
   volumeValue: 0
-  sliderValue: 0
+  slider: {fileID: 1880471332}
 --- !u!1 &2085272849
 GameObject:
   m_ObjectHideFlags: 0

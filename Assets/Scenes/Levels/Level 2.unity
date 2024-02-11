@@ -123,33 +123,15 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &403904347 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6030431836906288780, guid: 49c125f9684a24a4385a2ce144ec8e16, type: 3}
-  m_PrefabInstance: {fileID: 7624143759876229457}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &403904355
+--- !u!114 &403904355 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403904347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 924cd60037a82e7449f16af5fa597d1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicSlider: {fileID: 444284491}
---- !u!114 &444284491 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7590141172156888554, guid: 49c125f9684a24a4385a2ce144ec8e16, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1545758117398948380, guid: 49c125f9684a24a4385a2ce144ec8e16, type: 3}
   m_PrefabInstance: {fileID: 7624143759876229457}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 924cd60037a82e7449f16af5fa597d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &619394800
@@ -4094,6 +4076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3382dd56397176243893dfa0cf5c9e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isEnd: 0
 --- !u!1 &1673927991
 GameObject:
   m_ObjectHideFlags: 0
@@ -4354,10 +4337,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6030431836906288780, guid: 49c125f9684a24a4385a2ce144ec8e16, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 403904355}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49c125f9684a24a4385a2ce144ec8e16, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
