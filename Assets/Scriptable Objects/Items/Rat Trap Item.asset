@@ -18,4 +18,4 @@ MonoBehaviour:
   _hasSmell: 0
   _interaction: 1
   _placeAudioName: ratTrap
-  _interactAudioName: ratTrap
+  _interactAudioName: electrocutar
