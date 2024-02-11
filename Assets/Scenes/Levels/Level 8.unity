@@ -7384,6 +7384,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6417956709091729912, guid: 49c125f9684a24a4385a2ce144ec8e16, type: 3}
+      propertyPath: _typeSpeed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 6840869340918062636, guid: 49c125f9684a24a4385a2ce144ec8e16, type: 3}
       propertyPath: orthographic size
       value: 5.1923075

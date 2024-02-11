@@ -1283,7 +1283,7 @@ MonoBehaviour:
   _speakerImage: {fileID: 3570028145035723984}
   _speakerNameText: {fileID: 1117969882276849279}
   _dialogueText: {fileID: 2995987461028630274}
-  _typeSpeed: 15
+  _typeSpeed: 25
 --- !u!114 &890293494405264728
 MonoBehaviour:
   m_ObjectHideFlags: 0
