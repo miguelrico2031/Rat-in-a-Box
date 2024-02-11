@@ -81,6 +81,9 @@ public class GameManager : MonoBehaviour
                 // ANTON Musica de hablar
                 MusicManager.Instance.PlayMusic("talking",true);
                 break;
+            case GameState.Overview:
+                MusicManager.Instance.PlayMusic("escape",true);
+                break;
             
             case GameState.Playing:
                 _levelCountdown = StartCoroutine(LevelCountDown());
@@ -119,7 +122,7 @@ public class GameManager : MonoBehaviour
         State = GameState.Overview;
 
         // ANTON Musica de jugar
-        MusicManager.Instance.PlayMusic("escape",true);
+        
     }
 
 
