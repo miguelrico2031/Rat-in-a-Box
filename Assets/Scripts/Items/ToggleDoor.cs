@@ -6,7 +6,7 @@ using Pathfinding;
 public class ToggleDoor : MonoBehaviour
 {
     [SerializeField] private bool _isOpen;
-    [SerializeField] private GameObject _sprite;
+    [SerializeField] private Animator _animator;
 
     private PolygonCollider2D _col;
 
@@ -17,7 +17,7 @@ public class ToggleDoor : MonoBehaviour
         {
             _col.enabled = false;
             AstarPath.active.Scan();
-            _sprite.SetActive(false);
+            _animator.SetBool("isOpen", true);
         }
     }
 
@@ -31,8 +31,8 @@ public class ToggleDoor : MonoBehaviour
         Debug.Log("abierto");
         _col.enabled = false;
         _isOpen = true;
-        _sprite.SetActive(false);
         AstarPath.active.Scan();
+        _animator.SetBool("isOpen", true);
         FindObjectOfType<RatController>().RecalcPath();
     }
 
@@ -41,8 +41,8 @@ public class ToggleDoor : MonoBehaviour
         Debug.Log("cerrado");
         _col.enabled = true;
         _isOpen = false;
-        _sprite.SetActive(true);
         AstarPath.active.Scan();
+        _animator.SetBool("isOpen", false);
         FindObjectOfType<RatController>().RecalcPath();
     }
 }
