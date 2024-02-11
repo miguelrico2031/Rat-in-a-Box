@@ -13,10 +13,16 @@ public class ToggleFloorItem : MonoBehaviour
 
     private void Start()
     {
-        if (!_isActive) return;
-
-        _sprites[0].SetActive(false);
-        _sprites[1].SetActive(true);
+        if (!_isActive)
+        {
+            _sprites[1].SetActive(false);
+            _sprites[0].SetActive(true);
+        }
+        else
+        {
+            _sprites[0].SetActive(false);
+            _sprites[1].SetActive(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

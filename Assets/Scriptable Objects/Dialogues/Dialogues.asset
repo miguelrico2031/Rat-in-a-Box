@@ -14,14 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speakers:
   - Speaker: 0
-    Name: Boss
+    Name: Dr. Skinner
     Sprite: {fileID: 21300000, guid: c9d7709254db0324bab60daa410e55a2, type: 3}
   - Speaker: 1
     Name: Borjo
     Sprite: {fileID: 21300000, guid: e5bdc2b48411c164f8332844ed3d7ee8, type: 3}
   - Speaker: 2
-    Name: Ratonga
+    Name: Squeak
     Sprite: {fileID: 21300000, guid: b6a9fa9e3975ae64194e582647c2b2f0, type: 3}
+  - Speaker: 3
+    Name: Rat
+    Sprite: {fileID: 21300000, guid: b6a9fa9e3975ae64194e582647c2b2f0, type: 3}
+  - Speaker: 4
+    Name: '?'
+    Sprite: {fileID: 21300000, guid: c9d7709254db0324bab60daa410e55a2, type: 3}
   _dialogues:
   - {fileID: 11400000, guid: f572197d585e7a24aa87f07c3e3a0478, type: 2}
   - {fileID: 11400000, guid: d0e9fb1371e4c0e46aeee936fbbcb3e4, type: 2}
@@ -32,3 +38,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: da8e9cf7abd9da843859fee1ae378211, type: 2}
   - {fileID: 11400000, guid: 1b1a468d011d86d438df50989c24ab7c, type: 2}
   - {fileID: 11400000, guid: 1fba9f4d125ff234192bad66105c37bd, type: 2}
+  - {fileID: 11400000, guid: b80e50c05b732754886d56b70b4f8d38, type: 2}

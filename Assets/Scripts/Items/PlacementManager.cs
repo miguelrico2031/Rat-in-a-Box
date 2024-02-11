@@ -90,7 +90,7 @@ public class PlacementManager : MonoBehaviour
         if (!ItemToPlace.IsLid)
         {
             if (EventSystem.current.IsPointerOverGameObject()) yield break;
-            var a = Physics2D.OverlapCircle(pos, .2f, ~( _validLayersToPlace));
+            var a = Physics2D.OverlapCircle(pos, .05f, ~( _validLayersToPlace));
             if(a) yield break;
             
             int n =  Physics2D.OverlapCircleNonAlloc(pos, .5f, _overlaps, ~(_validLayersToPlace));

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level 4
   m_EditorClassIdentifier: 
   Scene: Level 4
+  camPPUs: 64
   LevelTime: 90
   DialogueIndex: 3
   AvailableItems:
