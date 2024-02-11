@@ -13,6 +13,9 @@ public class ToggleFloorItem : MonoBehaviour
         var rat = other.GetComponentInParent<RatController>();
         if (!rat) return;
 
+        // ANTON sonido toggleFloor
+        MusicManager.Instance.PlaySound("toggleFloor");
+
         ToggleDoors();
     }
 

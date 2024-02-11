@@ -8,6 +8,9 @@ public class Trap : MonoBehaviour
     {
         var rat = other.GetComponentInParent<RatController>();
         if (!rat) return;
+
+        // ANTON sonido trampa
+        MusicManager.Instance.PlaySound("trampa");
         
         GetComponentInChildren<UnityEngine.Animator>().SetBool("Trap", true);
         rat.CurrentState = new OnTrap(true);

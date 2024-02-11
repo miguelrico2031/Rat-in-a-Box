@@ -60,5 +60,9 @@ public class Selectable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void ToggleLid(bool on)
     {
         _collider.enabled = !on;
+
+        // ANTON sonido tapa
+        //Debug.Log("tapa");
+        MusicManager.Instance.PlaySound("tapa");
     }
 }
