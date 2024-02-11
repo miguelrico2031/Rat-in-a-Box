@@ -442,6 +442,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8b0d0d6bb786c024980153e473809ee2, type: 2}
   - {fileID: 11400000, guid: 26c6f8dc125c59e499fdaa31ff8e9db4, type: 2}
   - {fileID: 11400000, guid: e89afc841e28a6047bf32186f96d9ad7, type: 2}
+  _electricPaticles: {fileID: 1636861340086207728, guid: 3c3b6b0c52d1e8046a5b9fb5c3c623e6, type: 3}
 --- !u!114 &2632099257874880948
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public Level CurrentLevel { get; private set; }
 
     [SerializeField] private Level[] _levels;
+    [SerializeField] private ParticleSystem _electricPaticles;
     
     private GameState _state;
     private Dictionary<ItemInfo, int> _itemUses;
@@ -109,6 +110,7 @@ public class GameManager : MonoBehaviour
 
         var rat = FindObjectOfType<RatController>();
         rat.PlayOneTimeAnimationXY("Shock",rat.CurrentDirection);
+        ElectricParticles(rat.transform.position);
         rat.StartCoroutine(rat.Die());
     }
 
@@ -131,6 +133,8 @@ public class GameManager : MonoBehaviour
     {
         if (_levelCountdown != null) StopCoroutine(_levelCountdown);
     }
+
+    public void ElectricParticles(Vector2 pos) => Instantiate(_electricPaticles, pos, Quaternion.identity);
 
     private void OnDestroy()
     {

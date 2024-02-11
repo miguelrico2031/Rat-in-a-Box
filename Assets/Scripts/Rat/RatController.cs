@@ -225,6 +225,7 @@ public class RatController : MonoBehaviour
         {
             case ItemInteraction.Trap:
                 if(item.Info.HasSmell) item.GetComponentInChildren<UnityEngine.Animator>().SetBool("Trap", true);
+                else GameManager.Instance.ElectricParticles(transform.position);
                 CurrentState = new OnTrap(item.Info.HasSmell);
                 break;
             
