@@ -18,8 +18,11 @@ MonoBehaviour:
   - Speaker: 0
     Text: 'We have observed that rats prioritize visual stimuli over olfactory stimuli.
       Therefore, if the rat is in range of stimuli of both kinds, it will go towards
-      the visual stimulus. If it is in range of two stimuli of the same kind, it
-      will go towards the nearest one. '
+      the visual stimulus. '
+  - Speaker: 0
+    Text: 'If it is in range of two stimuli of the same kind, it will go towards
+      the nearest one. Also have in mind that you can remove any object you have
+      placed. '
   - Speaker: 0
     Text: For this one, we are going to take advantage of the fact that our little
       subject is a young male that has never seen a female of its species.
