@@ -19,12 +19,12 @@ public class Volume : MonoBehaviour
         newVol = newValue;
         AudioListener.volume = newVol;
         PlayerPrefs.SetFloat("volumeValue", AudioListener.volume);
-        PlayerPrefs.SetFloat("sliderValue", newValue);
+        PlayerPrefs.SetFloat("slider", newValue);
     }
 
     public void LoadVolume()
     {
         volumeValue = PlayerPrefs.GetFloat("volumeValue");
-        slider.value = PlayerPrefs.GetFloat("sliderValue");
+        slider.value = PlayerPrefs.GetFloat("slider");
     }
 }
