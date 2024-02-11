@@ -88,6 +88,12 @@ public class HUD : MonoBehaviour
 
         _fade.color = new(0f, 0f, 0f, 0f);
 
+
+        foreach (var button in _itemButtons.Values)
+        {
+            button.GetComponent<Animator>().ResetTrigger("Selected");
+            button.GetComponent<Animator>().ResetTrigger("Highlighted");
+        }
     }
     
     
