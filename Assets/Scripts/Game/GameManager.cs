@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public Level CurrentLevel { get; private set; }
 
     [SerializeField] private Level[] _levels;
-    [SerializeField] private ParticleSystem _electricPaticles;
+    [SerializeField] private ParticleSystem _electricPaticles, _heartParticles;
     
     private GameState _state;
     private Dictionary<ItemInfo, int> _itemUses;
@@ -134,7 +134,8 @@ public class GameManager : MonoBehaviour
         if (_levelCountdown != null) StopCoroutine(_levelCountdown);
     }
 
-    public void ElectricParticles(Vector2 pos) => Instantiate(_electricPaticles, pos, Quaternion.identity);
+    public void ElectricParticles(Vector2 pos) => Instantiate(_electricPaticles, pos, _electricPaticles.transform.rotation);
+    public void HeartParticles(Vector2 pos) => Instantiate(_heartParticles, pos, _heartParticles.transform.rotation);
 
     private void OnDestroy()
     {

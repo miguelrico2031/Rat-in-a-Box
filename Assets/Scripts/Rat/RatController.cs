@@ -243,6 +243,7 @@ public class RatController : MonoBehaviour
                 CurrentTarget = null;
                 _lastPermamentTargetCollided = item;
                 PlayOneTimeAnimationXY("Heart", CurrentDirection);
+                GameManager.Instance.HeartParticles(transform.position);
                 CurrentState = new Idle();
                 break;
             
