@@ -16,6 +16,12 @@ public class GameButton : MonoBehaviour
     private Transform[] _waypointsArm;
     private int _wpI;
     
+    private int randomIndex;
+    private string soundName;
+    private const float maxSonido= 10.0f; 
+    private float pasoSonido = maxSonido;
+    private float veloSonido = 50.0f;
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         _rat = other.GetComponentInParent<RatController>();
@@ -52,6 +58,19 @@ public class GameButton : MonoBehaviour
         }
         if (_ratD)
         {
+            if (pasoSonido > maxSonido)
+            {
+                pasoSonido=0;
+                randomIndex = UnityEngine.Random.Range(0, 3);
+                soundName = "Anda" + randomIndex;
+                MusicManager.Instance.PlaySound(soundName);
+            }
+            else
+            {
+                pasoSonido+=Time.deltaTime*veloSonido;
+            }
+            
+            
             if (_ratOnArm)
             {
                 _direction = _waypointsArm[_wpI].position - _ratD.position;
@@ -107,6 +126,7 @@ public class GameButton : MonoBehaviour
         lid.position = rat.transform.position;
         lid.GetComponentInChildren<SpriteRenderer>().enabled = true;
         rat.gameObject.SetActive(false);
+        MusicManager.Instance.PlaySound("metalPipe");
         yield return new WaitForSeconds(1.5f);
         
         studentHand.position = transform.position;
@@ -114,6 +134,8 @@ public class GameButton : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         ratTrap.position = transform.position;
         ratTrap.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        MusicManager.Instance.PlaySound("poneRaton");
+
         yield return new WaitForSeconds(2.5f);
         
         FindObjectOfType<CameraControls>().ZoomToRat(transform.position);
@@ -123,6 +145,8 @@ public class GameButton : MonoBehaviour
         var hand = GameObject.Find("Boss Hand");
         hand.transform.position = transform.position;
         hand.GetComponentInChildren<Animator>().Play("Shock");
+        MusicManager.Instance.PlaySound("electrocutarLargo");
+
 
         yield return new WaitForSeconds(2f);
 
