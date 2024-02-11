@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -46,6 +47,8 @@ public class GameManager : MonoBehaviour
     
     private void OnSceneStart(Scene s, LoadSceneMode m)
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        
         foreach (var level in _levels)
         {
             if (level.Scene != SceneManager.GetActiveScene().name) continue;
@@ -82,7 +85,7 @@ public class GameManager : MonoBehaviour
                 MusicManager.Instance.PlayMusic("talking",true);
                 break;
             case GameState.Overview:
-                if(CurrentLevel.DialogueIndex < 0) MusicManager.Instance.PlayMusic("escape",true);
+                if(CurrentLevel.DialogueIndex < 0 || !_displayDialogueOnLevels[CurrentLevel]) MusicManager.Instance.PlayMusic("escape",true);
                 break;
             
             case GameState.Playing:
@@ -122,7 +125,7 @@ public class GameManager : MonoBehaviour
         State = GameState.Overview;
 
         // ANTON Musica de jugar
-        
+        MusicManager.Instance.PlayMusic("escape",true);
     }
 
 
