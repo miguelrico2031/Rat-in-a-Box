@@ -375,6 +375,7 @@ public class RatController : MonoBehaviour
     {
         IsAlive = false;
         AIPath.isStopped = true;
+        CurrentState = null;
         transform.Find("Arrow").gameObject.SetActive(false);
         GameManager.Instance.StopTimer();   
     }
@@ -385,8 +386,8 @@ public class RatController : MonoBehaviour
     {
         if (GameManager.Instance.CurrentLevel.NextLevel)
             SceneManager.LoadScene(GameManager.Instance.CurrentLevel.NextLevel.Scene);
-
-        else SceneManager.LoadScene("CreditScene");
+        //
+        // else SceneManager.LoadScene("CreditScene");
     }
         
 
