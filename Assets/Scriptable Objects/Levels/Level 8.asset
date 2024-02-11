@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level 8
   m_EditorClassIdentifier: 
   Scene: Level 8
-  camPPUs: 52
+  camPPUs: 56
   LevelTime: 90
   DialogueIndex: 7
   AvailableItems:
