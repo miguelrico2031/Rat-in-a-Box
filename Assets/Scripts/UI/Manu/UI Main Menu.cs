@@ -8,11 +8,16 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private GameObject creditsMenuUI;
     [SerializeField] private GameObject volumeMenuUI;
 
-    //mainTheme
+    private void Start()
+    {
+        MusicManager.Instance.PlayMusic("mainTheme", true);
+    }
+    
     
     public void StartGame()
     {
         SceneManager.LoadScene("Level 1");
+        Destroy(MusicManager.Instance.gameObject);
     }
     public void OpenCreditsMenu()
     {
