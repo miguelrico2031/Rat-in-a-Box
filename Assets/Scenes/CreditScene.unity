@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b1de66390592f47a72483e771223cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 26
+  scrollSpeed: 25
   creditsText: {fileID: 140467337}
 --- !u!114 &140467337
 MonoBehaviour:
