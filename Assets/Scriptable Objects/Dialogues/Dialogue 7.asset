@@ -13,9 +13,21 @@ MonoBehaviour:
   m_Name: Dialogue 7
   m_EditorClassIdentifier: 
   Phrases:
+  - Speaker: 1
+    Text: "Dr. Skinner, I really think we should stop the testing, I\u2019m pretty
+      sure they are quite harmful to Squeak."
   - Speaker: 0
-    Text: "This time, instead of introducing a new stimulus, we will cover already
-      placed stimuli. By putting the lid on top of an object, the rat won't be able
-      to sense it, and therefore it won\u2019t be attracted to it."
+    Text: Squeak? You named that thing?
+  - Speaker: 1
+    Text: "What really matters is that this madness must stop!\r\nShe can\u2019t
+      keep up with the injections!\r\n"
+  - Speaker: 2
+    Text: Squeak looks very tired.
   - Speaker: 0
-    Text: Remember that you can remove any object you have placed.
+    Text: Enough with this nonsense. On top of having to deal with this stupid rat
+      I have to listen to your complaints about my methodology.
+  - Speaker: 0
+    Text: "If you don\u2019t do what I tell you, you won\u2019t get the accreditation
+      you need for college."
+  - Speaker: 2
+    Text: Squeak stares at you defeated.
