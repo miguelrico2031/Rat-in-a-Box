@@ -376,6 +376,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creditsMenuUI: {fileID: 744505599}
   volumeMenuUI: {fileID: 788510157}
+  animator: {fileID: 0}
+  volume: {fileID: 1987719375}
 --- !u!1 &165586103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,7 +1116,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c03fb38dff5e0fd4c81a2dd8958d6019, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1335,7 +1337,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c03fb38dff5e0fd4c81a2dd8958d6019, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -2796,6 +2798,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSlider: {fileID: 1880471332}
+  volumeValue: 0
+  sliderValue: 0
 --- !u!1 &2085272849
 GameObject:
   m_ObjectHideFlags: 0
