@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
                 MusicManager.Instance.PlayMusic("talking",true);
                 break;
             case GameState.Overview:
-                if(CurrentLevel.DialogueIndex < 0 || !_displayDialogueOnLevels[CurrentLevel]) MusicManager.Instance.PlayMusic("escape",true);
+                if(CurrentLevel.DialogueIndex < 0 && _displayDialogueOnLevels[CurrentLevel]) MusicManager.Instance.PlayMusic("escape",true);
                 break;
             
             case GameState.Playing:
