@@ -201,7 +201,15 @@ public class RatController : MonoBehaviour
             case "queso":
                 MusicManager.Instance.PlaySound("comeQueso");
                 break;
-
+            case "electrocutar":
+                MusicManager.Instance.PlaySound("electrocutarCorto");
+                break;
+            case "spray":
+                MusicManager.Instance.PlaySound("spray");
+                break;
+            case "peluche":
+                MusicManager.Instance.PlaySound("rata1");
+                break;
         }
         
         switch (item.Info.Interaction)

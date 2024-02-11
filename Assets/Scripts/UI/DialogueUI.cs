@@ -67,6 +67,7 @@ public class DialogueUI : MonoBehaviour
         {
             _dialogueUI.SetActive(false);
             _callback.Invoke();
+
             return;
         }
         

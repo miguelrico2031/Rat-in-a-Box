@@ -87,6 +87,7 @@ public class HUD : MonoBehaviour
         _cancelButton.SetActive(false);
 
         _fade.color = new(0f, 0f, 0f, 0f);
+
     }
     
     
@@ -151,11 +152,17 @@ public class HUD : MonoBehaviour
     public void SelectItem(ItemInfo item)
     {
         if(GameManager.Instance.CanUse(item)) PlacementManager.Instance.SetItemToPlace(item);
+        
+        // ANTON sonido de seleccionar
+        MusicManager.Instance.PlaySound("click2");
     }
 
     public void CancelItem()
     {
         PlacementManager.Instance.CancelItemToPlace();
+        
+        // ANTON sonido de cancelar
+        MusicManager.Instance.PlaySound("click3");
     }
 
     public void RemoveItem()

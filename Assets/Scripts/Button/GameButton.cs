@@ -16,11 +16,17 @@ public class GameButton : MonoBehaviour
 
         if (!_isEnd) StartCoroutine(NotifyRat());
 
-        else StartCoroutine(EndSequence(_rat));
+        else {
+            StartCoroutine(EndSequence(_rat));
+        }
     }
 
     private IEnumerator NotifyRat()
     {
+            // ANTON sonido de terminar
+            MusicManager.Instance.PlaySound("endLevel");
+            MusicManager.Instance.StopMusic(1.0f);
+
         yield return new WaitForSeconds(0.1f);
         _rat.Button = transform;
     }

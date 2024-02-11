@@ -76,6 +76,9 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Dialogue:
                 DialogueUI.Instance.StartDialogue(CurrentLevel.DialogueIndex, OnDialogueFinished);
+                
+                // ANTON Musica de hablar
+                MusicManager.Instance.PlayMusic("talking",true);
                 break;
             
             case GameState.Playing:
@@ -99,6 +102,11 @@ public class GameManager : MonoBehaviour
         }
         
         Debug.Log("gameover rata eletrocuta");
+        
+        // ANTON sonido de morir
+        //MusicManager.Instance.PlayMusic("muere",false);
+        MusicManager.Instance.PlaySound("electrocutarCorto");
+
         var rat = FindObjectOfType<RatController>();
         rat.PlayOneTimeAnimationXY("Shock",rat.CurrentDirection);
         rat.StartCoroutine(rat.Die());
@@ -107,6 +115,9 @@ public class GameManager : MonoBehaviour
     private void OnDialogueFinished()
     {
         State = GameState.Overview;
+
+        // ANTON Musica de jugar
+        MusicManager.Instance.PlayMusic("escape",true);
     }
 
 
