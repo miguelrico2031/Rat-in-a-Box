@@ -1,4 +1,4 @@
-Play Rat in a Box in (miguelrico2031.itch.io/rat-in-a-box)[https://miguelrico2031.itch.io/rat-in-a-box]!
+Play Rat in a Box in [miguelrico2031.itch.io/rat-in-a-box](https://miguelrico2031.itch.io/rat-in-a-box)!
 
 In Rat in a Box, you play as Maxwell, a college science student who is taking an internship with a mysterious scientist. Your task is to conduct experiments involving a rat in a box, which you must guide to a button using stimuli, both visual and olfactory, provided by various objects.
 
